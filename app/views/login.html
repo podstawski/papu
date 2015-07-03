@@ -1,0 +1,117 @@
+<!-- Banner -->
+<div class="banner login">
+    <div class="container">
+
+        <tabset justified="true" class="tabs">
+            <tab heading="{{'Login' | translate}}">
+                <div class="auth-forms login-panel" ng-controller="AuthCtrl">
+
+                    <div class="col-md-6">
+                        <form name="loginForm" ng-submit="loginForm.$valid && login()" novalidate>
+                            <input type="email" ng-model="user.email" name="email" placeholder="Email" class="form-control" required minlength="6" maxlength="256">
+                            <div ng-if="loginForm.email.$touched" ng-messages="loginForm.email.$error" ng-messages-include="views/defaultmessagetemplate.html"></div>
+                            <br>
+                            <input type="password" ng-model="user.password" name="password" placeholder="{{'Password'|translate}}" class="form-control" required minlength="4" maxlength="256">
+                            <div ng-if="loginForm.password.$touched" ng-messages="loginForm.password.$error" ng-messages-include="views/defaultmessagetemplate.html"></div>
+                            <br>
+                            <div class="pass-remind-btn"><a href="" ng-click="remindCollapse = !remindCollapse" translate>RemindPass</a></div>
+                            <input type="submit" ng-disabled="loginForm.$invalid" value="{{'Login'|translate}}" class="btn btn-primary" />
+                            
+
+
+                        </form>
+                        
+                        
+                        
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <div class="clearfix"></div>
+                        <a class="google-login" href="{{googleAuth}}" target="_self"><img src="images/google-icon.png" alt=""><span translate>GoogleLogin</span>
+                        </a>
+                        <div class="clearfix"></div>
+                        <a class="facebook-login" href="{{facebookAuth}}" target="_self"><img src="images/facebook-icon.png" alt=""><span translate>FacebookLogin</span>
+                        </a>
+                        
+                        
+                    </div>
+                    <div class="pass-remind-block" >
+                              
+                        <div class="col-md-12" collapse="remindCollapse">
+                            <div class="pass-remind-btn"><a href="" ng-click="remindCollapse = !remindCollapse" translate>RemindPass</a></div>
+                            <div ng-controller="RemindpassCtrl">
+
+                                <form name="remindForm" class="form-inline" ng-submit="remindForm.$valid && remindPass(remind.email)" novalidate>
+                                    <div class="form-group">
+                                        <input type="email" ng-model="remind.email" name="email" placeholder="{{'Type your email' | translate }}" class="form-control" required minlength="6" maxlength="256">
+                                          <div class="clearfix"></div>
+                                        <div ng-if="remindForm.email.$touched" ng-messages="remindForm.email.$error" ng-messages-include="views/defaultmessagetemplate.html"></div>
+                                        <input type="submit" ng-disabled="remindForm.$invalid" value="{{'RemindPass'|translate}}" class="btn btn-info" />
+                                    </div>
+                                </form>
+                                <p ng-show="remindinfo" translate>RemindPassTxt</p>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="clearfix"></div>
+                </div>
+            </tab>
+
+
+            <tab heading="{{'Register' | translate}}">
+
+                <div class="auth-forms register-panel col-md-6">
+
+                    <form name="registerForm" ng-submit="registerForm.$valid && register()" novalidate>
+                        <div class="col-md-6">
+                            <input type="text" ng-model="user.firstname" name="firstname" placeholder="{{'Firstname'|translate}}" class="form-control" tabindex="1" required minlength="2" maxlength="256">
+                            <div ng-if="registerForm.firstname.$touched" ng-messages="registerForm.firstname.$error" ng-messages-include="views/defaultmessagetemplate.html"></div>
+                            <br>
+                            <input type="email" ng-model="user.email" name="email" placeholder="{{'Email'|translate}}" class="form-control" tabindex="3" required minlength="6" maxlength="256">
+                            <div ng-if="registerForm.email.$touched" ng-messages="registerForm.email.$error" ng-messages-include="views/defaultmessagetemplate.html"></div>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" ng-model="user.lastname" name="lastname" placeholder="{{'Lastname'|translate}}" class="form-control" tabindex="2" required minlength="2" maxlength="256">
+                            <div ng-if="registerForm.lastname.$touched" ng-messages="registerForm.lastname.$error" ng-messages-include="views/defaultmessagetemplate.html"></div>
+                            <br>
+                            <input type="password" ng-model="user.password" name="password" placeholder="{{'Password'|translate}}" class="form-control" tabindex="4" required minlength="4" maxlength="256">
+                            <div ng-if="registerForm.password.$touched" ng-messages="registerForm.password.$error" ng-messages-include="views/defaultmessagetemplate.html"></div>
+                        </div>
+
+                        <div class="clearfix"></div>
+
+                        <div class="form-group">
+                            <label translate>Captcha*</label>
+                            <div re-captcha ng-model="user.captcha"></div>
+                        </div>
+                        <input type="submit" ng-disabled="registerForm.$invalid" value="{{'Register'|translate}}" class="btn btn-primary" />
+
+                        <div class="clearfix"></div>
+                    </form>
+                </div>
+
+            </tab </tabset>
+
+
+    </div>
+    <div class="banner-img"><img ng-src="images/login-bg.jpg" class="img-responsive">
+    </div>
+    <div class="clearfix"></div>
+</div>
+<!-- /Banner -->
+
+
+
+
+
+<!-- Alerts -->
+<div class="container-fluid">
+<div ng-controller="AlertCtrl" class="alert">
+ <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+</div>
+</div>
+<!-- /Alerts -->

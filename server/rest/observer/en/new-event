@@ -1,0 +1,45 @@
+From: jemyrazem@jemyrazem.pl
+To: {host.email}
+Subject: The event {event.name} has been published
+Content-type: text/html; charset=utf8
+
+
+{include:header.html}
+    <img src="{event.img.thumbnail}" style="width:100%; height:auto; display:block; margin-bottom:2em;"  />
+    <h2 style="color:#131313; margin-top:0px;">Hello {host.firstname},</h2>
+    <p style="color:#555; font-size:1em;">
+        You have just published a new event: <b itemprop="name">{event.name}</b>.<br/>
+        Congratulations!
+    </p>
+    
+    
+    <h3 style="color:#131313; margin-top:0px;">Check following data:</h3>
+    <p style="color:#555; font-size:1em; background-color:#dedede; min-height:100px; padding:0.5em;">
+        {event.address}<br/>
+        {event.postal} {event.city}<br/>
+
+        phone: <a href="tel:{host.phone}">{host.phone}</a><br/>
+        mail: {host.email}<br/>
+	
+        date: <span itemprop="startDate">{event.event_start}</span>, {event.duration|/3600}h 
+    </p>
+
+    <p style="color:#131313; margin-top:0px;">
+        <a href="https://www.google.pl/maps/place/{event.address|urlencode},+{event.postal|urlencode}+{event.city|urlencode}/@{event.lat},{event.lng},14z"><img
+         src="{app_root}map.php/{event.lat},{event.lng}"
+         style="width: 100%; max-height: 300px" /></a>
+    </p>
+    
+    {if:event.hints}
+    <h5 style="color:#131313; margin-top:0px;">Directions:</h5>
+    <p style="color:#131313; margin-top:0px; background-color:#dedede; padding:0.5em;">
+        {event.hints|nl2br}
+    </p>
+
+    {endif:event.hints}
+
+    <p style="color:#555; font-size:1em; padding:0.5em;">
+        If anything is wrong you can use to context menu to unpublish this event and then correct it.
+    </p>    
+
+{include:footer.html}

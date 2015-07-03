@@ -1,0 +1,62 @@
+<div class="clearfix"></div>
+
+<!-- Footer -->
+<footer id="footer">
+    <div class="container">
+    
+       <div class="col-md-3 col-sm-3">
+	   <span translate>FooterTitleColumn1</span>
+	   <ul>
+	    <li><a href="/contact" translate>AboutFooter</a></li>
+      <li><a href="/contact" translate>ContactFooter</a></li>
+	    <li><a href="/tac" translate>Terms</a></li>
+	    <li><a href="/privacy" translate>PrivacyPolicy</a></li>
+	   </ul>
+       </div>
+       
+       <div class="col-md-3 col-sm-3">
+	   <span translate>Host/Guest</span>
+	   <ul>
+		 <li><a href="/login" translate>Login</a></li>
+		 <li><a href="/login" translate>Register</a></li>
+		 <li><a href="" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent('https://www.jemyrazem.pl/')+'?referer=eyJzIjoiZmFjZWJvb2stZm9vdGVyIn0%3D', '', 'width=520, height=300, toolbar=no, scrollbars=no, resizable=yes')" translate>InviteFriends</a></li>
+		 <li><a href="/profile#host" translate>AddEvent</a></li>
+		</ul>
+       </div>
+       
+       <div class="col-md-3 col-sm-3">
+	   <span translate>ChangeLanguage</span>
+	    <div ng-controller="LangsCtrl">
+                <select class="form-control" ng-model="lang"
+                    ng-options = "lang.id as lang.name for lang in languages"
+                    ng-change = "changeLang()">
+                </select>
+            </div>
+       </div>
+       
+       <div class="col-md-3 col-sm-3">
+	   <div class="center" translate>SeeAlso</div>
+	    <ul class="social">
+            <li><a href="https://www.facebook.com/JemyRazem" target="_blank"><img src="images/facebook.png" alt="Facebook" /></a></li>
+            <li><a href="https://plus.google.com/+JemyrazemPl" target="_blank"><img src="images/google.png" alt="Google Plus" /></a></li>
+            <!--<li><a href="http://youtube.com" target="_blank"><img src="images/youtube.png" alt="YouTube" /></a></li>-->
+           </ul>
+       </div>
+       
+       <div class="col-md-6 col-sm-6"></div>
+       <div class="footer-msg col-md-6 col-sm-6" translate>FooterMsg</div>
+
+       
+       <div class="clearfix"></div>
+       
+       <div class="copyright" ng-if="true">
+       <iframe src="https://www.facebook.com/plugins/like_box.php?href=https%3A%2F%2Fwww.facebook.com%2FJemyRazem&width=&height=&colorscheme=dark&show_faces=1&header=0&stream=0&show_border=0&connections=21" width="100%" height="" frameborder="0" allowtransparency="true" scrolling="no"></iframe>
+       </div>
+       
+       <hr /> 
+    
+       
+       <div class="copyright">Copyright by jemyrazem.pl, 2015. All rights reserved.</div>
+    </div>
+</footer>
+<!-- /Footer -->

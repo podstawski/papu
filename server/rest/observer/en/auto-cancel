@@ -1,0 +1,28 @@
+From: {host.email}
+To: {guest.email}
+Subject: {event.name} will not take place
+Content-type: text/html; charset=utf8
+
+{include:header.html}
+
+<img src="{app_root}images/login-bg.jpg" style="width:100%; height:auto; display:block; margin-bottom:2em;"  />
+<h2 style="color:#131313; margin-top:0px;">Hello {guest.firstname}</h2>
+<h3 style="color:#131313; margin-top:0px;">Thank you for joining JemyRazem.pl</h3>
+<p style="color:#555; font-size:1em;">
+Unfortunatelly <b>{event.name}</b> planned on {event.event_start}
+will not take place due to little number of guests.
+</p>
+<p style="color:#555; font-size:1em;">
+   We would like to encourage you to contact the host to settle new date  
+</p>
+{if:event.price}
+<p>
+   According to our Term & Conditions money will be returned to your account
+</p>
+{endif:event.price}
+<p style="color:#555; font-size:1.2em;">
+    Sincerely,<br/>
+    <i><strong>JemyRazem team</strong></i>
+<p>
+
+{include:footer.html}

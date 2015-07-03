@@ -1,0 +1,29 @@
+application: epapu-2015
+version: 1
+runtime: php55
+api_version: 1
+
+handlers:
+- url: /rest/.*
+  script: rest/index.php
+
+- url: /admin.*
+  script: admin/index.php
+  login: admin
+
+- url: /test/.*
+  script: test.php
+  login: admin
+
+- url: /sitemap.xml
+  script: sitemap.php
+
+- url: /media
+  static_dir: media
+
+- url: /height.php
+  script: height.php
+
+- url: /map.php/.*
+  script: map.php
+

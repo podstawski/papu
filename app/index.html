@@ -1,0 +1,158 @@
+<!doctype html>
+<html ng-app="eatApp"  class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <meta name="fragment" content="!">
+    <title>Jemy Razem</title>
+    <meta name="description" content="Social eating portal">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- fonts -->
+    <link href='//fonts.googleapis.com/css?family=Roboto+Condensed:400,700,300&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Shadows+Into+Light+Two&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <!-- /fonts -->
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) /styles/jemyrazem.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/ngprogress/ngProgress.css" />
+    <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css" />
+    <link rel="stylesheet" href="bower_components/angular-bootstrap-lightbox/dist/angular-bootstrap-lightbox.css" />
+    <link rel="stylesheet" href="bower_components/seiyria-bootstrap-slider/dist/css/bootstrap-slider.css" />
+    <link rel="stylesheet" href="bower_components/ngDialog/css/ngDialog.css" />
+    <link rel="stylesheet" href="bower_components/ngDialog/css/ngDialog-theme-default.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) /styles/main.css -->
+    <link rel="stylesheet" href="/styles/main.css">
+
+    <!-- favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <!-- /favicon -->
+    
+    <!-- endbuild -->
+    <base href="/">
+  </head>
+  <body flow-prevent-drop>  
+    <!-- Google Tag Manager -->
+    <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-57ZMVG"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-57ZMVG');</script>
+    <!-- End Google Tag Manager -->
+    
+
+
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+
+
+    <!-- Main app here -->
+    <div ng-include="'views/nav.html'"></div>
+    <div ng-view="" autoscroll></div>
+    <div ng-include="'views/footer.html'"></div>
+
+
+    <!-- build:js(.) scripts/oldieshim.js -->
+    <!--[if lt IE 9]>
+    <script src="bower_components/es5-shim/es5-shim.js"></script>
+    <script src="bower_components/json3/lib/json3.js"></script>
+    <![endif]-->
+    <!-- endbuild -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyDaAo7uINyxYaszVBCMQIWcpIvJ2dpE8u8"></script>
+    <!-- build:js(.) scripts/jemyrazem.js -->
+    <!-- bower:js -->
+    <script src="bower_components/modernizr/modernizr.js"></script>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-re-captcha/angular-re-captcha.js"></script>
+    <script src="bower_components/lodash/dist/lodash.compat.js"></script>
+    <script src="bower_components/angular-google-maps/dist/angular-google-maps.js"></script>
+    <script src="bower_components/flow.js/dist/flow.js"></script>
+    <script src="bower_components/ng-flow/dist/ng-flow.js"></script>
+    <script src="bower_components/angular-gettext/dist/angular-gettext.js"></script>
+    <script src="bower_components/webcam-directive/dist/webcam.min.js"></script>
+    <script src="bower_components/angular-googleplaces-autocomplete/src/ngAutocomplete.js"></script>
+    <script src="bower_components/ngInfiniteScroll/build/ng-infinite-scroll.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="bower_components/nsPopover/src/nsPopover.js"></script>
+    <script src="bower_components/angular-messages/angular-messages.js"></script>
+    <script src="bower_components/ngprogress/build/ngProgress.js"></script>
+    <script src="bower_components/angular-loading-bar/build/loading-bar.js"></script>
+    <script src="bower_components/angular-bootstrap-lightbox/dist/angular-bootstrap-lightbox.js"></script>
+    <script src="bower_components/seiyria-bootstrap-slider/js/bootstrap-slider.js"></script>
+    <script src="bower_components/angular-bootstrap-slider/slider.js"></script>
+    <script src="bower_components/ngDialog/js/ngDialog.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:js(.) scripts/locale.js -->
+    <script src="bower_components/angular-i18n/angular-locale_pl-pl.js"></script>
+
+    <!-- endbuild -->
+
+    <script src="scripts/config.js"></script>
+    
+        
+   
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/posts.js"></script>
+    <script src="scripts/services/auth.js"></script>
+    <script src="scripts/controllers/auth.js"></script>
+    <script src="scripts/controllers/nav.js"></script>
+    <script src="scripts/services/profile.js"></script>
+    <script src="scripts/controllers/profile.js"></script>
+    
+    <script src="scripts/services/gallery.js"></script>
+    <script src="scripts/controllers/gallery.js"></script>
+    <script src="scripts/translations.js"></script>
+    <script src="scripts/controllers/publicprofile.js"></script>
+    <script src="scripts/controllers/event.js"></script>
+    <script src="scripts/services/event.js"></script>
+    <script src="scripts/controllers/publicevent.js"></script>
+    <script src="scripts/controllers/tac.js"></script>
+    <script src="scripts/controllers/homepage.js"></script>
+    <script src="scripts/controllers/countries.js"></script>
+    <script src="scripts/controllers/langs.js"></script>
+    <script src="scripts/controllers/events.js"></script>
+    <script src="scripts/services/tag.js"></script>
+    <script src="scripts/controllers/tag.js"></script>
+    <script src="scripts/services/alert.js"></script>
+    <script src="scripts/controllers/alert.js"></script>
+    <script src="scripts/controllers/reviews.js"></script>    
+    <script src="scripts/controllers/book.js"></script>
+    <script src="scripts/services/book.js"></script>
+    <script src="scripts/controllers/city.js"></script>
+    <script src="scripts/controllers/referer.js"></script>
+    <script src="scripts/controllers/rateevent.js"></script>
+    <script src="scripts/services/rateevent.js"></script>
+    <script src="scripts/controllers/recommendedevents.js"></script>
+    <script src="scripts/controllers/about.js"></script>
+    <script src="scripts/controllers/privacy.js"></script>
+    <script src="scripts/controllers/contact.js"></script>
+    <script src="scripts/controllers/takeaphoto.js"></script>
+    <script src="scripts/controllers/eventpassed.js"></script>
+    <script src="scripts/services/besthost.js"></script>
+    <script src="scripts/controllers/besthost.js"></script>
+    <script src="scripts/controllers/eventpromo.js"></script>
+    <script src="scripts/controllers/organizeevent.js"></script>
+    <script src="scripts/controllers/eventprice.js"></script>
+    <script src="scripts/controllers/remindpass.js"></script>
+    <script src="scripts/controllers/konkurs.js"></script>
+    <script src="scripts/controllers/konkurs-regulamin.js"></script>
+    <!-- endbuild -->
+</body>
+</html>

@@ -1,0 +1,99 @@
+<div class="container search">
+    <div class="row">
+        <!-- Filters -->
+        <div class="col-md-12 hidden-sm hidden-xs filtres">
+            <h3 translate>SearchAccurately</h3>
+            <div ng-controller="SearchFilterCtrl" class="form-inline">
+                <!-- Event Start Date -->
+                <div class="form-group">
+                    <label translate>FilterEventStartDate</label>
+                    <div class="input-group">
+                        <span type="text" class="form-control" datepicker-popup="{{format}}" ng-change="startDateChanged()" ng-model="filter.event_start" is-open="start_opened" min-date="minDate" max-date="'2020-12-31'" datepicker-local-date datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="{{'CalClose'|translate}}" clear-text="{{'CalClear'|translate}}" current-text="{{'CalToday'|translate}}" placeholder="{{'Start date'|translate}}">{{filter.event_start | date: 'dd-MM-yyyy'}} </span>
+                        <span class="input-group-btn">
+       <button type="button" class="btn btn-default" ng-click="openstart($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+      </span>
+                    </div>
+                </div>
+                <!-- /Event Start Date -->
+                <!-- Event End Date -->
+                <div class="form-group">
+                    <label translate>FilterEventEndDate</label>
+                    <div class="input-group">
+                        <span type="text" class="form-control" datepicker-popup="{{format}}" ng-change="startDateChanged()" ng-model="filter.event_end" is-open="end_opened" min-date="minDate" max-date="'2020-12-31'" datepicker-local-date datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="{{'CalClose'|translate}}" clear-text="{{'CalClear'|translate}}" current-text="{{'CalToday'|translate}}" placeholder="{{'Start date'|translate}}">{{filter.event_end | date: 'dd-MM-yyyy'}} </span>
+                        <span class="input-group-btn">
+       <button type="button" class="btn btn-default" ng-click="openend($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+      </span>
+                    </div>
+                </div>
+                <!-- /Event End Date -->
+                <div class="form-group">
+                    <label><span translate>Distance</span> {{param.title}}</label>
+                    <select ng-change="" class="form-control half" ng-model="filter.distance" ng-options="id for id in [5,10,25,50,100]" ng-init=""></select>
+                    <p ng-show="false"><span translate>Price</span> </p>
+                    <slider ng-show="false" ng-model="filter.sliderValue" min="1" step="5" max="100" value="[10,50]" range="true" handle="square" tooltipseparator="-"></slider>
+                    <button type="button" ng-click="filterEvents()" class="btn btn-info" translate>Filter</button>
+                </div>
+            </div>
+        </div>
+        <!-- /Filtres -->
+        <!-- Search Results-->
+        <div class="col-md-12 col-sm-12">
+            <h1 ng-show="noEvents"><span translate>SearchMessageEventsNotFound</span></h1>
+            <h3 ng-show="noEvents"><span translate>SearchMessageEventsNotFoundTxt</span></h3>
+            <h1 ng-hide="noEvents"><span translate>SearchMessage</span></h1>
+            <div infinite-scroll='loadMoreEvents()' infinite-scroll-distance='0' infinite-scroll-disabled="stopLoad" infinite-scroll-immediate-check="false">
+                <!-- New Event List -->
+                <div class="events" ng-repeat="event in events">
+                    <!-- Event -->
+                    <div class="event col-md-4 col-sm-6 col-xs-12">
+                        <a href="{{event.url}}?id={{event.id}}">
+                            <!-- Host info -->
+                            <p class="profile-name">{{event.host.firstname}}</p>
+                            <p ng-show="event.host.vip==1" class="profile-title" translate>BestCook</p>
+                            <img class="profile-photo" ng-src="{{event.host.photo}}">
+                            <p class="profile-rate"><span ng-hide="{{event.host.rate.count==0}}">{{event.host.rate.count}}</span></p>
+                            <!-- /Host info -->
+                            <!-- Event Title -->
+                            <p class="event-place">{{event.name}}</p>
+                            <!-- /Event Title -->
+                            <!-- Event Message -->
+                            <p class="event-message" ng-show="{{event.free_slots < 3}}" translate>LastPlaces</p>
+                            <!-- /Event Message -->
+                            <img class="img-responsive" ng-src="{{event.img.square}}">
+                            <!-- Event info -->
+                            <table class="table table-striped">
+                                <tr>
+                                    <td class="td-first event-time">{{event.event_start | date: 'EEEE, dd.MM'}}
+                                        <br><span translate>Time</span>{{event.event_start | date: 'HH:mm'}}</td>
+                                    <td class="td-second event-city" ng-if="!event.fb_friends">{{event.city| limitTo: 24}}</td>
+                                    <td class="td-third event-price" ng-if="!event.fb_friends">{{event.guest_price}} {{event.currency}}</td>
+                                    <td class="td-fourth event-fb" ng-if="event.fb_friends"><p class="facebook"><span class="icon-fb"></span><span translate>EventForFriends</span></p></td>
+                                </tr>
+                            </table>
+                        </a>
+                        <table class="table table-responsive table-under">
+                            <tr class="form-inline">
+                                <td>
+                                    <label translate>Guests</label>
+                                    <select class="form-control half" ng-model="persons" ng-options="id for id in createSlots(event.free_slots)"></select>
+                                </td>
+                                <td>
+                                    <button type="button" ng-click="bookEvent(event,persons)" class="btn btn-success" translate>Book Now</button>
+                                </td>
+                            </tr>
+                        </table>
+                        <!-- /Event info -->
+                        <!-- Tags --
+                        <ul class="tags" ng-show="event.tags.length">
+                            <li ng-repeat="tag in event.tags"><a href="#">{{tag.name}}</a>
+                            </li>
+                        </ul>
+                        <!-- /Tags -->
+                    </div>
+                </div>
+                <!-- /New Event List -->
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clearfix"></div>

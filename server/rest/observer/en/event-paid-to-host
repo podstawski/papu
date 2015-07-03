@@ -1,0 +1,37 @@
+From: {guest.email}
+To: {host.email}
+Subject: New guest - {event.name}
+Content-type: text/html; charset=utf8
+
+{include:header.html}
+    
+    <h2 style="color:#131313; margin-top:0px;">Hello {host.firstname},</h2>
+    <p style="color:#555; font-size:1em; padding:0.5em;">
+        For the party {event.name} dated on {event.event_start} you have a new guest.<br/><br/>
+        <a style="font-size:1.5em; text-decoration:none; color:#9f111d" href="{app_root}{guest.url}">
+        {guest.firstname} {guest.lastname}
+        <a>
+        <br/><br/>
+        {if:data.message}
+        Special wishes: <i>{data.message|nl2br}</i>
+        {endif:data.message}
+    </p>
+    <p style="color:#555; font-size:1em; padding:0.5em;">
+        Enjoy the party. Thank you for choosing JemyRazem.pl
+    </p>
+
+    {if:event.price}
+    <p style="color:#555; font-size:1em; padding:0.5em; font-weight:bold;">
+        This guest has paid whole amount. According to terms & conditions money
+        will be transfered to you 24 hours after the event ends.
+    </p>
+    {endif:event.price}
+    <hr />
+    <p style="color:#555; font-size:1em; padding:0.5em;">
+            <a href="{app_root}profile#host">Login and check the current list of guests.</a>
+    </p>
+    <p style="color:#555; font-size:1em; padding:0.5em;">
+        As the host you have a right to cancel this reservation. Remember to do it only in justified cases.
+    </p>
+
+{include:footer.html}

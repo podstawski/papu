@@ -1,0 +1,16 @@
+
+<form name="confirmForm" ng-submit="confirmForm.$valid && confirm(dialogData)" novalidate>    
+<div class="row">
+    <div class="col-md-12">
+        <h3 translate>ExplainWhy</h3>
+        <textarea ng-model="dialogData" name="dialogData" placeholder="{{'ExplainWhyPlaceholder' | translate}}" required minlength="6" maxlength="1024"></textarea>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12 right">
+        <button class="btn btn-default" ng-click="closeThisDialog('closed')" translate>Close</button>
+
+        <input type="submit" ng-disabled="confirmForm.$invalid" value="{{'Confirm'|translate}}" class="btn btn-primary" />
+    </div>
+</div>
+</form>

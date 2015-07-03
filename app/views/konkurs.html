@@ -1,0 +1,168 @@
+<!-- Parallax Promo -->
+<div class="organize" ng-controller="EventpromoCtrl">
+
+ 
+<section id="second" data-speed="6" data-type="background" style="background: url(images/organize-konkurs-1.jpg) 50% 0 fixed; ">
+    <div class="container">
+        
+        <h2>Konkurs JemyRazem.pl!</h2>
+        <h2 style="text-transform: uppercase;">Zostań najlepszym Gospodarzem w mieście!</h2>
+        <h3>Zorganizuj największą liczbę  przyjęć w okresie od 1.05 do 31.05 i wygraj wspaniałe nagrody!</h3>
+
+        <div class="clearfix"></div>
+         <p><a href="/konkurs-regulamin">Regulamin konkursu</a>.</p>
+    </div>
+</section>
+
+</div>
+
+<script>
+ $(document).ready(function(){
+   // cache the window object
+   $window = $(window);
+ 
+   $('section[data-type="background"]').each(function(){
+     // declare the variable to affect the defined data-type
+     var $scroll = $(this);
+                     
+      $(window).scroll(function() {
+        // HTML5 proves useful for helping with creating JS functions!
+        // also, negative value because we're scrolling upwards                             
+        var yPos = -($window.scrollTop() / $scroll.data('speed')); 
+         
+        // background position
+        var coords = '50% '+ yPos + 'px';
+ 
+        // move the background
+        $scroll.css({ backgroundPosition: coords });    
+      }); // end window scroll
+   });  // end section function
+}); // close out script
+</script>
+<!-- /Parallax Promo -->
+<!-- /Robson's Landing Page -->
+
+
+<!-- Parallax Promo -->
+<div class="organize" ng-controller="OrganizeeventCtrl" ng-init="">
+
+<section id="first">
+    <div class="container">
+               
+        
+        <h2>Nagrody dla najlepszego Gospodarza</h2>
+        <div class="clearfix"></div>
+        <div class="row prizes">
+         <h3 class="col-md-4 col-sm-4"><img src="images/ole-weks.png" class="img-responsive">Zestaw produktów Ole!</h3>
+         <h3 class="col-md-4 col-sm-4"><img src="images/slow-life.png" class="img-responsive">Prenumerata SlowLife Magazin</h3>
+         <h3 class="col-md-4 col-sm-4"><img src="images/voucher.png" class="img-responsive">Voucher na warsztaty kulnarne</h3>
+        </div>
+        <a class="konkurs-btn" ng-href="/profile">Zorganizuj pierwsze przyjęcie</a>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+<section id="fourth" data-speed="6" data-type="background" style="background: url(images/organize-konkurs-2.jpg) 50% 0 fixed; ">
+    <div class="container konkurs">
+        <h2>Zostań Gościem</h2>
+        <h2 style="text-transform: uppercase;">Doceń kunszt i zaangażowanie Gospodarza.</h2>
+        <h3>Odwiedź największą liczbę przyjęć w okresie od 1.05 do 31.05 i wygraj wspaniałe nagrody!</h3>
+        <div class="clearfix"></div>
+
+        <p><a href="/konkurs-regulamin">Regulamin konkursu</a>.</p>
+
+    </div>
+</section>
+
+</div>
+
+<script>
+ $(document).ready(function(){
+   // cache the window object
+   $window = $(window);
+ 
+   $('section[data-type="background"]').each(function(){
+     // declare the variable to affect the defined data-type
+     var $scroll = $(this);
+                     
+      $(window).scroll(function() {
+        // HTML5 proves useful for helping with creating JS functions!
+        // also, negative value because we're scrolling upwards                             
+        var yPos = -($window.scrollTop() / $scroll.data('speed')); 
+         
+        // background position
+        var coords = '50% '+ yPos + 'px';
+ 
+        // move the background
+        $scroll.css({ backgroundPosition: coords });    
+      }); // end window scroll
+   });  // end section function
+}); // close out script
+</script>
+<!-- /Parallax Promo -->
+
+
+<section id="third">
+    <div class="container">
+        <h2>Nagrody dla najlepszego Gościa</h2>
+        <div class="clearfix"></div>
+        <div class="row prizes">
+         <h3 class="col-md-4 col-sm-4"><img src="images/ole-weks.png" class="img-responsive">Zestaw produktów Ole!</h3>
+         <h3 class="col-md-4 col-sm-4"><img src="images/slow-life.png" class="img-responsive">Prenumerata SlowLife Magazin</h3>
+         <h3 class="col-md-4 col-sm-4"><img src="images/rogalowe-muzeum.png" class="img-responsive">Rodzinny pokaz w Rogalowym Muzeum Poznania</h3>
+        </div>
+        <a class="konkurs-btn" ng-href="/events">Wybierz przyjęcie dla siebie</a>
+    </div>
+</section>
+
+<!-- Commercial Bar -->
+<div class="commercial-bar">
+ <div class="container">
+  
+  <h2 style="text-align: center; font-family: 'Roboto Condensed', sans-serif; color: #555;">Partnerzy konkursu</h2>
+                
+  <!-- Logo -->
+  <div class="col-md-2 col-sm-2">
+   <a href="http://www.wole-ole.pl/" target="_blank"><img class="img-responsive" src="images/ole.png" alt="Ole!"></a>
+  </div>
+  <!-- /Logo -->
+  
+  <!-- Logo -->
+  <div class="col-md-2 col-sm-2">
+   <a href="http://republikasloneczna.pl" target="_blank"><img class="img-responsive" src="images/republika-sloneczna.png" alt="Republika Soneczna"></a>
+  </div>
+  <!-- /Logo -->
+  
+  <!-- Logo -->
+  <div class="col-md-2 col-sm-2">
+   <a href="http://www.gammanet.pl/" target="_blank"><img class="img-responsive" src="images/gammanet.png" alt="Gammanet"></a>
+  </div>
+  <!-- /Logo -->
+  
+  <!-- Logo -->
+  <div class="col-md-2 col-sm-2">
+   <a href="/mamasitas" target="_blank"><img class="img-responsive" src="images/mamasitas.png" alt="Mamasitas"></a>
+  </div>
+  <!-- /Logo -->
+  
+  <!-- Logo -->
+  <div class="col-md-2 col-sm-2">
+   <a href="http://rogalowemuzeum.pl/" target="_blank"><img class="img-responsive" src="images/rogalowe_muzeum.png" alt="Rogalowe Muzeum"></a>
+  </div>
+  <!-- /Logo -->
+  
+  <!-- Logo -->
+  <div class="col-md-2 col-sm-2">
+   <a href="http://slowlifepolska.pl" target="_blank"><img class="img-responsive" src="images/slowlife.png" alt="Slow Life Polska"></a>
+  </div>
+  <!-- /Logo -->
+ </div> 
+</div>
+<!-- /Commercial Bar -->

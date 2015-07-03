@@ -1,0 +1,20 @@
+<div class="auth-forms">
+
+  <h2 translate>Register</h2>
+
+  <form ng-submit="register()" role="form" novalidate>
+    <p ng-show="error" class="text-danger">{{ error }}</p>
+    <input type="text" ng-model="user.firstname" placeholder="{{'Firstname'|translate}}" class="form-control"><br>
+    <input type="text" ng-model="user.lastname" placeholder="{{'Lastname'|translate}}" class="form-control"><br>
+    <input type="email" ng-model="user.email" placeholder="Email" class="form-control"><br>
+    <input type="password" ng-model="user.password" placeholder="{{'Password'|translate}}" class="form-control"><br>
+    <div class="form-group">
+        <label translate>Captcha*</label>
+        <div re-captcha ng-model="user.captcha"></div>
+    </div>
+    <input type="submit" value="{{'Register'|translate}}" class="btn btn-primary" />
+
+    <!-- <input type="button" value="test" ng-click="test()" class="btn btn-primary" /> -->
+  </form>
+</div>
+

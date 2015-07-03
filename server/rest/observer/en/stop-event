@@ -1,0 +1,13 @@
+From: jemyrazem@jemyrazem.pl
+To: {host.email}
+Subject: {event.name} - stopped
+Content-type: text/html; charset=utf8
+
+{include:header.html}
+
+<h3>
+	You have stopped publishing the event
+	- <a href="{app_root}event/{event.id}">{event.name}</a>
+</h3>
+
+{include:footer.html}

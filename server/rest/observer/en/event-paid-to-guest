@@ -1,0 +1,54 @@
+From: {host.email}
+To: {guest.email}
+Subject: Your booking - {event.name}
+Content-type: text/html; charset=utf8
+
+{include:header.html}
+
+    <img src="{event.img.thumbnail}" style="width:100%; height:auto; display:block; margin-bottom:2em;"  />
+    <h2 style="color:#131313; margin-top:0px;">Hello {guest.firstname},</h2>
+    <p style="color:#555; font-size:1em;">
+        You have just booked {data.persons} {if:data.persons=1}place{endif:data.persons=1}{if:!data.persons=1}places{endif:!data.persons=1} 
+        for <b>{event.name}</b>.
+        Good choice, congratulations!
+    </p>
+
+
+
+    <h3 style="color:#131313; margin-top:0px;">Your host:</h3>
+    <p style="color:#555; font-size:1em; background-color:#dedede; min-height:100px; padding:0.5em;">
+        <a href="{app_root}{host.url}">
+        <img src="{host.photo}" align="left" style="margin-right:0.5em; display:block; width:100px; height:100px;"/>{host.firstname} {host.lastname} </a><br/>
+      
+        {event.address}<br/>
+        {event.postal} {event.city}<br/>
+
+        phone: <a href="tel:{host.phone}">{host.phone}</a><br/>
+        mail: {host.email}
+    </p>
+    <h3 style="color:#131313; margin-top:0px;">Date:</h3>
+    <p style="color:#555; font-size:1em; padding:0.5em;">
+        {event.event_start} (local time)<br/>
+        Duration: {event.duration|/3600}h <br/>
+        
+        {if:notify.session_id}
+        Payment id: {notify.session_id} <br/>
+        {endif:notify.session_id}
+    </p>
+    <p style="color:#131313; margin-top:0px;">
+        <a href="https://www.google.pl/maps/place/{event.address|urlencode},+{event.postal|urlencode}+{event.city|urlencode}/@{event.lat},{event.lng},14z"><img
+         src="{app_root}map.php/{event.lat},{event.lng}"
+         style="width: 100%; max-height: 300px" /></a>
+    </p>
+    {if:event.hints}
+    <h5 style="color:#131313; margin-top:0px;">Directions:</h5>
+    <p style="color:#131313; margin-top:0px; background-color:#dedede; padding:0.5em;">
+        {event.hints|nl2br}
+    </p>
+
+    {endif:event.hints}
+        
+
+
+{include:footer.html}
+

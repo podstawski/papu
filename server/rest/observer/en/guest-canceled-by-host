@@ -1,0 +1,34 @@
+From: {me.email}
+To: {guest.email}
+Subject: your booking was canceled - {event.name}
+Content-type: text/html; charset=utf8
+
+{include:header.html}
+
+<img src="{event.img.thumbnail}" style="width:100%; height:auto; display:block; margin-bottom:2em;"  />
+<h2 style="color:#131313; margin-top:0px;">Hello {guest.firstname}</h2>
+<p style="color:#555; font-size:1em; padding:0.5em;">
+Unfortunatelly <a style="text-decoration:none; color:#9f111d" href="{app_root}{guest.url}">{me.firstname} {me.lastname}</a> has canceled your booking for party
+<b>{event.name}</b> planned on {event.event_start}
+</p>
+
+<h3 style="color:#131313; margin-top:0px;">Host info:</h3>
+<p style="color:#555; font-size:1em; padding:0.5em; font-weight:bold;">
+   {cancel_reason}
+</p>
+
+{if:event.price}
+<p style="color:#555; font-size:1em; padding:0.5em; font-weight:bold;">
+   According to our Term & Conditions money will be returned to your account
+</p>
+{endif:event.price}
+
+<p style="color:#555; font-size:1em; padding:0.5em;">
+    Sincerely,<br/>
+    JemyRazem team
+</p>
+
+
+
+
+{include:footer.html}

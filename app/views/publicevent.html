@@ -1,0 +1,303 @@
+<div class="container public-event">
+
+     <!-- Event Cover -->
+     <div class="public-event-bg public hidden-lg hidden-md visible-sm visible-xs"><img ng-src="{{event.img.url}}" class="img-responsive" alt="{{event.host.firstname}} {{event.host.lastname}}" /></div>
+     <div class="public-event-bg public visible-lg visible-md hidden-sm hidden-xs">
+      <div class="public-event-bg-inner" style="background: url('{{event.img.url}}'); background-repeat: no-repeat; background-position: center center;"></div>
+     </div>
+     <!-- Event Cover -->
+     
+     <div class="row event-name">
+
+       <div class="col-md-3 hidden-sm hidden-xs"></div>
+
+        <div class="col-md-9 col-sm-12 col-xs-12 public-event-name">
+            <h1 class="name">{{event.name}}</h1>
+            
+            <!-- Social Share Btns -->
+            
+            <div class="social-btns">
+                <ul>
+                  <li class="social-btns-info"><span translate>InviteFriends</span></li>
+                  <li ng-repeat="share in event.share">
+                    <a ng-if="share.type=='popup'" ng-click="open(share)" class="{{share.id}}" href="" ></a>
+                    <a ng-if="share.type=='mailto'" href="{{share.url}}" class="{{share.id}}" href="" ></a>
+                    <a ng-if="share.type=='blog'" ng-click="open(share)" class="{{share.id}}" href="" ></a>
+                  </li>
+                </ul>
+                
+            </div>
+            <!-- /Social Share Btns -->
+            
+        </div>
+    </div>
+
+
+    <!-- Event Content -->
+    <div class="event-content">
+        <!-- Event Content Left Sidebar -->
+        <div class="col-md-3 col-sm-12 col-xs-12 event-sidebar">
+         
+         <!-- Only for Facebook friends -->
+        <div class="event-fb-friends"  ng-show="event.fb_friends && event.calendar.length">
+          <div class="td-fourth event-fb" ng-if="event.fb_friends"><p class="facebook"><span class="icon-fb"></span><span translate>EventForFriends</span></p></div>
+        </div> 
+            
+        <!-- Basic Event Info -->
+        <div ng-if="event.calendar.length"> <!-- hide this if event passed-->
+          <div class="event-price-info">
+               <div class="price">{{event.guest_price}} {{event.currency}}</div>
+               <h5 translate>PricePerPerson</h5>
+               
+               <p class="event-title" translate>When</p>
+               <select name="" ng-model="calendar" class="form-control" ng-options="cal as cal.event_start | date:'dd.MM.yyyy HH:mm' for cal in event.calendar" ng-change="sloty=createSlots(calendar.free_slots);guests=1" ng-init="calendar = event.calendar[calendarId]; sloty=createSlots(calendar.free_slots)"></select>
+                                           
+               <p ng-show="sloty.length" class="event-totlal" translate>TotalPrice</p>
+               <p ng-show="sloty.length" class="event-price">{{event.guest_price * guests}} {{event.currency}}</p>
+               <p ng-show="sloty.length" class="event-title" translate>Guests</p>
+               <select ng-show="sloty.length" class="form-control half" ng-model="guests" ng-options="id for id in sloty" ng-init="guests=sloty[0]"></select>
+
+          </div>     
+          
+          <button ng-show="sloty.length" type="button" ng-click="bookEvent(calendar, guests)" class="event-price-info-btn btn btn-lg btn-block" translate>Book Now</button>
+          <button ng-show="!sloty.length" type="button"  class="btn btn-danger btn-lg btn-block" translate>Sold out!</button>
+          
+          <!-- /Basic Event Info -->
+          
+          
+          
+          <!-- Number of free spot -->
+          <div class="event-spots">
+           <h4 translate>AvailableSpots</h4>
+            
+           <p translate>SpotsLeft</p> <span class="red">{{calendar.free_slots}}</span>
+           <br>
+
+           
+          <p ng-show="!calendar.guests.length" translate>BeFirstGuest</p>
+          <p ng-show="calendar.guests.length" translate>SpotsConfirm</p>
+          <ul class="users" ng-show="1">
+              <li ng-repeat="guest in calendar.guests">
+                  <a ng-href="/{{guest.url}}">
+                      <img ng-src="{{guest.photo}}" alt="{{guest.firstname}} {{guest.lastname}}" class="img-responsive" />
+                      <button ng-if="guest.persons>1" type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom">+{{guest.persons-1}}</button>
+                  </a>
+              </li>
+          </ul>
+
+
+
+          </div>
+          <!-- /Number of free spot -->
+        </div>
+        
+        
+        
+
+        <!-- Host Memo -->
+        <div class="event-host-memo">
+         <h4 translate>Host</h4>
+         <div class="col-md-6 col-sm-6 col-xs-6 host-photo gender-{{event.host.gender}}">
+            <a ng-href="{{event.host.url}}"><img ng-src="{{event.host.photo}}" class="img-responsive"></a>
+         </div>
+         
+         <div class="col-md-6 col-sm-6 col-xs-6 host-name">
+           <h3><a ng-href="{{event.host.url}}">{{event.host.firstname}}</a></h3>
+         </div>
+
+         
+         <div class="clearfix"></div>
+         
+         <div class="event-host-memo-can">
+          <div class="rating" ng-show="event.host.rate.count">
+             <div class="progress">
+              <div class="stars"><img src="images/host-stars.png" alt=""></div>  
+              <div class="progress-bar rating-bar" role="progressbar" aria-valuenow="{{event.host.rate.prc}}" aria-valuemin="0" aria-valuemax="100" style="width: {{event.host.rate.prc}}%;">
+               <span class="sr-only">{{event.host.rate.prc}}% Complete</span>
+              </div>
+             </div>
+            </div>
+          
+          <div class="clearfix"></div>
+          <p>{{event.host.title}}</p>
+
+          <a ng-href="{{event.host.url}}" class="" translate>AllHostEvents</a>
+         </div>
+         
+        </div>
+        <!-- /Host Memo -->
+        </div>
+        <!-- /Event Content Left Sidebar -->
+        
+        <!-- Event Content Main -->
+        <div class="col-md-9 col-sm-12 col-xs-12 event-main">
+            <!-- About Event -->
+            <div class="input-group">
+             <h5><span translate>EventDescription</span> <a ng-show="intefracelang!=event.host.lang" translate ng-click="translateDescription(event)" class="trans-description">TranslateDescription</a></h5>
+             <div class="dsc">{{event.about}}</div>
+            </div> 
+            <!-- /About Event -->
+            
+            <div class="fat-line"></div>
+            
+            <!-- Photo Gallery -->
+            <h6 translate>EventGallery</h6>
+            <div class="photos" ng-repeat="(id,photo) in event.images">
+              <img ng-click="openLightboxModal($index)" ng-src="{{photo.thumbnail}}" class="img-responsive" >
+            </div>
+
+            <!-- Carousel -->
+            <!--<div style="height: 305px">
+            <carousel interval="5000">
+              <slide ng-repeat="slide in slides" active="">
+                <img ng-src="{{slide.thumbnail}}" style="margin:auto;">
+                <div class="carousel-caption">
+                  <h4>Slide {{$index}}</h4>
+                  <p>{{slide.title}}</p>
+                </div>
+              </slide>
+            </carousel>
+            </div>-->
+
+            <!-- /Carousel -->
+            
+            <!-- /Photo Gallery -->            
+           
+            <div class="fat-line"></div>
+            
+            <!-- Tags -->
+            <h6 translate ng-if="event.calendar.length">ImportantInfo</h6>
+            <div class="tags" id="tags-btn" ng-if="event.calendar.length">
+             <button type="button" class="btn btn-success" ng-model="tag.selected" btn-checkbox btn-checkbox-true="true" btn-checkbox-false="false" ng-repeat="tag in event.tags">
+        {{tag.name}}
+             </button>
+             
+             <div class="clearfix"></div>
+             
+             <div class="private-local-msg">
+              <p ng-show="!event.restaurant" translate>PrivateProperty</p>
+              <p ng-show="event.restaurant" translate>Restaurant</p>
+              <p><span translate>Duration</span> <b>{{event.duration / 3600}}h</b></p>
+             </div>
+             
+             <div class="clearfix"></div>
+            </div>
+            <!-- /Tags -->
+            
+            <div class="fat-line" ng-if="event.calendar.length"></div>
+            
+            <!-- Event Map -->
+            <h6 ng-if="event.calendar.length"><span translate>EventLocation</span>: <span class="location-city">{{event.city}}</span><span class="location-city" ng-if="event.restaurant">, {{event.address}}</span> </h6>
+            
+            <ui-gmap-google-map ng-if="event.calendar.length" center='map.center' zoom='map.zoom' events='map.events'>
+	    <ui-gmap-marker coords="marker.coords" options="map.marker.options" events="map.marker.events" idkey="3">
+	    </ui-gmap-marker>
+	    <ui-gmap-circle ng-repeat="c in circles track by c.id" center="c.center" stroke="c.stroke" fill="c.fill" radius="c.radius"
+                visible="c.visible" geodesic="c.geodesic" editable="c.editable" draggable="c.draggable" clickable="c.clickable">
+            </ui-gmap-circle>
+
+	    </ui-gmap-google-map>
+            <!-- /Event Map -->
+
+            
+            <div class="fat-line"></div>
+            
+            <!-- Reviews -->
+<div class="reviews" ng-controller="EventReviewsCtrl"  ng-show="reviews.length>0" id="idReviews">
+  <div infinite-scroll='loadMoreEventReviews()' infinite-scroll-distance='0' infinite-scroll-disabled='stopLoad' infinite-scroll-immediate-check='false'>
+    
+    <!-- Reviews -->
+    <div class="review" ng-repeat="review in reviews">
+      <div class="col-md-2 col-sm-2 col-xs-2">
+       <a href="{{review.user.url}}">
+       <img ng-src="{{ review.user.photo }}" alt="{{review.user.firstname}} {{review.user.lastname}}" class="prof-img" class="btn btn-primary" />
+       <h6>{{review.user.firstname}}</h6>
+       </a>
+      </div>      
+      <div class="col-md-10 col-sm-10 col-xs-10 comment">      
+      <button ng-if="review.editable" type="text" class="btn btn-info" ng-click="deleteReview(review,$index)" translate>Delete</button>
+      <div class="date">{{review.create | date: 'dd-MM-yyyy'}}</div>
+      
+      <p><a href="{{review.event.url}}">{{review.event.name}}</a></p>
+      <p>{{review.description}}</p>
+      <h7></h7>
+      
+      <!-- Review Rating -->
+                            <div class="star-rating">
+
+                                <div class="col-md-4 col-sm-4">
+                                    <p class="star-rating-title" translate>Food</p>
+                                    <div class="rating" ng-show="event.host.rate.count">
+                                        <div class="progress">
+                                            <div class="stars-small"><img src="images/stars-small.png" alt="">
+                                            </div>
+                                            <div class="progress-bar rating-bar" role="progressbar" aria-valuenow="{{review.food_prc}}" aria-valuemin="0" aria-valuemax="100" style="width: {{review.food_prc}}%;">
+                                                <span class="sr-only">{{review.food_prc}}% Complete</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4 col-sm-4">
+                                    <p class="star-rating-title" translate>Cleanliness</p>
+                                    <div class="rating" ng-show="event.host.rate.count">
+                                        <div class="progress">
+                                            <div class="stars-small"><img src="images/stars-small.png" alt="">
+                                            </div>
+                                            <div class="progress-bar rating-bar" role="progressbar" aria-valuenow="{{review.cleanliness_prc}}" aria-valuemin="0" aria-valuemax="100" style="width: {{review.cleanliness_prc}}%;">
+                                                <span class="sr-only">{{review.cleanliness_prc}}% Complete</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-4 col-sm-4">
+                                    <p class="star-rating-title" translate>Overall satisfaction</p>
+                                    <div class="rating" ng-show="event.host.rate.count">
+                                        <div class="progress">
+                                            <div class="stars-small"><img src="images/stars-small.png" alt="">
+                                            </div>
+                                            <div class="progress-bar rating-bar" role="progressbar" aria-valuenow="{{review.atmosphere_prc}}" aria-valuemin="0" aria-valuemax="100" style="width: {{review.atmosphere_prc}}%;">
+                                                <span class="sr-only">{{review.atmosphere_prc}}% Complete</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>                                
+
+                                <div class="clearfix"></div>
+                            </div>
+                            <!-- /Review Rating -->
+                    
+     </div>
+     <div class="clearfix"></div>
+  </div>
+
+
+  </div><!-- /lazyload -->
+</div>
+<!-- /Reviews -->
+
+
+
+            
+            
+        </div>
+        <!-- /Event Content Main -->
+
+
+	
+
+
+
+    <!-- Alerts -->
+    <div class="container-fluid">
+    <div ng-controller="AlertCtrl" class="alert">
+     <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+    </div>
+    </div>
+    <!-- /Alerts -->
+
+</div>
+
+
+

@@ -1,0 +1,14 @@
+{
+  "appName": {
+    "message": "JemyRazem.pl - portal kulinarny",
+    "description": "Pierwszy w Polsce społecznościowy portal kulinarny"
+  },
+  "appDesc": {
+    "message": "Wyśmienite jedzenie. Fantastyczni ludzie. Zjedz z ludźmi kochającymi gotować w ich własnym mieszkaniu.", 
+    "description":"Zjedz z ludźmi kochającymi gotować w ich własnym mieszkaniu."
+  },
+  "appShortName" : {
+    "message": "JemyRazem.pl",
+    "description": "Pierwszy w Polsce społecznościowy portal kulinarny"    
+  }  
+}

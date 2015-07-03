@@ -1,0 +1,90 @@
+<?php
+
+class Error {
+    protected static $err = array(
+        0  => 'ID not found',
+        1  => 'No configuration file',
+        2  => 'Unknown method',
+        3  => 'No email given',
+        4  => 'Email wrong format',
+        5  => 'Email exists',
+        6  => 'Firstname not given',
+        7  => 'Lastname not given',
+        8  => 'Password not given',
+        9  => 'Data could not be saved',
+        10 => 'Unknown function',
+        11 => 'Captcha not filled',
+        12 => 'Captcha not valid',
+        13 => 'Data not found',
+        14 => 'Username or password does not match',
+        15 => 'Not logged in',
+        16 => 'URL contains forbidden characters',
+        17 => 'URL exists',
+        18 => 'Image not found',
+        19 => 'You are not allowed to do this',
+        20 => 'User not found',
+        21 => 'Event name not given',
+        22 => 'Epoch dates not permited',
+        23 => 'URL can not be empty',
+        24 => 'User data incomplete',
+        25 => 'Event should start prior to its end',
+        26 => 'Minimal number of guests should not exceed maximum',
+        27 => 'Unsupported tag',
+        28 => 'This is a child event, better use its parent',
+        29 => 'No such event',
+        30 => 'Event deadline should be prior to its start',
+        31 => 'Event not given',
+        32 => 'You can not visit yourself',
+        33 => 'No more free slots',
+        34 => 'Event has already passed',
+        35 => 'The only supported context object: event',
+        36 => 'You can not access this event',
+        37 => 'Country list for this language not available',
+        38 => 'Add an image to this event first',
+        39 => 'Event does not have a start date',
+        40 => 'Event does not have an end date',
+        41 => 'Event does not have a deadline date',
+        42 => 'Nothing written about the event',
+        43 => 'There are guests, you must not deactivate this event',
+        44 => 'Event has already passed',
+        45 => 'Name not given',
+        46 => 'GEO not given',
+        47 => 'Country code not given',
+        48 => 'Price not given',
+        49 => 'We are not operating at this area, visit us soon to check if it changes',
+        50 => 'Calendar should have at least one event',
+        51 => 'You may not rate yourself',
+        52 => 'Event already rated',
+        53 => 'Not rated',
+        54 => 'Rate in scale 1-5',
+        55 => 'Rate ID required',
+        56 => 'Already paid',
+        57 => 'You can change only number of persons',
+        58 => 'Event canceled',
+        59 => 'Event not started yet',
+        60 => 'You can not cancel event after the deadline',
+        61 => 'Event canceled',
+        62 => 'Event inactive',
+        63 => 'Do not put ID when create event',
+        64 => 'Terms and conditions not accepted',
+        65 => 'Invalid data format',
+        66 => 'Event should take place in future',
+        67 => 'Parameter missing',
+        68 => 'Incorrect IBAN format',
+        69 => 'Area too big',
+        70 => 'Too late',
+        71 => 'No event',
+        72 => 'Login via FB and grant access to your friend list',
+        73 => 'Host is not your FB friend'
+    );
+
+    public static function e($id)
+    {
+        $info='Unknown error';
+        if (isset(self::$err[$id])) $info=self::$err[$id];
+        $token='error-'.$id;
+        $trans=Tools::translate($token);
+        if ($trans!=$token) $info=$trans;
+        return array('number'=>$id,'info'=>$info);
+    }
+}

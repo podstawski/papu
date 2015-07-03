@@ -1,0 +1,321 @@
+
+<!-- Banner -->
+<div class="banner" >   
+ <div class="container">
+ <div class="banner-message container hidden-xs">
+    <h1 translate>Home-H1</h1>
+    <h3 translate>Home-claim</h3>
+ </div>
+ </div>
+ <div class="banner-img"><img ng-src="images/jemyrazem-banner.jpg" class="img-responsive"></div>
+ <!-- Search Event -->
+ <div class="container">
+ <div class="search-section" >
+  <div class="col-md-12">
+  <form class="form-inline" role="form" ng-submit="searchEvent()">
+   <div class="form-group">
+    <div class="input-group">
+      <label class="sr-only" for="mealSearch" translate>Home-search-label</label>
+      <input class="form-control" id="mealSearch" placeholder="{{'Home-search-label'|translate}}" ng-autocomplete ng-model="search.text" options="options" details="search.details" />
+    </div>
+   </div>
+   <a ng-href="" ng-click="searchEvent()" class="btn btn-default" translate>Search</a>
+   
+  </form>
+  </div>  
+ </div>
+ </div>
+
+ <!-- /Search Event -->
+</div>
+
+<!-- /Banner -->
+
+<div class="clearfix"></div>
+<!--
+<div class="springer-msg">
+ <div class="container">
+  <h1 translate>HomepageMsgFirstLine</h1>
+  <h1 translate>HomepageMsgSecondLine</h1>
+ </div>
+</div>
+
+<div class="clearfix"></div>-->
+
+<!-- Featured Events -->
+
+<div ng-hide="1" class="featured-events" ng-controller="CityCtrl">
+    
+    <div class="container">
+  
+    <h2 translate>Home-H2</h2>
+    <p class="lead-txt" translate>Home-H2-P</p>
+    <div class="clearfix"></div>
+
+    
+    <!-- Event Block -->
+    <div class="event-block col-md-4 col-sm-4" ng-repeat="city in cities" ng-show="cities.length==3">
+        <a ng-href="/events/{{city.lat}}/{{city.lng}}/{{city.distance}}/{{city.name}}">
+          <p class="event-title">{{city.name}}</p>
+          <p class="event-subtitle" translate>Home-surround</p>
+          <img ng-src="{{city.square}}"  class="img-responsive">           
+        </a>
+    </div>
+    
+    <div ng-show="cities.length==1">
+    <div class="col-md-2 col-sm-2"></div>
+    <div class="event-block col-md-8 col-sm-8" ng-repeat="city in cities">
+        <a ng-href="/events/{{city.lat}}/{{city.lng}}/{{city.distance}}/{{city.name}}">
+          <p class="event-title">{{city.name}}</p>
+          <p class="event-subtitle" translate>Home-surround</p>
+          <img ng-src="{{city.url}}"  class="img-responsive">           
+        </a>
+    </div>
+    </div>
+    
+    <div ng-show="cities.length==2">
+    <div class="event-block col-md-8 col-sm-8" ng-repeat="city in cities" ng-if="$index%4==1">
+        <a ng-href="/events/{{city.lat}}/{{city.lng}}/{{city.distance}}/{{city.name}}">
+          <p class="event-title">{{city.name}}</p>
+          <p class="event-subtitle" translate>Home-surround</p>
+          <img ng-src="{{city.url}}"  class="img-responsive">           
+        </a>
+    </div>
+    <div class="event-block col-md-4 col-sm-4" ng-repeat="city in cities" ng-if="$index%4==1">
+        <a ng-href="/events/{{city.lat}}/{{city.lng}}/{{city.distance}}/{{city.name}}">
+          <p class="event-title">{{city.name}}</p>
+          <p class="event-subtitle" translate>Home-surround</p>
+          <img ng-src="{{city.square}}"  class="img-responsive">           
+        </a>
+    </div>
+    </div>
+    <!-- /Event Block -->
+    
+    </div>
+</div>
+
+<!-- /Featured Events -->
+
+<!-- Event List -->
+<div class="event-list" ng-controller="RecommendedeventsCtrl">
+  <div class="container">
+   
+    <h2 translate>RecommendedEvents</h2>
+    <p class="lead-txt" translate>RecommendedEventsTxt</p>
+    
+    <div class="clearfix"></div>
+
+ 
+<!-- New Event List -->
+<div class="events" ng-repeat="event in events">
+ 
+<!-- Event --> 
+<div class="event col-md-4 col-sm-6 col-xs-12">
+ <a href="{{event.url}}?id={{event.id}}">
+  <!-- Host info -->
+  <p class="profile-name">{{event.host.firstname}}</p>
+  <p ng-show="event.host.vip==1" class="profile-title" translate>BestCook</p>
+  <img class="profile-photo" ng-src="{{event.host.photo}}">
+  <p class="profile-rate"><span ng-hide="{{event.host.rate.count==0}}">{{event.host.rate.count}}</span></p>
+  <!-- /Host info -->
+  
+  <!-- Event Title -->
+  <p class="event-place">{{event.name}}</p>
+  <!-- /Event Title -->
+  
+  <!-- Event Message -->
+  <p class="event-message" ng-show="{{event.free_slots < 3}}" translate>LastPlaces</p>
+  <!-- /Event Message -->
+  
+  <img class="img-responsive" ng-src="{{event.img.square}}">
+  
+  <!-- Event info -->
+  <table class="table">
+   <tr>
+    <td class="td-first event-time">{{event.event_start | date: 'EEEE, dd.MM'}}<br><span translate>Time</span> {{event.event_start | date: 'HH:mm'}}</td>
+    <td class="td-second event-city" ng-if="!event.fb_friends">{{event.city| limitTo: 24}}</td>
+    <td class="td-third event-price" ng-if="!event.fb_friends">{{event.guest_price}} {{event.currency}}</td>
+   
+    <td class="td-fourth event-fb" ng-if="event.fb_friends"><p class="facebook"><span class="icon-fb"></span><span translate>EventForFriends</span></p></td>
+   </tr>
+  </table>
+  <!-- /Event info -->
+  
+ </a>
+</div>
+
+</div>
+<!-- /New Event List -->
+
+<div class="clearfix"></div>
+
+  </div>
+
+  
+<!-- Parallax Promo -->
+<div class="event-list" ng-controller="EventpromoCtrl">
+ <div class="host" ng-repeat="event in events">
+ 
+<section id="intro" data-speed="6" data-type="background" style="background: url({{event.img_full}}) center center fixed; ">
+    <div class="container">
+        <div class="restaurant-logo"><img ng-src="{{event.host.photo}}" alt="{{event.host.firstname}} {{event.host.lastname}}"></div>
+     
+        <div class="col-md-6 col-sm-6">
+         <div class="parallax-time">{{event.event_start | date: 'HH:mm'}}</div>
+         <div class="parallax-date">{{event.event_start | date: 'dd MMMM'}}</div>
+         
+        </div>
+        <div class="col-md-6 col-sm-6">
+         <h3>{{event.host.firstname}} {{event.host.lastname}}</h3>
+         <h2>{{event.name}}</h2>
+         <h3>{{event.city}}</h3>
+         <a href="{{event.url}}?id={{event.id}}" class="btn" translate>EatWithUsBtn</a>
+         <div class="guest-left"><span translate>ThereIs</span> <strong>{{event.free_slots}}</strong> <span translate>FreeSpots</span></div>
+        </div>
+    </div>
+</section>
+
+ </div>
+</div>
+
+<script>
+ $(document).ready(function(){
+   // cache the window object
+   $window = $(window);
+ 
+   $('section[data-type="background"]').each(function(){
+     // declare the variable to affect the defined data-type
+     var $scroll = $(this);
+                     
+      $(window).scroll(function() {
+        // HTML5 proves useful for helping with creating JS functions!
+        // also, negative value because we're scrolling upwards                             
+        var yPos = -($window.scrollTop() / $scroll.data('speed')); 
+         
+        // background position
+        var coords = '50% '+ yPos + 'px';
+ 
+        // move the background
+        $scroll.css({ backgroundPosition: coords });    
+      }); // end window scroll
+   });  // end section function
+}); // close out script
+</script>
+<!-- /Parallax Promo -->
+
+
+
+<div class="clearfix"></div>
+
+<!-- Best Hosts List -->
+<div class="event-list" ng-controller="BesthostCtrl">
+ 
+ <div class="container">
+  <h2 translate>BestHosts</h2>
+  <p class="lead-txt" translate>BestHostsTxt</p>
+  <div class="clearfix"></div>
+ </div>
+ 
+ <div class="event-host-bg">
+ <div class="container">
+   
+  <!-- Host Row -->
+  <div class="host col-md-4 col-sm-4 col-xs-12" ng-repeat="host in hosts">
+   <a href="{{host.url}}">
+    <img ng-src="{{host.photo}}" alt="{{host.firstname}} {{host.lastname}}">
+    <h5>{{host.firstname}} {{host.lastname}}</h5>
+    <p>{{host.title| cut:true:70:'...'}}</p>
+   </a>
+  </div>
+  <!-- /Host Row -->
+ 
+ <div class="clearfix"></div>
+ </div>
+ </div>
+</div>
+<!-- /Best Hosts List -->
+
+
+<div class="container profile private">
+
+<div class="row">
+
+<!-- Passed Event List -->
+<div class="event-list" ng-controller="EventpassedCtrl">
+	<div class="container">
+		<h2 translate>PassedEvents</h2>
+		<p class="lead-txt" translate>PassedEventsTxt</p>
+		<div class="clearfix"></div>
+		<!-- Event Row -->
+		<div class="event col-md-4 col-sm-4" ng-repeat="event in events">
+                 <a href="{{event.url}}?id={{event.id}}">
+                  <!-- Host info -->
+                  <p class="profile-name">{{event.host.firstname}}</p>
+                  <p ng-show="event.host.vip==1" class="profile-title" translate>BestCook</p>
+                  <img class="profile-photo" ng-src="{{event.host.photo}}">
+                  <p class="profile-rate"><span ng-hide="{{event.host.rate.count==0}}">{{event.host.rate.count}}</span></p>
+                  <!-- /Host info -->
+		  
+                  <!-- Event Title -->
+                  <p class="event-last-place">{{event.name}}</p>
+                  <!-- /Event Title -->
+                  
+                  <img class="img-responsive desaturate" ng-src="{{event.img.thumbnail}}">
+                  
+                 </a>
+		</div>
+		<!-- /Event Row -->
+	</div>
+</div>
+<!-- /Passed Event List -->
+
+
+
+
+</div>
+</div>
+
+<!-- Commercial Bar -->
+<div class="commercial-bar">
+ <div class="container">
+  
+  <h2 translate>CommercialBarTitle</h2>
+                
+  <!-- Logo -->
+  <div class="col-md-2 col-sm-2">
+   <a href="http://www.wole-ole.pl/" target="_blank"><img class="img-responsive" src="images/ole.png" alt="Ole!"></a>
+  </div>
+  <!-- /Logo -->
+  
+  <!-- Logo -->
+  <div class="col-md-2 col-sm-2">
+   <a href="http://republikasloneczna.pl" target="_blank"><img class="img-responsive" src="images/republika-sloneczna.png" alt="Republika Soneczna"></a>
+  </div>
+  <!-- /Logo -->
+  
+  <!-- Logo -->
+  <div class="col-md-2 col-sm-2">
+   <a href="http://www.gammanet.pl/" target="_blank"><img class="img-responsive" src="images/gammanet.png" alt="Gammanet"></a>
+  </div>
+  <!-- /Logo -->
+  
+  <!-- Logo -->
+  <div class="col-md-2 col-sm-2">
+   <a href="/mamasitas" target="_blank"><img class="img-responsive" src="images/mamasitas.png" alt="Mamasitas"></a>
+  </div>
+  <!-- /Logo -->
+  
+  <!-- Logo -->
+  <div class="col-md-2 col-sm-2">
+   <a href="http://rogalowemuzeum.pl/" target="_blank"><img class="img-responsive" src="images/rogalowe_muzeum.png" alt="Rogalowe Muzeum"></a>
+  </div>
+  <!-- /Logo -->
+  
+  <!-- Logo -->
+  <div class="col-md-2 col-sm-2">
+   <a href="http://slowlifepolska.pl" target="_blank"><img class="img-responsive" src="images/slowlife.png" alt="Slow Life Polska"></a>
+  </div>
+  <!-- /Logo -->
+ </div> 
+</div>
+<!-- /Commercial Bar -->

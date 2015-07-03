@@ -1,0 +1,24 @@
+From: {guest.email}
+To: {host.email}
+Subject: your guest has canceled booking for {event.name}
+Content-type: text/html; charset=utf8
+
+{include:header.html}
+
+<h2 style="color:#131313; margin-top:0px;">Hello&nbsp;{host.firstname},</h2>
+
+<p><em><strong>Unfortunatelly {guest.firstname} {guest.lastname} has canceled booking for:&nbsp;<strong style="color:rgb(85, 85, 85); line-height:20.7999992370605px">{event.name}</strong>&nbsp;planed {event.event_start}.</strong></em></p>
+
+<p>We hope some time you are going to meet.</p>
+
+<h3 style="color:#131313; margin-top:0px;">Guest's info:</h3>
+
+<h3 style="color:#131313; margin-top:0px;">{cancel_reason}</h3>
+
+<hr />
+
+<p>
+    Sincerely,<br/>
+    <em><strong>JemyRazem.pl team</strong></em>
+</p>
+{include:footer.html}

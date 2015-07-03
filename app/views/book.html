@@ -1,0 +1,130 @@
+<div class="container booking" ng-if="signedIn()">
+    <!-- Booking -->
+    <div class="col-md-12 col-sm-12">
+        <form name="bookForm" ng-submit="bookForm.$valid && buyEvent()" novalidate>
+            <!-- Booking Title Section -->
+            <div class="row">
+                <div class="col-md-4 col-sm-4">
+                    <h3 translate>BookingTitle</h3></div>
+                <div class="col-md-8 col-sm-8">
+                    <h1 class="event-title"> <a ng-href="{{event.host.url}}/{{event.url}}?id={{event.id}}">{{event.name}}</a></h1></div>
+                <div class="clearfix"></div>
+                <div class="col-md-12">
+                    <hr>
+                </div>
+            </div>
+            <!-- /Booking Title Section -->
+            <!-- Booking Main Info -->
+            <div class="row">
+                <!-- Date and Place -->
+                <div class="col-md-4 col-sm-4"></div>
+                <div class="col-md-4 col-sm-4">
+                    <h4 class="event-time">{{event.event_start | date: 'EEEE, dd.MM'}} godz.{{event.event_start | date: 'HH:mm'}}</h4>
+                </div>
+                <div class="col-md-4 col-sm-4">
+                    <h4 class="event-city">{{event.city}}</h4>
+                </div>
+                <!-- /Date and Place -->
+            </div>
+            <div class="row">
+                <!-- Guests and Price -->
+                <div class="col-md-4 col-sm-4"></div>
+                <div class="col-md-4 col-sm-4 form-inline">
+                    <label class="label" ng-show="event.free_slots" translate>Number of guests</label>
+                    <select ng-show="event.free_slots" class="form-control half" ng-model="persons" ng-options="id for id in sloty"></select>
+                    <button ng-hide="event.free_slots" type="button" class="btn btn-danger btn-lg btn-block" translate>Sold out!</button>
+                </div>
+                <div class="col-md-4 col-sm-4">
+                    <h4 class="price"><label class="price-title" translate>Total</label>{{persons * event.price | number:2}} {{event.currency}}</h4>
+                </div>
+                <!-- /Guests and Price -->
+            </div>
+            <div class="row">
+                <!-- Cancel Date -->
+                <div class="col-md-4 col-sm-4">
+                    <h4 translate>DeadlineInfo</h4>
+                </div>
+                <div class="col-md-8 col-sm-8">
+                    <h4>{{event.deadline | date: 'dd-MM-yyyy'}} {{event.event_start | date: 'HH:mm'}}</h4>
+                </div>
+                <!-- /Cancel Date -->
+            </div>
+            <div class="row">
+                <!-- Massage for Host -->
+                <div class="col-md-4 col-sm-4">
+                    <h4 translate>Write to Host Your wishes</h4>
+                </div>
+                <div class="col-md-8 col-sm-8">
+                    <div ng-if="signedIn() && event.free_slots">
+                        <textarea type="text" ng-model="book.message" name="message" placeholder="" class="form-control" maxlength="512"></textarea>
+                        <div ng-if="bookForm.message.$touched" ng-messages="bookForm.message.$error" ng-messages-include="views/defaultmessagetemplate.html"></div>
+                    </div>
+                </div>
+                <!-- /Massage for Host -->
+            </div>
+            <div class="row">
+                <!-- Guest Phone -->
+                <div class="col-md-4 col-sm-4">
+                    <h4 translate>YourPhone</h4></div>
+                <div class="col-md-8 col-sm-8">
+                    <div class="form-group form-inline">
+                        <input class="phone input-sm" required name="userphone" type="text" ng-model="user.phone" placeholder="{{'ForHostEyesOnly' | translate}}" ng-change="saveProfile(true)" ng-model-options="{debounce:800}">
+                        <div ng-if="bookForm.userphone.$touched" ng-messages="bookForm.userphone.$error" ng-messages-include="views/defaultmessagetemplate.html"></div>
+                    </div>
+                </div>
+                <!-- /Guest Phone -->
+            </div>
+            <!-- Booking Host Info -->
+            <div class="row" ng-if="event.fb_friend_required">
+                <div class="row">
+                    <div class="col-md-4 col-sm-4"></div>
+                    <div class="col-md-8 col-sm-8">
+                        <div class="input-group confirm-conditions">
+                        <a href="https://www.facebook.com/{{event.host.fb_id}}" target="_blank">{{event.host.firstname}}</a>
+                        &nbsp;<span translate>HostInvitesOnlyFBFriends</span>
+                        </div>
+                        <a class="facebook-login" href="{{facebookFriendsAuth}}" target="_self"><img src="images/facebook-icon.png" alt=""><span translate>FacebookLoginFriendsGuest</span></a>
+                
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row" ng-if="!event.fb_friend_required">
+                <div class="row">
+                    <div class="col-md-4 col-sm-4"></div>
+                    <div class="col-md-8 col-sm-8">
+                        <!-- Terms -->
+                        <div ng-if="signedIn() && event.free_slots">
+                            <div class="input-group confirm-conditions">
+                                <input type="checkbox" ng-model="book.guest_agreement" name="guest_agreement" required>
+                                <div ng-if="bookForm.guest_agreement.$touched" ng-messages="bookForm.guest_agreement.$error" ng-messages-include="views/defaultmessagetemplate.html"></div>
+                                <a class="confirm" ng-href="/tac" translate>ConfirmTermsAndConditions</a>
+                            </div>
+                        </div>
+                        <!-- /Terms -->
+                        <!-- Confirm Button -->
+                        <div class="">
+                            <div ng-if="signedIn() && event.free_slots">
+                                <div>
+                                    <button ng-show="payLink" type="submit" ng-disabled="bookForm.$invalid" class="btn btn-success booking-confirm" translate>Confirm and go to pay!</button>
+                                    <button ng-show="!payLink" type="submit" class="btn btn-success booking-confirm" ng-disabled="bookForm.$invalid" translate>Confirm and book event!</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /Confirm Button -->
+                    </div>
+                </div>
+            </div>
+            <!-- /Booking Host Info -->
+        </form>
+    </div>
+</div>
+<!-- Sign In -->
+<div ng-if="!signedIn()" ng-controller="AuthCtrl" ng-include="'views/login.html'"></div>
+<!-- Alerts -->
+<div class="container-fluid" ng-if="signedIn()">
+    <div ng-controller="AlertCtrl" class="alert">
+        <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+    </div>
+</div>
+<!-- /Alerts -->

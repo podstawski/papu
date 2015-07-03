@@ -1,0 +1,317 @@
+<div class="container profile">
+    <div class="profile-bg public hidden-lg hidden-md visible-sm visible-xs"><img ng-src="{{user.cover}}" class="img-responsive" alt="{{user.firstname}} {{user.lastname}}" />
+    </div>
+    <div class="profile-bg public visible-lg visible-md hidden-sm hidden-xs">
+        <div class="profile-bg-inner" style="background: url('{{user.cover}}'); background-repeat: no-repeat; background-position: center center;"></div>
+    </div>
+
+    <div class="row user">
+
+
+        <div class="col-sm-3 user-photo public gender-{{user.gender}}">
+            <img ng-src="{{ user.photo }}" class="prof-img" />
+        </div>
+
+        <div class="col-sm-9 user-name">
+            <h1 class="name">{{user.firstname}} {{user.lastname}}</h1>
+
+            
+
+            <!-- Rating and Reviews -->
+            <div class="rating hidden-sm hidden-xs" ng-show="user.rate.count">
+                <div class="progress">
+                    <div class="stars"><img src="images/stars.png" alt="">
+                    </div>
+                    <div class="progress-bar rating-bar" role="progressbar" aria-valuenow="{{user.rate.prc}}" aria-valuemin="0" aria-valuemax="100" style="width: {{user.rate.prc}}%;">
+                        <span class="sr-only">{{user.rate.prc}}% Complete</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="reviews hidden-sm hidden-xs" ng-show="user.rate.count"><a href="" ng-click="scrollTo('idReviews')">Liczba recenzji: {{user.rate.count}}</a>
+            </div>
+            <!-- /Rating and Reviews -->
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-3 hidden-sm hidden-xs profile-sidebar">
+            <div class="profile-sidebar-about">
+                <h6 translate>About</h5>
+            <!-- Short text about someone -->
+            <p>{{user.title}}</p>
+            <!-- /Short text about someone -->
+            
+            <!-- How old am I? -->
+            
+            <div class="age" ng-show="user.age"><span translate>Age</span>: <span>{{user.age}}</span></div>
+            <!-- /How old am I? -->
+            
+            <!-- Location -->
+            <div class="profile-map" ng-show="user.city.length">
+                <ul>
+                  <li><span translate>Location</span>: <a href="#">{{user.city}}</a></li>
+                </ul>
+            </div>
+             <!-- /Location -->
+             
+            <!-- Social Share Btns -->
+            
+            <div class="social-btns">
+                <ul>
+                    <li ng-repeat="share in user.share">
+
+                        <a ng-show="{{user.social.indexOf('facebook')>0 && share.id.indexOf('book')>0}}" href="{{user.social}}" class="{{share.id}}" target="_blank"></a>
+                        <a ng-show="{{user.social.indexOf('plus')>0 && share.id.indexOf('plus')>0}}" href="{{user.social}}" class="{{share.id}}" target="_blank"></a>
+                        
+                    </li>
+                </ul>
+            </div>
+
+            <!-- /Social Share Btns -->
+                <div>
+                    <!-- Tags -->
+                    <h6 translate ng-show="user.tags.length">I Like</h6>
+                    <ul class="tags" ng-show="user.tags.length">
+                        <li ng-repeat="tag in user.tags"><a href="#">{{tag.name}}</a>
+                        </li>
+                    </ul>
+                    <!-- /Tags -->
+               </div>
+            </div>
+        </div>
+
+        <div class="col-md-9 col-sm-12 col-xs-12 profile-content">
+            <!-- Long text about someone -->
+            <div class="profile-about">
+                <h3>{{user.firstname}} <span translate>EatWithUs</span></h3>
+                <!-- to musimy zrobic inaczej i potem powielic w portalu-->
+                <p ng-if="!checked" ng-init="checked=0">{{user.about| limitTo: 500}}</p>
+                <p ng-if="checked" class="animate-if">{{user.about}}</p>
+                
+                <a href="" ng-hide="!user.about||user.about.length<500 ||checked" ng-model="checked" btn-checkbox btn-checkbox-true="true" btn-checkbox-false="false" translate>More</a>
+                <a href="" ng-hide="!user.about||user.about.length<500 ||!checked" ng-model="checked" btn-checkbox btn-checkbox-true="true" btn-checkbox-false="false" translate>Less</a>
+
+            </div>
+            <!-- /Long text about someone -->
+
+            <!-- Upcoming Events -->
+            <div class="profile-events" ng-show="user.events.length">
+                <h3>{{user.firstname}} <span translate>InviteOnEvent</span></h3>
+
+                <!-- Event -->
+
+                <div class="event" ng-repeat="event in user.events">
+                    <div class="col-md-4 col-sm-4 hidden-xs">
+                        <a ng-href="{{event.url}}"><img ng-src="{{event.img.square}}" class="img-responsive" alt="" />
+                        </a>
+                    </div>
+                    <div class="col-md-8 col-sm-8 col-xs-12">
+                        <div class="col-md-6 col-sm-6">
+                            <p class="event-title"> <a ng-href="{{event.url}}">{{event.name}}</a>
+                            </p>
+                            <p class="event-description">
+                                <p>
+                                    {{event.about| cut:true:300:'...'}}
+                                </p>
+                                <!-- <p ng-if="checked" class="animate-if">
+                                    {{event.about}}
+                                </p>
+                                <a href="" ng-hide="user.about.length<350" ng-model="checked" btn-checkbox btn-checkbox-true="true" btn-checkbox-false="false">...</a> -->
+                            </p>
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                            <div class="event-info">
+                                <p class="event-title" translate>When</p>
+                                <select name="" ng-model="calendar" class="form-control" ng-options="cal as cal.event_start | date:'dd.MM.yyyy HH:mm' for cal in event.calendar" ng-change="sloty=createSlots(calendar.free_slots);guests=1" ng-init="calendar = event.calendar[0]; sloty=createSlots(calendar.free_slots)"></select>
+
+                                <p class="event-title" ng-show="sloty.length" translate>Guests</p>
+                                <p class="event-price" ng-show="sloty.length">{{event.guest_price * guests}} {{event.currency}}</p>
+                                <select ng-show="sloty.length" class="form-control half" ng-model="guests" ng-options="id for id in sloty" ng-init="guests=sloty[0]">
+                                </select>
+
+                                <button ng-show="sloty.length" type="button" ng-click="bookEvent(calendar, guests)" class="btn btn-primary btn-lg btn-block" translate>Book Now</button>
+
+                                <button ng-show="!sloty.length" type="button"  class="btn btn-danger btn-lg btn-block" translate>Sold out!</button>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <!-- /Event -->
+
+
+
+
+
+                <div class="clearfix"></div>
+            </div>
+            <!-- /Upcoming Events -->
+
+            <!-- Past Events Hosted -->
+            <div class="past-events" ng-show="user.events_hosted.length">
+                <h3>{{user.firstname}} <span translate>RecentlyInvite</span></h3>
+
+                <!-- Event -->
+                <div class="event col-md-12" ng-repeat="event in user.events_hosted">
+                    <div class="col-md-2 col-sm-2 col-xs-3">
+                        <a ng-href="{{event.url}}"><img ng-src="{{event.img.square}}" class="img-responsive" alt="" />
+                        </a>
+                    </div>
+                    <div class="col-md-7 col-sm-7 col-xs-9">
+                        <h6><a ng-href="{{event.url}}">{{event.name}}</a></h6> {{event.about | cut:true:175:'...'}}
+
+                    </div>
+
+                    <div class="col-md-3 col-sm-3 hidden-xs">
+                        <h6 translate>AteTogether</h6>
+
+                        <ul class="users">
+                            <li ng-repeat="guest in event.guests">
+                                <a href="{{guest.url}}">
+                                    <img ng-src="{{guest.photo}}" alt="{{guest.firstname}} {{guest.lastname}}" class="img-responsive" />
+                                    <button ng-if="guest.persons>1" type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom">+{{guest.persons-1}}</button>
+
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <!-- /Event -->
+
+
+                <div class="clearfix"></div>
+            </div>
+            <!-- /Past Events Hosted -->
+
+            <!-- Past Events Visited -->
+            <div class="past-events" ng-show="user.events_visited.length">
+                <h3>{{user.firstname}} <span translate>AteLately</span></h3>
+
+                <!-- Event -->
+                <div class="event col-md-12" ng-repeat="event in user.events_visited">
+                    <div class="col-md-2 col-sm-2 col-xs-3">
+                        <a ng-href="{{event.url}}"><img ng-src="{{event.img.square}}" class="img-responsive" alt="" />
+                        </a>
+                    </div>
+                    <div class="col-md-7 col-sm-7 col-xs-9">
+                        <h6><a ng-href="{{event.url}}">{{event.name}}</a></h6> {{event.about | cut:true:175:'...'}}
+
+                    </div>
+
+                    <div class="col-md-3 col-sm-3 hidden-xs">
+                        <h6 translate>AteTogether</h6>
+                        <ul class="users">
+                            <li ng-repeat="guest in event.guests">
+                                <a href="{{guest.url}}">
+                                    <img ng-src="{{guest.photo}}" alt="{{guest.firstname}} {{guest.lastname}}" class="img-responsive" />
+                                    <button ng-if="guest.persons>1" type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom">+{{guest.persons-1}}</button>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <!-- /Event -->
+
+
+                <div class="clearfix"></div>
+            </div>
+            <!-- /Past Events Visited -->
+
+            <!-- Reviews -->
+            <div class="reviews" ng-controller="ReviewsCtrl" ng-show="user.rate.count" id="idReviews">
+
+                <div infinite-scroll='loadMoreReviews()' infinite-scroll-distance='0' infinite-scroll-disabled='stopLoad' infinite-scroll-immediate-check='false'>
+
+                    <!-- <h3 translate>Reviews</h3> -->
+
+                    <!-- Reviews -->
+                    <div class="review" ng-repeat="review in reviews">
+                        <div class="col-md-2 col-sm-2 col-xs-4">
+                          <a href="{{review.user.url}}">
+                          <img ng-src="{{ review.user.photo }}" alt="{{review.user.firstname}} {{review.user.lastname}}" class="prof-img" class="btn btn-primary" />
+                          <h6>{{review.user.firstname}}</h6>
+                          </a>
+                        </div>
+                        <div class="col-md-10 col-sm-10 col-xs-8 comment">
+                            <div class="date">{{review.create | date: 'dd-MM-yyyy'}}</div>
+                            
+                            <p><a href="{{review.event.url}}">{{review.event.name}}</a></p>
+                            <p>{{review.description}}</p>
+                            <h7></h7>
+
+                            <!-- Review Rating -->
+                            <div class="star-rating hidden-xs">
+
+                                <div class="col-md-4 col-sm-4 col-xs-4">
+                                    <p class="star-rating-title" translate>Overall satisfaction</p>
+                                    <div class="rating" ng-show="user.rate.count">
+                                        <div class="progress">
+                                            <div class="stars-small"><img src="images/stars-small.png" alt="">
+                                            </div>
+                                            <div class="progress-bar rating-bar" role="progressbar" aria-valuenow="{{review.atmosphere_prc}}" aria-valuemin="0" aria-valuemax="100" style="width: {{review.atmosphere_prc}}%;">
+                                                <span class="sr-only">{{review.atmosphere_prc}}% Complete</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4 col-sm-4 col-xs-4">
+                                    <p class="star-rating-title" translate>Food</p>
+                                    <div class="rating" ng-show="user.rate.count">
+                                        <div class="progress">
+                                            <div class="stars-small"><img src="images/stars-small.png" alt="">
+                                            </div>
+                                            <div class="progress-bar rating-bar" role="progressbar" aria-valuenow="{{review.food_prc}}" aria-valuemin="0" aria-valuemax="100" style="width: {{review.food_prc}}%;">
+                                                <span class="sr-only">{{review.food_prc}}% Complete</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4 col-sm-4 col-xs-4">
+                                    <p class="star-rating-title" translate>Cleanliness</p>
+                                    <div class="rating" ng-show="user.rate.count">
+                                        <div class="progress">
+                                            <div class="stars-small"><img src="images/stars-small.png" alt="">
+                                            </div>
+                                            <div class="progress-bar rating-bar" role="progressbar" aria-valuenow="{{review.cleanliness_prc}}" aria-valuemin="0" aria-valuemax="100" style="width: {{review.cleanliness_prc}}%;">
+                                                <span class="sr-only">{{review.cleanliness_prc}}% Complete</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="clearfix"></div>
+                            </div>
+                            <!-- /Review Rating -->
+
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+
+
+                </div>
+                <!-- /lazyload -->
+            </div>
+            <!-- /Reviews -->
+
+            <!-- lazy load -->
+            <!--
+<div ng-controller='DemoController'>
+  <div infinite-scroll='loadMore()' infinite-scroll-distance='1'>
+    <img ng-repeat='image in images' ng-src='http://placehold.it/225x250&text={{image}}'>
+  </div>
+</div>
+-->
+            <!-- lazy load -->
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,28 @@
+cron:
+- description: payu cycle
+  url: /admin/payu/
+  schedule: every 60 minutes
+
+- description: calendar cycle
+  url: /admin/calendar/
+  schedule: every 30 minutes
+
+- description: purge
+  url: /admin/purge/
+  schedule: every 2 hours
+
+- description: afterdeadline
+  url: /admin/afterdeadline/
+  schedule: every 30 minutes
+
+- description: Log rotator
+  url: /admin/logrotator/
+  schedule: every day 00:10
+
+- description: Review reminder
+  url: /admin/rate/
+  schedule: every day 16:00
+
+- description: Payment reminder
+  url: /admin/paymentReminder/
+  schedule: every day 19:00

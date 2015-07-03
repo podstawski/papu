@@ -1,0 +1,482 @@
+<div class="container profile private">
+
+    <!-- Alerts -->
+    <div ng-controller="AlertCtrl">
+        <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+    </div>
+
+    <!-- /Alerts -->
+
+    <!-- Profile background Photo -->
+    <form ng-submit="saveProfile()" role="form" novalidate>
+        <div class="profile-bg" class="btn btn-primary" ng-click="open('cover')">
+            <div class="profile-bg-edit" translate>EditCover</div>
+            <div class="profile-bg public hidden-lg visible-sm visible-xs"><img ng-src="{{user.cover}}" class="img-responsive" alt="{{user.firstname}} {{user.lastname}}" />
+            </div>
+            <div class="profile-bg public">
+                <div class="profile-bg-inner visible-lg hidden-sm hidden-xs" style="background: url('{{user.cover}}'); background-repeat: no-repeat; background-position: center center;"></div>
+            </div>
+        </div>
+        <!-- /Profile background Photo -->
+
+
+
+        <div class="row user">
+
+            <div class="col-sm-3 user-photo">
+                <div class="user-photo-edit"></div>
+                <img ng-src="{{ user.photo }}" class="prof-img" class="btn btn-primary" ng-click="open('photo')" />
+            </div>
+
+            <div class="col-sm-9 user-name">
+                <h1 class="name">{{user.firstname}} {{user.lastname}}</h1>
+
+
+                <!-- Take a picture-->
+                <div class="visible-xs visible-sm" ng-controller="GalleryCtrl" flow-init="config" test-chunks="false" ng-style="style" flow-file-success="$file.msg = $message" flow-file-added="!!{png:1,gif:1,jpg:1,jpeg:1}[$file.getExtension()]">
+                    <div ng-controller="TakeaphotoCtrl" >
+                        <div class="takeapicture" ng-repeat="event in events">
+                            <button type="button" ng-click="gallery.ctx = { 'ctx' : {'event': event.id}};" class="btn btn-small btn-default" flow-btn flow-attrs="{accept:'image/*'}"><span class="glyphicon glyphicon-camera"></span> {{event.name}}</button>
+                            
+                        </div>                 
+                    </div>
+                </div>
+                <!-- /Take a picture-->
+                              
+                <!-- Show Public Profile -->
+                <a class="public-profile-btn" href="/{{user.url}}" target="_blank" translate>ShowProfile</a>
+                <!-- /Show Public Profile -->
+                
+                              
+            </div>
+             
+        </div>
+
+
+
+        <!-- Nav tabs -->
+        <tabset class="menu-profile-tabs">
+            
+            <!-- Hint 3 -->
+            <div ng-show="!user.welcome" class="hint third-hint" translate>ThirdHint</div>
+            <!-- /Hint 3 -->
+             
+            <!-- Hint Accept -->
+            <div ng-show="!user.welcome" class="hint hint-accept"><span translate>HintAccept</span><div class="clearfix"></div><a ng-click="welcomeOK()" class="btn btn-success">OK</a></div>
+            <!-- /Hint Accept -->
+             
+            <!-- Host Events -->
+            <tab heading="{{'Host' | translate}}" active="prctrl.activeHost">
+                
+                <div ng-controller="GalleryCtrl" flow-init="config" test-chunks="false" ng-style="style" flow-file-success="$file.msg = $message" flow-file-added="!!{png:1,gif:1,jpg:1,jpeg:1}[$file.getExtension()]">
+                    <div ng-controller="TakeaphotoCtrl" >
+                
+                        <div ng-controller="EventCtrl">
+                            <div class="row events">
+        
+                                <div class="col-md-12 col-sm-12 events-host">
+                                    <!-- Upcoming Events -->
+        
+                                    <!-- Events -->
+                                    <div class="event">
+        
+                                        <!-- Add Event Btn -->
+                                        <div class="col-md-4 col-sm-4">
+                                            
+                                            <!-- Hint 1 -->
+                                            <div ng-show="!user.welcome" class="hint first-hint" translate>FirstHint</div>
+                                            <!-- /Hint 1 -->
+                                            
+                                            <!-- Hint 2 -->
+                                            <div ng-show="!user.welcome" class="hint second-hint" translate>SecondHint</div>
+                                            <!-- /Hint 2 -->
+                                            
+                                            <a href="" class="add-event" ng-click="createEvent()">
+                                                <i class="glyphicon glyphicon-plus"></i>
+                                                <div class="clearfix"></div>
+                                                <span translate>AddEvent</span>
+                                            </a>
+                                        </div>
+                                        <!-- /Add Event Btn -->
+        
+                                        <!-- Event -->
+                                        <div class="col-md-4 col-sm-4" ng-repeat="event in events">
+                                            <div class="events-bg">
+                                                <h6> <a ng-href="{{user.url}}/{{event.url}}">{{event.name | cut:true:35:'...'}}</a></h6>
+                                                <p class="event-date">{{event.event_start | date: 'dd-MM-yyyy HH:mm'}}</p>
+                                                <a class="event-edit" ng-show="!event.active" ng-href="event/{{event.id}}" translate>EditEvent</a>
+        
+                                                <!-- Public Event Btn -->
+                                                <button type="button" class="public-event" ng-show="!event.active" ng-disabled="event.active_err" ng-click="PublishEvent(event,1)" translate>PublicEvent</button>
+                                                
+                                                <p class="public-event-txt blue" ng_show="event.active==2" translate>ArchiveActive</p>
+                                                <p class="public-event-txt green" ng_show="event.active==1" translate>EventActive</p>
+                                                <p class="public-event-txt red" ng_show="event.active_err">{{event.active_err_txt}}</p>
+                                                <p class="public-event-txt" ng_show="event.active==-1" translate>EventCanceled</p>
+                                                <!-- /Public Event Btn -->
+        
+        
+                                                    <ul class="users" ng-show="{{event.active}}">
+                                                        <li ng-repeat="guest in event.guests">
+                                                            <a href="" ns-popover ns-popover-template="popover" ns-popover-trigger="mouseover" ns-popover-placement="bottom" ns-popover-timeout="0.1">
+                                                                <img ng-src="{{guest.photo}}" alt="{{guest.firstname}} {{guest.lastname}}" class="img-responsive" />
+                                                                <button ng-if="guest.persons>1" type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom">+{{guest.persons-1}}</button>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+        
+                                                    <script type="text/ng-template" id="popover">
+                                                        <div class="user-info">
+                                                            <img ng-src="{{guest.cover}}" class="img-responsive cover">
+        
+                                                            <a href="{{guest.url}}"><img ng-src="{{guest.photo}}" alt="{{guest.firstname}} {{guest.lastname}}" class="img-responsive" />
+                                                            </a>
+        
+                                                            <div class="info">
+                                                                <h3>{{guest.firstname}}</h3>
+                                                                <p class="email">{{guest.email}}</p>
+                                                                <p class="phone">{{guest.phone}}</p>
+                                                                <p class="message" ng-if="guest.message"><span translate>GuestMessage</span>{{guest.message}}</p>
+                                                            </div>
+                                                            <a class="delete-btn" href="" ng-click="rejectGuest(guest,event.guests,$index)" translate>RejectGuest</a>
+        
+                                                        </div>
+                                                    </script>
+        
+        
+                                                    <!-- Context Menu -->
+                                                    <a class="context-menu-btn" data-toggle="collapse" data-target="#collapseEvent-{{$index}}" aria-expanded="false" aria-controls="collapseEvent-{{$index}}"></a>
+        
+                                                    <ul class="context-menu collapse" id="collapseEvent-{{$index}}">
+                                                        <li ng-show="event.active==0">
+                                                            <a class="public-event-btn" href="{{user.url}}/{{event.url}}" data-toggle="collapse" data-target="#collapseEvent-{{$index}}" translate>PublicEventPage</a>
+                                                        </li>
+                                                        <li ng-show="event.active==0"><a class="delete-btn" href="" data-toggle="collapse" data-target="#collapseEvent-{{$index}}" ng-click="deleteEvent($index, false)" translate>DeleteEvent</a>
+                                                        </li>
+                                                        <li ng-show="event.active>0"><a class="delete-btn" href="" data-toggle="collapse" data-target="#collapseEvent-{{$index}}" ng-click="deleteEvent($index, true, true)" translate>CancelEvent</a>
+                                                        </li>
+                                                        <li><a class="repeat-btn" href="" data-toggle="collapse" data-target="#collapseEvent-{{$index}}" ng-click="clone(event)" translate>CloneEvent</a>
+                                                        </li>
+                                                        <li ng-show="event.active>0"><a class="unpublish-btn" href="" data-toggle="collapse" data-target="#collapseEvent-{{$index}}" ng-click="PublishEvent(event,0)" translate>Unpublish</a>
+                                                        </li>
+                                                            
+                                                         <li ng-show="event.canAddPhoto" >
+                                                             <button type="button" ng-click="gallery.ctx = { 'ctx' : {'event': event.id}};" class="foto-btn" flow-btn flow-attrs="{accept:'image/*'}"><span class="glyphicon glyphicon-camera"></span> <span translate>AddPhoto</span></button>
+                                                         </li>                                                       
+                                                        
+                                                    </ul>
+                                                    <!-- /Context Menu -->
+                                            </div>
+                                        </div>
+                                        <!-- /Event -->
+        
+                                    </div>
+        
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </tab>
+            <!-- /Host Events -->
+
+            <!-- Guest Events -->
+            
+            
+            <tab heading="{{'Guest' | translate}}" active="prctrl.activeGuest">
+
+                <div ng-controller="GalleryCtrl" flow-init="config" test-chunks="false" ng-style="style" flow-file-success="$file.msg = $message" flow-file-added="!!{png:1,gif:1,jpg:1,jpeg:1}[$file.getExtension()]">
+                    <div ng-controller="TakeaphotoCtrl" >
+                             
+                
+                        <div ng-controller="EventCtrl">
+                            
+                            <div class="row events">
+        
+                                <div class="col-md-12 col-sm-12 events-guest">
+                                    <!-- Upcoming Events -->
+        
+                                    <!-- Events -->
+                                    <div class="event">
+        
+                                        <!-- Event -->
+                                        <div class="col-md-4 col-sm-4" ng-repeat="event in eventguest">
+                                            <div class="events-bg">
+                                                <h6> <a ng-href="{{event.url}}">{{event.name | cut:true:35:'...'}}</a></h6>
+                                                <p class="event-date">{{event.event_start | date: 'dd-MM-yyyy HH:mm'}}</p>
+        
+                                                <ul class="users">
+                                                    <li ng-repeat="guest in event.guests">
+                                                        <a href="{{guest.url}}">
+                                                            <img ng-src="{{guest.photo}}" alt="{{guest.firstname}} {{guest.lastname}}" class="img-responsive" />
+                                                            <button ng-if="guest.persons>1" type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom">+{{guest.persons-1}}</button>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+        
+                                                <!-- Pay Button -->
+                                                <a href="{{event.payu}}" target="_self" class="pay-event" ng-show="!event.payment" translate>PayEvent</a>
+                                                <!-- /Pay Button -->
+        
+                                                <!-- Payed Status -->
+                                                <!-- <a class="payed-status1" translate>PayedStatus</a>-->
+                                                <!-- /Payed Status -->
+        
+                                                <!-- Cancel Status -->
+                                                <!-- <a class="cancel-status1" ng-click="cancelVisit(event)" ng-show="cancelStatus(event)" translate>Cancel</a> -->
+                                                <!-- /Cancel Status -->
+        
+                                                <!-- Status -->
+                                                <a class="payed-status" ng-show="event.cancel" translate>Canceled</a>{{event.cancel | date: 'dd-MM-yyyy HH:mm'}}
+                                                <!-- /Status -->
+        
+                                                
+        
+                                                <!-- Add Review -->
+                                                <div ng-controller="RateEventCtrl" ng-if="reviewStatus(event)">
+                                                    <div class="add-review-can">
+        
+                                                    <div class="add-review" collapse="isCollapsed">
+                                                        <a ng-click="isCollapsed = !isCollapsed" class="review-event-collapsed" aria-expanded="false" translate>ReviewBtn</a>
+        
+                                                        <h6 translate>AddReview</h6>
+                                                        
+                                                        <table>
+                                                          <tr class="rating-stars">
+                                                            <td><span translate>Food</span></td>
+                                                            <td><rating ng-model="rate.food" max="5" readonly="false" class="btn btn-lg"></rating></td>
+                                                          </tr>
+        
+                                                        <tr class="rating-stars">
+                                                            <td><span translate>Cleanliness</span></td>
+                                                            <td><rating ng-model="rate.cleanliness" max="5" readonly="false" class="btn btn-lg"></rating></td>
+                                                        </tr>
+                                                        <tr class="rating-stars">
+                                                            <td><span translate>Overall satisfaction</span></td>
+                                                            <td><rating ng-model="rate.atmosphere" max="5" readonly="false" class="btn btn-lg"></rating></td>
+                                                        </tr>
+                                                        </table>
+                                                        <textarea ng-model="rate.description"></textarea>
+                                                        <br>
+                                                        <button type="button" class="btn btn-primary" ng-click="RateEvent(event)" translate>AddReview</button>
+        
+                                                    </div>
+                                                    </div>
+                                                    
+                                                    <a ng-click="isCollapsed = !isCollapsed" ng-hide="event.rated || rated" class="review-event" aria-expanded="false" translate>ReviewBtn</a>
+                                                    
+                                                </div>
+                                                <!-- /Add Review -->
+        
+        
+                                                <!-- Context Menu -->
+                                                <a data-target="#collapseGuest-{{$index}}" class="context-menu-btn" data-toggle="collapse" aria-expanded="false" aria-controls="collapseGuest-{{$index}}" ng-show="cancelStatus(event) || event.canAddPhoto"></a>
+        
+                                                <ul class="context-menu collapse" id="collapseGuest-{{$index}}">
+                                                    <li ng-show="cancelStatus(event)">
+                                                        <a class="delete-btn" ng-click="cancelVisit(event)" href="" data-target="#collapseGuest-{{$index}}" data-toggle="collapse" translate>Cancel</a>
+                                                    </li>
+                                                    <li ng-show="event.canAddPhoto" >
+                                                        <button type="button" ng-click="gallery.ctx = { 'ctx' : {'event': event.event}};" class="foto-btn" flow-btn flow-attrs="{accept:'image/*'}"><span class="glyphicon glyphicon-camera"></span> <span translate>AddPhoto</span></button>
+                                                    </li>                                            
+                                                </ul>
+                                                <!-- /Context Menu -->   
+        
+                                            </div>
+                                        </div>
+                                        <!-- /Event -->
+        
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </tab>
+            <!-- /Guest Events -->
+            
+            
+
+            <!-- Edit Profile Content -->
+            <tab heading="{{'EditProfile' | translate }}" active="prctrl.activeProfile">
+
+                <div class="row">
+                    <div class="col-sm-12 profile-sidebar">
+                        <div class="profile-sidebar-about">
+                            <!-- Profile Info -->
+                            <div class="profile-info col-md-12" translate>ProfileInfo</div>
+                            <!-- /Profile Info -->
+
+                            <!-- Your Public Data Section -->
+                            <h5 translate>YourPublicData</h5>
+
+                            <div class="input-group form-group">
+                                <p class="col-md-4 col-sm-4" translate>YourPublicDataName</p>
+                                <input class="col-md-8 col-sm-8" type="text" ng-model="user.firstname" placeholder="{{'Firstname'|translate}}" class="form-control">
+                            </div>
+
+                            <div class="input-group form-group">
+                                <p class="col-md-4 col-sm-4" translate>YourPublicDataSurname</p>
+                                <input class="col-md-8 col-sm-8" type="text" ng-model="user.lastname" placeholder="{{'Lastname'|translate}}" class="form-control">
+                            </div>
+
+                            <div class="input-group form-group">
+                                <p class="col-md-4 col-sm-4" translate>YourPublicDataGender</p>
+                                <select class="col-md-8 col-sm-8" ng-model="user.gender">
+                                    <option value="M" translate>Male</option>
+                                    <option value="F" translate>Female</option>
+                                </select>
+                            </div>
+
+                            <div class="input-group form-group">
+                                <p class="col-md-4 col-sm-4" translate>YourPublicDataBirthyear</p>
+                                <select class="col-md-8 col-sm-8" ng-model="user.birthyear" ng-init="user.birthyear = user.birthyear|| yearsRange[0]" ng-options="year for year in yearsRange"></select>
+                            </div>
+
+                            <div class="input-group form-group short-desc">
+                                <p class="col-md-4 col-sm-4" translate>YourPublicDataShortDesc</p>
+                                <input class="col-md-8 col-sm-8" type="text" ng-model="user.title" placeholder="{{'Short description'|translate}}" class="form-control">
+                            </div>
+
+                            <div class="input-group form-group">
+                                <p class="col-md-4 col-sm-4" translate>YourPublicDataDescription</p>
+                                <textarea class="col-md-8 col-sm-8" type="text" ng-model="user.about" placeholder="{{'Full description'|translate}}" class="form-control"></textarea>
+                            </div>
+                            <!-- /Your Public Data Section -->
+
+                            <!-- Tags -->
+                            <div class="tags">
+                                <h5 class="col-md-4 col-sm-4" translate>Tags</h5>
+                                <div class="col-md-8 col-sm-8">
+                                    <button type="button" class=" btn btn-success" ng-model="tag.selected" btn-checkbox btn-checkbox-true="true" btn-checkbox-false="false" ng-repeat="tag in user.tags">
+                                        {{tag.name}}
+                                    </button>
+                                </div>
+
+                                <div class="clearfix"></div>
+                            </div>
+                            <!-- /Tags -->
+
+                            <div class="line-separator"></div>
+
+
+                            <!-- Your Public Adress Section -->
+                            <h5 translate>YourPublicAdress</h5>
+
+                            <div class="input-group form-group">
+                                <p class="col-md-4 col-sm-4" translate>YourPublicAdressEmail</p>
+                                <span class="col-md-8 col-sm-8 email" placeholder="" class="form-control">{{user.email}}</span>
+                            </div>
+
+                            <div class="input-group form-group">
+                                <p class="col-md-4 col-sm-4" translate>YourPublicAdressPhone</p>
+                                <input class="col-md-8 col-sm-8" type="text" ng-model="user.phone" placeholder="{{'Phone'|translate}}" class="form-control">
+                            </div>
+
+                            <div class="input-group form-group">
+                                <p class="col-md-4 col-sm-4" translate>YourPublicAdressSocial</p>
+                                <input class="col-md-8 col-sm-8" type="text" ng-model="user.social" placeholder="{{'Social url'|translate}}" class="form-control">
+                            </div>
+                            <!-- /Your Public Adress Section -->
+
+                            <div class="line-separator"></div>
+
+                            <!-- Your Place Section -->
+                            <h5 translate>YourPlace</h5>
+
+                            <div class="input-group form-group adress">
+                                <p class="col-md-4 col-sm-4" translate>YourPlaceAdress</p>
+                                <p class="col-md-8 col-sm-8">
+                                    <input type="text" ng-model="user.address" placeholder="{{'Address'|translate}}" class="form-control">
+                                </p>
+                            </div>
+
+                            <div class="input-group form-group adress">
+                                <p class="col-md-4 col-sm-4" translate>YourPlaceCity</p>
+                                <p class="col-md-7 col-sm-6">
+                                    <input type="text" ng-model="user.city" placeholder="{{'City'|translate}}" class="form-control">
+                                </p>
+                                <p class="col-md-1 col-sm-2">
+                                    <input type="text" ng-model="user.postal" placeholder="{{'Postal'|translate}}" class="form-control">
+                                </p>
+                            </div>
+
+                            <div class="input-group form-group country">
+                                <p class="col-md-4 col-sm-4" translate>YourPlaceCountry</p>
+                                <div class="col-md-8 col-sm-8" ng-controller="CountriesCtrl">
+                                    <select class="form-control" ng-model="user.country" ng-options="country.id as country.name for country in countries" ng-change="">
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="input-group form-group">
+                                <p class="col-md-4 col-sm-4" translate>YourPlaceBank</p>
+                                <input class="col-md-8 col-sm-8" type="text" ng-model="user.payment" placeholder="{{'Payment details'|translate}}" class="form-control">
+                            </div>
+
+                            
+                            <!-- /Your Place Section -->
+
+                            <div ng-if="checked" id="collapseMapURL" class="animate-if">
+                                <!-- Map -->
+                                <div class="profile-map">
+                                    <h5 translate>YourMap</h5>
+                                    <p class="col-md-4 col-sm-4" translate>YourMapTxt</p>
+                                    <ui-gmap-google-map center='map.center' zoom='map.zoom' events='map.events' class="col-md-8 col-sm-8">
+                                        <ui-gmap-marker coords="marker.coords" options="map.marker.options" events="map.marker.events" idkey="1">
+                                        </ui-gmap-marker>
+                                    </ui-gmap-google-map>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <!-- /Map -->
+
+
+                                <div class="clearfix"></div>
+
+                                <!-- Profile URL -->
+                                <div class="input-group form-group profile-url">
+                                    <p class="col-md-4 col-sm-4" translate>YourURL</p>
+                                    <div class="col-md-8 col-sm-8">
+                                        <div class="site-name-bg">
+                                            <p class="site-name" translate>JemyRazem.pl</p>
+                                            <p class="site-name-input">
+                                                <input type="text" ng-model="user.url" placeholder="{{'URL'|translate}}" class="form-control">
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /Profile URL -->
+                                
+                                <!-- Profile Ical -->
+                                <div class="input-group form-group">
+                                <p class="col-md-4 col-sm-4" translate>YourPlaceIcal</p>
+                                <input class="col-md-8 col-sm-8" type="text" ng-model="user.ical" placeholder="{{'Ical'|translate}}" class="form-control">
+                                </div>
+                                <!-- /Profile Ical -->
+
+                            </div>
+
+                            <a href="" ng-model="checked" btn-checkbox btn-checkbox-true="true" btn-checkbox-false="false" class="more-less-btn" translate>More</a>
+
+                            <!-- Save Profile -->
+                            <input type="submit" value="{{'Save'|translate}}" class="btn btn-primary save" />
+                            <!-- /Save Profile -->
+
+                            <div class="clearfix"></div>
+                            <!-- /Finish Editing Profile -->
+
+                        </div>
+                    </div>
+                </div>
+
+            </tab>
+            <!-- /Edit Profile Content -->
+        </tabset>
+
+    </form>
+</div>
+
+
+<div ng-show="!user.welcome" class="hint-bg"></div>

@@ -1,0 +1,67 @@
+<!-- Banner -->
+<div class="banner remind-password">
+    <div class="banner-img"><img ng-src="images/login-bg.jpg" class="img-responsive">
+    </div>
+    <div class="container">
+
+            
+                <div class="auth-forms login-panel" >
+		    <h3 translate>ChangePass</h3>
+  	                   <div class="row">
+                        <div class="col-md-12" ng-if="!hideDialog" class="animate-if">
+
+                                <form name="remindForm" class="form-inline" ng-submit="remindForm.$valid && resetPass()" novalidate>
+                                    <div class="form-group">
+                                    	<label translate>TypeNewPass</label>
+                                        <input class="form-control" type="password" ng-model="remind.pass" name="pass" placeholder="{{'Type your pass' | translate}}" class="form-control" required minlength="2" maxlength="256">
+                                        <div ng-if="remindForm.pass.$touched" ng-messages="remindForm.pass.$error" ng-messages-include="eat-default-messages"></div>
+                                     </div>
+				    <div class="clearfix"></div>
+                                    <div class="form-group">
+                                    	<label translate>RetypeNewPass</label>
+                                        <input class="form-control" type="password" ng-model="remind.passa" name="passa" placeholder="{{'Retype your pass' | translate}}" class="form-control" required minlength="2" maxlength="256" ng-blur="">
+                                        <div ng-if="remind.pass != remind.passa && remindForm.passa.$touched">
+                                        	<div class="validation-alert">{{'PasswordNotMatched' | translate}}</div>
+                                        </div>
+					<div class="clearfix"></div>
+                                        <input type="submit" ng-disabled="remindForm.$invalid" value="{{'changePass'|translate}}" class="btn btn-info" />
+                                    </div>
+                                </form>
+
+                        </div>
+                        <div class="col-md-12" ng-if="hideDialog" class="animate-if">
+                        	<p translate translate>PasswordChanged</p>
+
+                        </div>                        
+                    </div>
+
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+
+
+
+    </div>
+    
+    <div class="clearfix"></div>
+</div>
+<!-- /Banner -->
+
+
+<!-- a generic EAT template of error messages  -->
+<script type="text/ng-template" id="eat-default-messages">
+    <div class="validation-alert" ng-message="required">{{'ThisFieldIsRequired' | translate}}</div>
+    <div class="validation-alert" ng-message="minlength">{{'ThisFieldIsTooShort' | translate}}</div>
+    <div class="validation-alert" ng-message="maxlength">{{'ThisFieldIsTooLong' | translate}}</div>
+    <div class="validation-alert" ng-message="email">{{'YourEmailAddressIsInvalid' | translate}}</div>
+    <div class="validation-alert" ng-message="password">{{'PasswordRequired' | translate}}</div>
+</script>
+
+
+<!-- Alerts -->
+<div class="container-fluid">
+<div ng-controller="AlertCtrl" class="alert">
+ <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+</div>
+</div>
+<!-- /Alerts -->

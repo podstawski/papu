@@ -1,0 +1,11 @@
+node_modules
+dist
+.tmp
+.sass-cache
+bower_components
+Gruntfile.js
+media/
+tmp/
+tools/csv
+server/rest/config/*.json
+!server/rest/config/application.json

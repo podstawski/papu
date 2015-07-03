@@ -1,0 +1,55 @@
+{
+    "recaptcha.public":"6Le55fwSAAAAAJWv435Os_Jrw_x7vibjKpXBUG9H",
+    "recaptcha.private":"6Le55fwSAAAAAFlEN-oSsufLqIqkvyBYVxyRgWMp",
+    
+    "protocol":"http",
+    
+    "oauth2.client_id":"153512839723-83hjjp9n9v81n26q044hgctp8j9hcftr.apps.googleusercontent.com",
+    "oauth2.client_secret":"o6DLUYKQUToTGfkxjbHzi9qj",
+    
+    "fb.app_id": "1572783426266504",
+    "fb.app_secret":"06808a24517b0f91d6f6b17fa1f23d2e",
+    
+    "maps.api_key":"AIzaSyBMpDPg7BibacB6R8CdznzHS1cZrfLgSv0",
+    
+    "thumbnail_size": 730,
+    "square_size": 350,
+    "image_size": 1140,
+    "full_size": 1920,
+    
+    "event.default_duration": 2,
+    "event.default_deadline": 24,
+    "event.geo_tolerance":0.005,
+    "event.search_limit":10,
+    "event.last_limit":3,
+    "event.map_limit":25,
+    "event.search_distance":100,
+    "event.limit_to_known_cities": 1,
+    "event.current_tolerance": 1,
+    
+    "tags":"italian,vegetarian,healthy,spicy,fish,meat,mexican,polish,vegan,chicken,foodie,weight,kosher,bbq,sweet,eko,steaming,termomix,hamburger,asian,european,mediterranean,indian,chinese,japanese,french,greek,fusion,spanish,thai,turkish,vietnamese,seafood,russian,asian,nonalcoholic,ownalcohol,servedalcohol,wuxing",
+    "event.tags":"italian,vegetarian,healthy,spicy,fish,meat,mexican,polish,vegan,chicken,foodie,weight,kosher,bbq,sweet,eko,steaming,termomix,hamburger,asian,european,mediterranean,indian,chinese,japanese,french,greek,fusion,spanish,thai,turkish,vietnamese,seafood,russian,asian,nonalcoholic,ownalcohol,servedalcohol,wuxing",    
+    "profile.tags":"italian,vegetarian,healthy,spicy,fish,meat,mexican,polish,vegan,chicken,foodie,weight,kosher,bbq,sweet,eko,steaming,termomix,hamburger,asian,european,mediterranean,indian,chinese,japanese,french,greek,fusion,spanish,thai,turkish,vietnamese,seafood,russian,asian,wuxing",
+    
+    "payu.desc":"JemyRazem.PL",
+    
+    "maxmind.user_id":"96262",
+    "maxmind.license_key":"teNhCashA88D",
+    
+    "user.password_reset_expire":7200,
+
+    "app.debug":null,
+    
+    "reviews.limit": 3,
+    
+    "forbidden_url":["tac","event","events","how-it-works","profile","login","book","password","admin","test","contact","about","privacy","register","contact","konkurs","konkurs-regulamin"],
+    
+    "admin.ids": [1,2,3],
+    
+    "ranking.limit": 10,
+    "ranking.points4guest.free": 1,
+    "ranking.points4guest.paid": 2,
+    "ranking.points4host.free": 1,
+    "ranking.points4host.paid": 2,
+    "ranking.points4referer": 0.1
+}

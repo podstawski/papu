@@ -1,0 +1,401 @@
+<div class="container create-event">
+
+<!-- Alerts -->
+<div class="container-fluid">
+    <div ng-controller="AlertCtrl" class="alert">
+        <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+    </div>
+</div>
+<!-- /Alerts -->
+
+<!-- Event background Photo -->
+<form ng-submit="saveProfile()" role="form" novalidate>
+    <div class="event-bg" class="btn btn-primary" ng-click="open('cover')">
+        <div class="event-bg-plus" ng-show="!event.img">
+            <i class="glyphicon glyphicon-plus"></i>
+            <div class="clearfix"></div>
+            <span translate>SetPhoto</span>
+        </div>
+        <div class="event-bg-edit" ng-show="event.img" translate>EditCover</div>
+        <div class="event-bg hidden-lg visible-sm visible-xs"><img ng-src="{{event.img.url}}" class="img-responsive" alt="{{'Event name'|translate}}" />
+        </div>
+        <div class="event-bg">
+            <div class="event-bg-inner visible-lg hidden-sm hidden-xs" style="background: url('{{event.img.url}}'); background-repeat: no-repeat; background-position: center center;"></div>
+        </div>
+    </div>
+    <!-- /Event background Photo -->
+    
+    <!-- Event Main -->
+    <div class="event-main">
+
+    <div class="row">
+        <div class="col-md-12 col-sm-12">
+            <div class="event-name">
+            <h6 translate>Event name</h6>
+            <input tabindex="1" type="text" name="name" ng-model="event.name" placeholder="{{'PHEventName'|translate}}" class="form-control" ng-required="true">
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 col-sm-12">
+            <!-- About Event -->
+            <div class="desc">
+                <h6 translate>EventDescription</h6>
+                <textarea ng-show="!event.active" tabindex="2" class="col-md-12 event-description" type="text" rows="5" ng-model="event.about" placeholder="{{'EventDescriptionInfo'|translate}}" class="form-control"></textarea>
+                <div ng-show="event.active" class="col-md-12 event-description">{{event.about}}</div>
+            </div>
+            <!-- /About Event -->
+        </div>
+    </div>
+    
+    <div class="fat-line"></div>
+
+    <div class="row event-sidebar">
+        <div class="col-md-3 col-sm-3">
+            <!-- Event Date -->
+            <h6 translate>EventDate</h6>
+            <div class="input-group move-down">
+                
+                <span tabindex="3" type="text" class="form-control" datepicker-popup="{{format}}" ng-change="startDateChanged()" ng-model="event.event_start" is-open="start_opened" min-date="minDate" max-date="'2020-12-31'" datepicker-local-date datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="{{'CalClose'|translate}}" clear-text="{{'CalClear'|translate}}" current-text="{{'CalToday'|translate}}" placeholder="{{'Start date'|translate}}">{{event.event_start | date: 'dd-MM-yyyy'}} </span>
+
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" ng-click="openstart($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                </span>
+            </div>
+            <!-- /Event Date -->
+        </div>
+        <!-- Event Time -->
+        <div class="col-md-3 col-sm-3 center">
+            <h6 translate>EventTime</h6>
+            <div class="input-group">
+                <timepicker tabindex="4" ng-change="timeChanged()" ng-model="event.event_start" hour-step="1" minute-step="5" show-meridian="0" readonly-input="0" tabindex="10"></timepicker>
+            </div>
+        </div>
+
+        <div class="col-md-3 col-sm-3 center">
+            <h6 translate>EventDuration</h6>
+            <div class="input-group move-down">
+                <select tabindex="5" class="form-control move-down" ng-model="event.duration" ng-options="elem.id as elem.name for elem in durationData" ng-init="event.duration = event.duration || 3600">
+                </select>
+            </div>
+        </div>
+        <!-- /Event Time -->
+
+        <div class="col-md-3 col-sm-3">    
+            <!-- Local info -->
+            <h6 translate>EventPlace</h6>
+            <div class="input-group check move-down">
+                <input tabindex="6" type="radio" ng-model="event.restaurant" ng-value="0">
+                <p class="radio-info" translate>EventPrivateApartment</p>
+                <div class="clearfix"></div>
+                <input tabindex="7" type="radio" ng-model="event.restaurant" ng-value="1">
+                <p class="radio-info" translate>EventPublicPlace</p>
+            </div>
+            <!-- /Local info -->
+        </div>
+    </div>
+    
+    <div class="fat-line"></div>
+
+    <div class="row event-sidebar">
+        <div class="col-md-3 col-sm-3" ng-controller="EventpriceCtrl" ng-init="getPrice(event.price,event.currency)">
+            <!-- Price -->
+            <h6 translate>EventPrice</h6>
+            <div class="input-group move-down-less">                
+                <input tabindex="8" type="number" ng-change="getPrice(event.price,event.currency)" ng-model="event.price" ng-model-options="{ debounce: 700 }" placeholder="{{'Price'|translate}}" class="form-control" ng-required="true" ng-init="event.price = event.price || 0">
+            </div>
+
+            <div class="price-info">
+            <p ng-show="gp">
+                <span class="glyphicon glyphicon-question-sign" tooltip-placement="right" tooltip="{{'GuestPriceTooltip' | translate}}"></span><i translate>GuestPrice</i><i>: {{gp}} {{currency}}</i></p>
+            <p ng-show="gp"><i translate>PortalCommission</i><i>: {{prowizja}} {{currency}}</i></p>
+            </div>
+
+            <!-- /Price -->        
+        </div>
+
+            <!-- Min/Max Guests -->
+            <div class="col-md-3 col-sm-3 center">
+                <h6 translate>MinGuests</h6>
+                <div class="input-group move-down-less">                    
+                    <select tabindex="9" class="form-control" ng-model="event.min_guests" ng-options="id for id in [1,2,3,4,5,6,7,8,9,10]" ng-init="event.min_guests = event.min_guests || 1">
+                    
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-3 center">
+                <h6 translate>MaxGuests</h6>
+                <div class="input-group move-down-less">                    
+                    <select tabindex="10" class="form-control" ng-model="event.max_guests" ng-options="elem.id as elem.name for elem in minmaxGuestData" ng-init="event.max_guests = event.max_guests || minmaxGuestData[3]">
+                    </select>
+                </div>
+            <!-- /Min/Max Guests -->        
+        </div>
+
+        <div class="col-md-3 col-sm-3">
+            <!-- Local info -->
+            <h6 translate>EventAlcohol</h6>
+            
+            <div class="input-group check">
+                <input tabindex="11" type="radio" ng-model="event.info" ng-value="0">
+                <p class="radio-info" translate>EventHostAlcohol</p>
+                <div class="clearfix"></div>
+                <input tabindex="12" type="radio" ng-model="event.info" ng-value="1">
+                <p class="radio-info" translate>EventguestAlcohol</p>
+                <div class="clearfix"></div>
+                <input tabindex="13" type="radio" ng-model="event.info" ng-value="2">
+                <p class="radio-info" translate>EventNoAlcohol</p>
+                
+            </div>
+            <!-- /Local info -->        
+        </div>
+        
+    </div>
+    
+    <div class="fat-line"></div>
+
+    <div class="row">
+        <div class="col-md-12 col-sm-12">
+            <!-- Photo Gallery -->
+            <h6 translate>EventGallery</h6>
+            <h7 translate>EventGalleryInfo</h7>
+            <div class="photos" ng-repeat="(id,photo) in event.images">
+                <img ng-src="{{photo.thumbnail}}" class="img-responsive">
+                <div class="photos-info">
+                    {{photo.title}}
+                </div>
+                <a class="glyphicon glyphicon-trash" href="" ng-click="deleteEventPhoto(photo)"></a>
+            </div>
+
+            <div class="input-group add-photos" ng-show="event.id">
+                <a ng-show="event.id" ng-click="open('eventImages')" class="glyphicon glyphicon-plus" aria-hidden="true"></a>
+            </div>
+
+            <div class="fat-line"></div>
+
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-12 col-sm-12">
+            <!-- Tags -->
+            <h6 translate>Tags</h6>
+
+            <div class="tags" id="tags-btn">
+                <button type="button" class="btn btn-success" ng-model="tag.selected" btn-checkbox btn-checkbox-true="true" btn-checkbox-false="false" ng-repeat="tag in event.tags">
+                    {{tag.name}}
+                </button>
+                <div class="clearfix"></div>
+            </div>
+            <!-- /Tags -->
+            <div class="fat-line"></div>
+        </div>
+    </div>
+
+    <div class="row event-main">
+        <div class="col-md-12 col-sm-12">
+
+            <!-- Event Adress -->
+            <h6 translate>EventAdress</h6>
+            <h7 translate>EventAdressInfo</h7>
+
+            <div class="clearfix"></div>
+
+            <div class="col-md-6 col-sm-6 adress-input">
+                <div class="input-group form-group">
+                    <input tabindex="14" type="text" ng-model="event.address" ng-init="event.address=event.address || user.address" placeholder="{{'Address'|translate}}" class="form-control">
+                </div>
+            </div>
+
+            <div class="col-md-6 col-sm-6 adress-input">
+                <div class="input-group form-group">
+                    <input tabindex="15" type="text" ng-model="event.city" ng-init="event.city=event.city || user.city" placeholder="{{'City'|translate}}" class="form-control">
+                </div>
+            </div>
+
+            <div class="col-md-6 col-sm-6 adress-input second-line">
+                <div class="input-group form-group">
+                    <input tabindex="16" type="text" ng-model="event.postal" ng-init="event.postal=event.postal || user.postal" placeholder="{{'Postal'|translate}}" class="form-control">
+                </div>
+            </div>
+
+            <div class="col-md-6 col-sm-6 adress-select">
+                <div class="input-group form-group">
+                    <div ng-controller="CountriesCtrl">
+                        <select tabindex="17" class="form-control" ng-model="event.country" ng-options="country.id as country.name for country in countries" ng-change="" ng-init="event.country=event.country||user.country">
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12 col-sm-12 adress-input">
+                <div class="input-group form-group">
+                    <textarea tabindex="18" type="text" ng-model="event.hints" ng-init="event.hints=event.hints" placeholder="{{'Hints'|translate}}" class="form-control" />
+                </div>
+            </div>
+
+            </div>
+
+            <div class="col-md-12 col-sm-12">
+                <h6 translate>EventLocation</h6>
+                <h7 translate>EventLocationInfo</h7>
+                <ui-gmap-google-map center='map.center' zoom='map.zoom' events='map.events'>
+                    <ui-gmap-marker coords="marker.coords" options="map.marker.options" events="map.marker.events" idkey="2">
+                    </ui-gmap-marker>
+                </ui-gmap-google-map>
+            </div>
+
+
+            <!-- /Event Adress -->
+        
+    </div>
+
+    <div class="clearfix"></div>
+
+
+    <div class="row event-main">
+        <div class="col-md-12">
+            <!-- Bank Account Nr -->
+            <div class="input-group form-group" ng-if="_payment">
+                <h6 translate>BankAccountNr</h6>
+                <h7 translate>BankAccountNrInfo</h7>
+                <input tabindex="19" type="text" ng-model="user.payment" ng-init="" placeholder="{{'Payment details'|translate}}" class="form-control" ng-blur="saveProfile()">
+            </div>
+            <!-- /Bank Account Nr -->
+            <!-- Phone No -->
+            <div class="input-group form-group" ng-if="_phone">
+                <h6 translate>YourPublicAdressPhone</h6>
+                <h7 translate>YourPublicAdressPhoneInfo</h7>
+                <input tabindex="20" type="text" ng-model="user.phone" ng-init="" placeholder="{{'Phone'|translate}}" class="form-control" ng-blur="saveProfile()">
+            </div>
+            <!-- /Phone No -->         
+        </div>
+    </div>
+
+
+
+
+<!-- More Settings -->
+
+    <div class="row event-main">
+        <div class="col-md-12">
+            <a class="more-less-btn" ng-show="moreOptionsCollapsed" ng-click="moreOptionsCollapsed = !moreOptionsCollapsed" ng-init="moreOptionsCollapsed=1"><span translate>MoreOptions</span> <span class="glyphicon glyphicon-chevron-down"></span></a>
+            <a class="more-less-btn" ng-show="!moreOptionsCollapsed" ng-click="moreOptionsCollapsed = !moreOptionsCollapsed"><span translate>LessOptions</span> <span class="glyphicon glyphicon-chevron-up"></span></a>
+        </div>
+    </div>
+
+    <div class="row event-main" collapse="moreOptionsCollapsed">
+        <div class="col-md-4">            
+            <h6 translate>EventDeadline</h6>
+            <h7 translate>EventDeadlineInfo</h7>
+            <div class="input-group">
+                <span type="text" class="form-control" datepicker-popup="{{format}}" ng-change="startDateChanged()" ng-model="event.deadline" is-open="end_opened" min-date="minDate" max-date="'2020-12-31'" datepicker-local-date datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="{{'CalClose'|translate}}" clear-text="{{'CalClear'|translate}}" current-text="{{'CalToday'|translate}}" placeholder="{{'Deadline'|translate}}">{{event.deadline | date: 'dd-MM-yyyy'}} </span>
+
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" ng-click="openend($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="input-group move-down-bit-less col-md-3">
+                <timepicker ng-change="" ng-model="event.deadline" hour-step="1" minute-step="5" show-meridian="0" readonly-input="0"></timepicker>
+            </div>
+            <div>
+        
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="input-group form-group">
+                <h6 translate>EventURL</h6>
+                <h7 translate>EventURLInfo</h7>
+                <div class="input-group event-url">
+                    <a title="www.{{'jemyrazem.pl' | translate}}/{{event.host_url}}">http://...</a>
+                    <input tabindex="21" type="text" ng-model="event.url" placeholder="{{'Event url'|translate}}" class="form-control">
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12">
+            <div class="input-group">
+            <h6 translate>EventBookAfterDeadline</h6>
+            <h7 translate>EventBookAfterDeadlineInfo</h7>
+                <div class="input-group event-listed">
+                    <input tabindex="22" type="checkbox" ng-model="event.bookafterdeadline" ng-true-value="1" ng-false-value="0">
+                    <p translate>BookAfterDeadline</p>
+                </div>
+            </div>
+        </div>        
+        
+        
+
+        <div class="col-md-12">
+            <div class="input-group">
+                <h6 translate>EventUnlisted</h6>
+                <h7 translate>EventUnlistedInfo</h7>
+
+                <div class="input-group event-listed">
+                    <input tabindex="23" type="checkbox" ng-model="event.unlisted" ng-true-value="1" ng-false-value="0">
+                    <p translate>Unlisted</p>
+                </div>
+
+            </div>        
+        </div>
+        
+        <div class="col-md-12" ng-if="true || _fb_id">
+            <div class="input-group">
+                <h6 translate>EventFBFriends</h6>
+                <h7>
+                    <span translate>EventFBFriendsInfo</span>
+                    <span translate ng-if="!_fb_friend">EventFBFriendsLoginInfo</span>
+                </h7>
+
+                <div class="input-group event-listed" ng-if="_fb_friend">
+                    <input tabindex="23" type="checkbox" ng-model="event.fb_friends" ng-true-value="1" ng-false-value="0">
+                    <p translate>FBFriends</p>
+                </div>
+                
+                <div class="input-group event-listed" ng-if="!_fb_friend">
+                    <a class="facebook-login" href="" ng-click="fbFriendsAuth()" target="_self"><img src="images/facebook-icon.png" alt="Facebook"><span translate>FacebookLoginFriendsHost</span></a>
+                </div>                
+
+            </div>        
+        </div>
+        
+    </div>
+    <!-- /More Settings -->
+
+
+    <!-- Save section -->
+    <div class="row event-save">
+        <div class="col-md-12">          
+            <!-- Agreement -->
+            <div class="input-group form-group agreement col-md-8 col-sm-8" ng-if="!event.active">
+                <label>
+                    <input tabindex="24" type="checkbox" ng-model="host_agreement" ng-true-value="1" ng-false-value="0">
+                    <h6 translate>HostAgreement</h6>
+                </label>
+            </div>
+            <!-- /Agreement -->
+
+            <!-- Save -->
+            <div class="save-btns col-md-4 col-sm-4" ng-if="true || !event.active">
+                <input type="button" value="{{'Save'|translate}}" class="btn btn-primary save" ng-click="saveEvent(true)" />
+            </div>
+            <!-- /Save -->    
+            <div class="input-group form-group agreement col-md-12 col-sm-12" ng-if="event.active">
+                <label>
+                    <h6 translate>EventActive</h6>
+                </label>
+            </div>
+        </div>
+    </div>
+    <!-- /Save section -->
+
+    </div>
+
+</form>
+
+</div>

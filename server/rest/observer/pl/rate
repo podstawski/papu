@@ -1,0 +1,23 @@
+From: {host.email}
+To: {guest.email}
+Subject: Oceń przyjęcie: {event.name}
+Content-type: text/html; charset=utf8
+
+{include:header.html}
+
+<p><img src="{event.img.thumbnail}" style="display:block; height:auto; margin-bottom:2em; width:100%" /></p>
+
+<h2 style="color:#131313; margin-top:0px;">Dzień dobry {guest.firstname},</h2>
+
+<p>Mamy nadzieję, że dobrze bawiłeś sie na przyjęciu: <strong>{event.name}</strong>.</p>
+
+<p>Twój gospodarz bardzo się starał by Wasze spotkanie upłynęło w przyjaznej atmosferze&nbsp;przy wspaniałym jedzeniu.</p>
+
+<p>Jeśli jesteś zadowolona(y)&nbsp;<a href="{app_root}profile#guest">kliknij tutaj</a>, by pochwalić gospodarza i polecić go innym użytkownikom JemyRazem.pl.</p>
+
+<p style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;">Jeśli i Ty chcesz poczuć się jak prawdziwy szef kuchni,<strong> <a href="{app_root}profile">kliknij tu by zorganizować własne przyjęcie</a>. </strong>Może teraz<strong> </strong><strong style="line-height:20.7999992370605px">{host.firstname} {host.lastname}</strong>&nbsp;będzie Twoim gościem...?</p>
+
+<hr />
+<p>Życzymy udanej zabawy i dziękujemy, że JeszRazem z nami.<br />
+<em><strong>Zespół JemyRazem.pl</strong></em></p>
+{include:footer.html}

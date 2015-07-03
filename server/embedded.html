@@ -1,0 +1,297 @@
+<html>
+    
+<head>
+  <meta charset="utf-8">
+    <title><?php echo $pagetitle;?></title>
+    <meta name="description" content="<?php echo $description;?>" />	
+    <meta name="keywords" content="<?php echo $keywords;?>" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="<?php echo $title;?>" />
+    <meta property="og:description" content="<?php echo $description;?>" />
+    <meta property="og:image" content="<?php echo $photo;?>" />
+    <meta property="og:url" content="<?php echo url($url);?>" />
+    
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+    <!-- fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,300&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <!-- /fonts -->
+    
+    <!-- style -->
+    <style>
+      body {
+        font-family: 'Roboto Condensed', sans-serif;
+        font-size:14px;
+        color: #131313;
+        background: #f3f3f3;
+        padding: 0;
+        margin: 0;
+      }
+      
+      a {
+        color: #9f111d;
+      }
+      
+      a:hover {
+        color: #555;
+        text-decoration:none;
+      }
+      
+      h1 {
+        margin-bottom:25px;
+      }
+      
+      ul {
+        list-style: none;
+        padding: 0px;
+        margin: 0px;
+        margin-top: 50px;
+        margin-bottom: 50px;
+      }
+      
+      ul li div {
+        background: url('https://www.jemyrazem.pl/images/profile-bg-bg.jpg');
+        background-color: #fff;
+        -webkit-border-radius: 4px 4px 4px 4px;
+        border-radius: 4px 4px 4px 4px;
+        text-align: center;
+        position: relative;
+        margin-bottom: 25px;
+      }
+      
+      ul li div img {
+        text-align: center;
+        margin: 0 auto;
+      }
+      
+      ul li div h3 {
+        position: absolute;
+        z-index: 2;
+        text-align: center;
+        top: 40%;
+        left: auto;
+        right: auto;
+        width: 100%;
+      }
+      
+      ul li div h3 a {        
+        font-family: 'Roboto Condensed', sans-serif;
+        color: #fff;
+        font-size: 36px;
+        font-weight: 700;
+        text-shadow: 0 0 8px #131313;
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+      
+       ul li div h3 a:hover {
+        color: #fff;
+        text-decoration: none;
+       }
+      
+      .host {
+        text-align: center;
+      }
+      
+      .host img.user-face  {
+          max-width: 150px;
+          margin:0 auto;
+          text-align: center;
+          border-radius: 50%;
+          border: 5px solid #f3f3f3;
+          margin-top:-75px;
+      }
+      
+      .host h1 {
+        font-size: 24px;
+      }
+      
+      ul.social {
+        margin: 0 15px 25px 15px;
+        text-align: center;
+        margin-top: 50px;
+      }
+      
+      ul.social li {
+        display: inline-block;
+      }
+      
+
+      ul.social li a {
+        display: block;
+        width: auto;
+        /*height: 40px;
+        line-height: 40px;*/
+        margin-left: 1px;
+        color: #fff;
+        font-size: 14px;
+        padding: 5px 15px 5px 15px;
+      }
+      
+       ul.social li a.facebook {
+        background-color: #3f45a5;
+       }
+      
+      /*ul.social li a.facebook:before {
+        content: '';
+        display: block;
+        float: left;
+        background: url('https://www.jemyrazem.pl/images/share-it.png');
+        background-repeat: no-repeat;
+        background-color: #3f45a5;
+        background-position: 8px 8px;
+        width: 24px;
+        height: 24px;
+        padding: 20px;
+      }*/
+      
+      ul.social li a.facebook:hover,
+      ul.social li a.facebook:hover:before{
+        background-color: #133d95;
+      }
+      
+      ul.social li a.gplus {
+        background-color: #ff5a5f;
+      }
+      /*
+      ul.social li a.gplus:before {
+        content: '';
+        display: block;
+        float: left;
+        background: url('https://www.jemyrazem.pl/images/share-it.png');
+        background-repeat: no-repeat;
+        background-color: #ff5a5f;
+        background-position: 8px -120px;
+        width: 24px;
+        height: 24px;
+        padding: 20px;
+      }
+      */
+      ul.social li a.gplus:hover,
+      ul.social li a.gplus:hover:before {
+        background-color: #cf2b30;
+      }
+      
+      .button {
+        width: 100%;
+        text-align: center;
+        display: block;
+        background: rgb(0, 141, 27);
+        color: #fff;
+        padding: 15px 0 15px 0;
+        text-transform: uppercase;
+        font-size: 18px;
+      }
+      
+      .button:hover {
+        text-decoration: none;
+        color: #fff;
+        background-color: #007216;
+      }
+      
+    </style>
+    
+</head>
+
+<body>
+  <!-- Google Tag Manager -->
+  <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-57ZMVG"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-57ZMVG');</script>
+  <!-- End Google Tag Manager -->
+  
+  
+  <div itemscope itemtype="http://schema.org/<?php echo $itemscope;?>">
+  <a target="_top" href="<?php echo url($url);?>"><img src="<?php echo $photo?>" itemprop="image" style="width:100%"/></a>
+  <div class="container-fluid host">
+    
+    <a target="_top" href="<?php echo url($img_url);?>"><img class="user-face" src="<?php echo $img;?>" alt="<?php echo $title;?>" /></a>
+    <h1><a target="_top" href="<?php echo url($url);?>" itemprop="name"><?php echo $pagetitle;?></a></h1>
+    <a target="_top" href="<?php echo url($url);?>">
+    
+    </a>
+    
+    <div class="clearfix"></div>
+    
+    <p itemprop="description"><?php echo $description;?></p>
+    
+    <div class="clearfix"></div>
+    
+    <?php if ($rate) : ?>
+    
+    <span itemprop="rating" itemscope itemtype="http://schema.org/Review-aggregate">
+      <span itemprop="rating" itemscope itemtype="http://schema.org/Rating">
+        <meta itemprop="worst" content="1" />
+        <meta itemprop="best" content="5"/>
+        <meta itemprop="average" content="<?php echo $rate['rate'];?>"/>
+        <meta itemprop="count" content="<?php echo $rate['count'];?>" />
+        <?php echo $rate['rate'];?>
+      </span>
+    </span>    
+
+    <?php endif; ?>
+    
+    <div class="row">
+    <?php if(count($ul)): ?>
+    <ul>
+      <?php foreach ($ul AS $li) :?>
+        <li class="col-md-4 col-sm-4">
+          <div class="<?php echo $li['class']; ?>">
+          <h3><a target="_top" href="<?php echo url($li['url']);?>"><?php echo $li['name'];?></a></h3>
+          <a target="_top" href="<?php echo url($li['url']);?>">
+           <img class="img-responsive" src="<?php echo $li['img'];?>"/>
+          </a>
+          </div>
+         <div class="clearfix"></div>
+        </li>
+      <?php endforeach;?>
+    </ul>
+    <?php endif; ?>
+    
+  </div>
+  </div>
+  
+  <?php if(count($dates)): ?>
+  <?php foreach ($dates AS $d) :?>
+    <span itemprop="event" itemscope itemtype="http://schema.org/Event">
+      <meta itemprop="startDate" content="<?php echo $d['event_start'];?>" />
+      <meta itemprop="endDate" content="<?php echo $d['event_end'];?>" />
+    </span>
+  <?php endforeach;?>
+  <?php endif; ?>
+  
+  <ul class="social">
+   <li><a class="gplus" target="_top" href="https://plus.google.com/+JemyrazemPl" rel="publisher">Google+</a></li>
+   <li><a class="facebook" target="_top" href="https://www.facebook.com/JemyRazem" rel="publisher">Facebook</a></li>
+  </ul>
+  
+  <?php if ($button): ?>
+    <a class="button" href="<?php echo url($url);?>"><?php echo $button;?></a>
+  <?php endif; ?>
+
+  
+</div>  
+<script>
+  $(function() {
+    setTimeout(function() {
+      $.get('<?php echo Bootstrap::$main->getRoot();?>height.php?height='+$('body').height()+'&url='+encodeURIComponent(location.href));
+    },300);
+  });
+
+</script>
+
+
+</body>
+</html>

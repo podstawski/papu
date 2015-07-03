@@ -1,0 +1,25 @@
+From: {host.email}
+To: {guest.email}
+Subject: {event.name}
+Content-type: text/html; charset=utf8
+
+{include:header.html}
+
+<img src="{event.img.thumbnail}" style="width:100%; height:auto; display:block; margin-bottom:2em;"  />
+<h2 style="color:#131313; margin-top:0px;">Hello {guest.firstname}</h2>
+<p style="color:#555; font-size:1em; padding:0.5em;">
+You have reserved <b>{event.name}</b> {event.event_start}, but for some reason
+you hav not made the payment.
+</p>
+
+<p style="color:#555; font-size:1em; padding:0.5em; font-weight:bold;">
+   Please <a href="{app_root}profile#guest">login</a> and pay the event before it starts!
+</p>
+
+<p style="color:#555; font-size:1em; padding:0.5em;">
+    Sincerely,<br/>
+    JemyRazem team
+</p>
+
+
+{include:footer.html}

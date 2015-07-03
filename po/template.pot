@@ -1,0 +1,1353 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Project-Id-Version: \n"
+
+#: app/views/about.html
+msgid "AbourH32"
+msgstr ""
+
+#: app/views/publicprofile.html
+msgid ""
+"About\n"
+"            <!-- Short text about someone -->\n"
+"            <p>{{user.title}}</p>\n"
+"            <!-- /Short text about someone -->\n"
+"            \n"
+"            <!-- How old am I? -->\n"
+"            \n"
+"            <div class=\"age\" ng-show=\"user.age\"><span translate=\"\">Age</span>: <span>{{user.age}}</span></div>\n"
+"            <!-- /How old am I? -->\n"
+"            \n"
+"            <!-- Location -->\n"
+"            <div class=\"profile-map\" ng-show=\"user.city.length\">\n"
+"                <ul>\n"
+"                  <li><span translate=\"\">Location</span>: <a href=\"#\">{{user.city}}</a></li>\n"
+"                </ul>\n"
+"            </div>\n"
+"             <!-- /Location -->\n"
+"             \n"
+"            <!-- Social Share Btns -->\n"
+"            \n"
+"            <div class=\"social-btns\">\n"
+"                <ul>\n"
+"                    <li ng-repeat=\"share in user.share\">\n"
+"\n"
+"                        <a ng-show=\"{{user.social.indexOf('facebook')>0 && share.id.indexOf('book')>0}}\" href=\"{{user.social}}\" class=\"{{share.id}}\" target=\"_blank\"></a>\n"
+"                        <a ng-show=\"{{user.social.indexOf('plus')>0 && share.id.indexOf('plus')>0}}\" href=\"{{user.social}}\" class=\"{{share.id}}\" target=\"_blank\"></a>\n"
+"                        \n"
+"                    </li>\n"
+"                </ul>\n"
+"            </div>\n"
+"\n"
+"            <!-- /Social Share Btns -->\n"
+"                <div>\n"
+"                    <!-- Tags -->\n"
+"                    <h6 translate=\"\" ng-show=\"user.tags.length\">I Like</h6>\n"
+"                    <ul class=\"tags\" ng-show=\"user.tags.length\">\n"
+"                        <li ng-repeat=\"tag in user.tags\"><a href=\"#\">{{tag.name}}</a>\n"
+"                        </li>\n"
+"                    </ul>\n"
+"                    <!-- /Tags -->\n"
+"               </div>"
+msgstr ""
+
+#: app/views/footer.html
+msgid "AboutFooter"
+msgstr ""
+
+#: app/views/about.html
+msgid "AboutH21"
+msgstr ""
+
+#: app/views/about.html
+msgid "AboutH22"
+msgstr ""
+
+#: app/views/about.html
+msgid "AboutH23"
+msgstr ""
+
+#: app/views/about.html
+msgid "AboutH24"
+msgstr ""
+
+#: app/views/about.html
+msgid "AboutH31"
+msgstr ""
+
+#: app/views/about.html
+msgid "AboutH33"
+msgstr ""
+
+#: app/views/about.html
+msgid "AboutH34"
+msgstr ""
+
+#: app/views/contact.html
+msgid "AboutHeader"
+msgstr ""
+
+#: app/views/about.html
+msgid "AboutNotSure"
+msgstr ""
+
+#: app/views/about.html
+msgid "AboutSeeHowItWorks"
+msgstr ""
+
+#: app/views/contact.html
+msgid "AboutTxt"
+msgstr ""
+
+#: app/views/about.html
+#: app/views/footer.html
+#: app/views/nav.html
+#: app/views/profile.html
+msgid "AddEvent"
+msgstr ""
+
+#: app/views/profile.html
+msgid "AddPhoto"
+msgstr ""
+
+#: app/views/profile.html
+msgid "AddReview"
+msgstr ""
+
+#: app/views/event.html
+#: app/views/profile.html
+#: app/views/tmp.html
+msgid "Address"
+msgstr ""
+
+#: app/views/publicprofile.html
+msgid "Age"
+msgstr ""
+
+#: app/views/publicevent.html
+msgid "AllHostEvents"
+msgstr ""
+
+#: app/views/profile.html
+msgid "ArchiveActive"
+msgstr ""
+
+#: app/scripts/controllers/event.js
+msgid "Are you sure?"
+msgstr ""
+
+#: app/views/publicprofile.html
+msgid "AteLately"
+msgstr ""
+
+#: app/views/publicprofile.html
+msgid "AteTogether"
+msgstr ""
+
+#: app/views/publicevent.html
+msgid "AvailableSpots"
+msgstr ""
+
+#: app/views/event.html
+#: app/views/tmp.html
+msgid "BankAccountNr"
+msgstr ""
+
+#: app/views/event.html
+#: app/views/tmp.html
+msgid "BankAccountNrInfo"
+msgstr ""
+
+#: app/views/publicevent.html
+msgid "BeFirstGuest"
+msgstr ""
+
+#: app/views/events.html
+#: app/views/homepage.html
+msgid "BestCook"
+msgstr ""
+
+#: app/views/homepage.html
+#: app/views/posts.html
+msgid "BestHosts"
+msgstr ""
+
+#: app/views/homepage.html
+#: app/views/posts.html
+msgid "BestHostsTxt"
+msgstr ""
+
+#: app/views/nav.html
+msgid "Beta"
+msgstr ""
+
+#: app/views/events.html
+#: app/views/publicevent.html
+#: app/views/publicprofile.html
+msgid "Book Now"
+msgstr ""
+
+#: app/views/event.html
+msgid "BookAfterDeadline"
+msgstr ""
+
+#: app/views/book.html
+msgid "BookingTitle"
+msgstr ""
+
+#: app/views/event.html
+#: app/views/events.html
+#: app/views/tmp.html
+msgid "CalClear"
+msgstr ""
+
+#: app/views/event.html
+#: app/views/events.html
+#: app/views/tmp.html
+msgid "CalClose"
+msgstr ""
+
+#: app/views/event.html
+#: app/views/events.html
+#: app/views/tmp.html
+msgid "CalToday"
+msgstr ""
+
+#: app/views/profile.html
+msgid "Cancel"
+msgstr ""
+
+#: app/views/profile.html
+msgid "CancelEvent"
+msgstr ""
+
+#: app/views/profile.html
+msgid "Canceled"
+msgstr ""
+
+#: app/views/login.html
+#: app/views/register.html
+msgid "Captcha*"
+msgstr ""
+
+#: app/views/footer.html
+msgid "ChangeLanguage"
+msgstr ""
+
+#: app/views/remindpass.html
+msgid "ChangePass"
+msgstr ""
+
+#: app/views/event.html
+#: app/views/profile.html
+#: app/views/tmp.html
+msgid "City"
+msgstr ""
+
+#: app/views/profile.html
+#: app/views/publicevent.html
+#: app/views/publicprofile.html
+msgid "Cleanliness"
+msgstr ""
+
+#: app/views/profile.html
+msgid "CloneEvent"
+msgstr ""
+
+#: app/views/modalconfirmdialog.html
+#: app/views/modalgallery.html
+#: app/views/modalshare.html
+msgid "Close"
+msgstr ""
+
+#: app/views/homepage.html
+msgid "CommercialBarTitle"
+msgstr ""
+
+#: app/views/modalconfirmdialog.html
+msgid "Confirm"
+msgstr ""
+
+#: app/views/book.html
+msgid "Confirm and book event!"
+msgstr ""
+
+#: app/views/book.html
+msgid "Confirm and go to pay!"
+msgstr ""
+
+#: app/views/book.html
+msgid "ConfirmTermsAndConditions"
+msgstr ""
+
+#: app/views/contact.html
+msgid "ContactDetails"
+msgstr ""
+
+#: app/views/contact.html
+msgid "ContactFavoriteDish"
+msgstr ""
+
+#: app/views/contact.html
+msgid "ContactFifthDish"
+msgstr ""
+
+#: app/views/contact.html
+msgid "ContactFifthTitle"
+msgstr ""
+
+#: app/views/contact.html
+msgid "ContactFirstDish"
+msgstr ""
+
+#: app/views/contact.html
+msgid "ContactFirstTitle"
+msgstr ""
+
+#: app/views/footer.html
+msgid "ContactFooter"
+msgstr ""
+
+#: app/views/contact.html
+msgid "ContactFourthDish"
+msgstr ""
+
+#: app/views/contact.html
+msgid "ContactFourthTitle"
+msgstr ""
+
+#: app/views/contact.html
+msgid "ContactSecondDish"
+msgstr ""
+
+#: app/views/contact.html
+msgid "ContactSecondTitle"
+msgstr ""
+
+#: app/views/contact.html
+msgid "ContactSeventhDish"
+msgstr ""
+
+#: app/views/contact.html
+msgid "ContactSeventhTitle"
+msgstr ""
+
+#: app/views/contact.html
+msgid "ContactSixthDish"
+msgstr ""
+
+#: app/views/contact.html
+msgid "ContactSixthTitle"
+msgstr ""
+
+#: app/views/contact.html
+msgid "ContactThirdDish"
+msgstr ""
+
+#: app/views/contact.html
+msgid "ContactThirdTitle"
+msgstr ""
+
+#: app/views/contact.html
+msgid "ContactTitle"
+msgstr ""
+
+#: app/views/contact.html
+msgid "ContactTxt"
+msgstr ""
+
+#: app/views/modalshare.html
+msgid "Copy and paste"
+msgstr ""
+
+#: app/views/event.html
+#: app/views/tmp.html
+msgid "Deadline"
+msgstr ""
+
+#: app/views/book.html
+msgid "DeadlineInfo"
+msgstr ""
+
+#: app/views/publicevent.html
+msgid "Delete"
+msgstr ""
+
+#: app/views/profile.html
+msgid "DeleteEvent"
+msgstr ""
+
+#: app/views/events.html
+msgid "Distance"
+msgstr ""
+
+#: app/views/publicevent.html
+msgid "Duration"
+msgstr ""
+
+#: app/views/publicprofile.html
+msgid "EatWithUs"
+msgstr ""
+
+#: app/views/homepage.html
+msgid "EatWithUsBtn"
+msgstr ""
+
+#: app/views/event.html
+#: app/views/profile.html
+msgid "EditCover"
+msgstr ""
+
+#: app/views/profile.html
+msgid "EditEvent"
+msgstr ""
+
+#: app/views/profile.html
+msgid "EditProfile"
+msgstr ""
+
+#: app/views/login.html
+msgid "Email"
+msgstr ""
+
+#: app/scripts/services/event.js
+msgid "Event deleted"
+msgstr ""
+
+#: app/scripts/services/event.js
+msgid "Event has been rejected"
+msgstr ""
+
+#: app/views/event.html
+msgid "Event name"
+msgstr ""
+
+#: app/views/event.html
+#: app/views/tmp.html
+msgid "Event url"
+msgstr ""
+
+#: app/views/event.html
+#: app/views/profile.html
+msgid "EventActive"
+msgstr ""
+
+#: app/views/event.html
+#: app/views/tmp.html
+msgid "EventAdress"
+msgstr ""
+
+#: app/views/event.html
+#: app/views/tmp.html
+msgid "EventAdressInfo"
+msgstr ""
+
+#: app/views/event.html
+msgid "EventAlcohol"
+msgstr ""
+
+#: app/views/event.html
+msgid "EventBookAfterDeadline"
+msgstr ""
+
+#: app/views/event.html
+msgid "EventBookAfterDeadlineInfo"
+msgstr ""
+
+#: app/views/profile.html
+msgid "EventCanceled"
+msgstr ""
+
+#: app/views/event.html
+#: app/views/tmp.html
+msgid "EventDate"
+msgstr ""
+
+#: app/views/event.html
+#: app/views/tmp.html
+msgid "EventDeadline"
+msgstr ""
+
+#: app/views/event.html
+#: app/views/tmp.html
+msgid "EventDeadlineInfo"
+msgstr ""
+
+#: app/views/event.html
+#: app/views/publicevent.html
+#: app/views/tmp.html
+msgid "EventDescription"
+msgstr ""
+
+#: app/views/event.html
+#: app/views/tmp.html
+msgid "EventDescriptionInfo"
+msgstr ""
+
+#: app/views/event.html
+#: app/views/tmp.html
+msgid "EventDuration"
+msgstr ""
+
+#: app/views/event.html
+msgid "EventFBFriends"
+msgstr ""
+
+#: app/views/event.html
+msgid "EventFBFriendsInfo"
+msgstr ""
+
+#: app/views/event.html
+msgid "EventFBFriendsLoginInfo"
+msgstr ""
+
+#: app/views/events.html
+#: app/views/homepage.html
+#: app/views/publicevent.html
+msgid "EventForFriends"
+msgstr ""
+
+#: app/views/event.html
+#: app/views/publicevent.html
+#: app/views/tmp.html
+msgid "EventGallery"
+msgstr ""
+
+#: app/views/event.html
+#: app/views/tmp.html
+msgid "EventGalleryInfo"
+msgstr ""
+
+#: app/views/event.html
+msgid "EventHostAlcohol"
+msgstr ""
+
+#: app/views/event.html
+#: app/views/publicevent.html
+#: app/views/tmp.html
+msgid "EventLocation"
+msgstr ""
+
+#: app/views/event.html
+#: app/views/tmp.html
+msgid "EventLocationInfo"
+msgstr ""
+
+#: app/views/event.html
+msgid "EventNoAlcohol"
+msgstr ""
+
+#: app/views/event.html
+msgid "EventPlace"
+msgstr ""
+
+#: app/views/event.html
+#: app/views/tmp.html
+msgid "EventPrice"
+msgstr ""
+
+#: app/views/event.html
+#: app/views/tmp.html
+msgid "EventPrivateApartment"
+msgstr ""
+
+#: app/views/event.html
+#: app/views/tmp.html
+msgid "EventPublicPlace"
+msgstr ""
+
+#: app/views/event.html
+#: app/views/tmp.html
+msgid "EventTime"
+msgstr ""
+
+#: app/views/event.html
+#: app/views/tmp.html
+msgid "EventURL"
+msgstr ""
+
+#: app/views/event.html
+#: app/views/tmp.html
+msgid "EventURLInfo"
+msgstr ""
+
+#: app/views/event.html
+#: app/views/tmp.html
+msgid "EventUnlisted"
+msgstr ""
+
+#: app/views/event.html
+#: app/views/tmp.html
+msgid "EventUnlistedInfo"
+msgstr ""
+
+#: app/views/event.html
+msgid "EventguestAlcohol"
+msgstr ""
+
+#: app/views/modalconfirmdialog.html
+msgid "ExplainWhy"
+msgstr ""
+
+#: app/views/modalconfirmdialog.html
+msgid "ExplainWhyPlaceholder"
+msgstr ""
+
+#: app/views/event.html
+msgid "FBFriends"
+msgstr ""
+
+#: app/views/about.html
+#: app/views/how-it-works.html
+#: app/views/login.html
+msgid "FacebookLogin"
+msgstr ""
+
+#: app/views/book.html
+msgid "FacebookLoginFriendsGuest"
+msgstr ""
+
+#: app/views/event.html
+msgid "FacebookLoginFriendsHost"
+msgstr ""
+
+#: app/views/profile.html
+msgid "Female"
+msgstr ""
+
+#: app/views/events.html
+msgid "Filter"
+msgstr ""
+
+#: app/views/events.html
+msgid "FilterEventEndDate"
+msgstr ""
+
+#: app/views/events.html
+msgid "FilterEventStartDate"
+msgstr ""
+
+#: app/views/profile.html
+msgid "FirstHint"
+msgstr ""
+
+#: app/views/login.html
+#: app/views/profile.html
+#: app/views/register.html
+msgid "Firstname"
+msgstr ""
+
+#: app/views/profile.html
+#: app/views/publicevent.html
+#: app/views/publicprofile.html
+msgid "Food"
+msgstr ""
+
+#: app/views/footer.html
+msgid "FooterMsg"
+msgstr ""
+
+#: app/views/footer.html
+msgid "FooterTitleColumn1"
+msgstr ""
+
+#: app/views/book.html
+msgid "ForHostEyesOnly"
+msgstr ""
+
+#: app/views/homepage.html
+msgid "FreeSpots"
+msgstr ""
+
+#: app/views/profile.html
+msgid "Full description"
+msgstr ""
+
+#: app/views/modalgallery.html
+msgid "Gallery"
+msgstr ""
+
+#: app/views/about.html
+#: app/views/how-it-works.html
+#: app/views/login.html
+msgid "GoogleLogin"
+msgstr ""
+
+#: app/views/profile.html
+msgid "Guest"
+msgstr ""
+
+#: app/views/profile.html
+msgid "GuestMessage"
+msgstr ""
+
+#: app/views/event.html
+msgid "GuestPrice"
+msgstr ""
+
+#: app/views/event.html
+msgid "GuestPriceTooltip"
+msgstr ""
+
+#: app/views/events.html
+#: app/views/publicevent.html
+#: app/views/publicprofile.html
+msgid "Guests"
+msgstr ""
+
+#: app/views/profile.html
+msgid "HintAccept"
+msgstr ""
+
+#: app/views/event.html
+#: app/views/tmp.html
+msgid "Hints"
+msgstr ""
+
+#: app/views/homepage.html
+msgid "Home-H1"
+msgstr ""
+
+#: app/views/homepage.html
+msgid "Home-H2"
+msgstr ""
+
+#: app/views/homepage.html
+msgid "Home-H2-P"
+msgstr ""
+
+#: app/views/homepage.html
+msgid "Home-claim"
+msgstr ""
+
+#: app/views/homepage.html
+msgid "Home-search-label"
+msgstr ""
+
+#: app/views/homepage.html
+msgid "Home-surround"
+msgstr ""
+
+#: app/views/profile.html
+#: app/views/publicevent.html
+msgid "Host"
+msgstr ""
+
+#: app/views/footer.html
+msgid "Host/Guest"
+msgstr ""
+
+#: app/views/event.html
+#: app/views/tmp.html
+msgid "HostAgreement"
+msgstr ""
+
+#: app/views/book.html
+msgid "HostInvitesOnlyFBFriends"
+msgstr ""
+
+#: app/views/nav.html
+msgid "How it works?"
+msgstr ""
+
+#: app/views/how-it-works.html
+msgid "How-it-works-H2"
+msgstr ""
+
+#: app/views/how-it-works.html
+msgid "How-it-works-H3"
+msgstr ""
+
+#: app/views/how-it-works.html
+msgid "How-it-works-H5"
+msgstr ""
+
+#: app/views/how-it-works.html
+msgid "How-it-works-H51"
+msgstr ""
+
+#: app/views/how-it-works.html
+msgid "How-it-works-H51P1"
+msgstr ""
+
+#: app/views/how-it-works.html
+msgid "How-it-works-H51P2"
+msgstr ""
+
+#: app/views/how-it-works.html
+msgid "How-it-works-H51P3"
+msgstr ""
+
+#: app/views/how-it-works.html
+msgid "How-it-works-H5P1"
+msgstr ""
+
+#: app/views/how-it-works.html
+msgid "How-it-works-H5P2"
+msgstr ""
+
+#: app/views/how-it-works.html
+msgid "How-it-works-H5P3"
+msgstr ""
+
+#: app/views/how-it-works.html
+msgid "How-it-works-H6"
+msgstr ""
+
+#: app/views/publicprofile.html
+msgid "I Like"
+msgstr ""
+
+#: app/views/profile.html
+msgid "Ical"
+msgstr ""
+
+#: app/views/publicevent.html
+msgid "ImportantInfo"
+msgstr ""
+
+#: app/views/footer.html
+#: app/views/publicevent.html
+msgid "InviteFriends"
+msgstr ""
+
+#: app/views/publicprofile.html
+msgid "InviteOnEvent"
+msgstr ""
+
+#: app/views/how-it-works.html
+#: app/views/nav.html
+#: app/views/profile.html
+msgid "JemyRazem.pl"
+msgstr ""
+
+#: app/views/contact.html
+msgid "JoinTheDarkSide"
+msgstr ""
+
+#: app/views/events.html
+#: app/views/homepage.html
+msgid "LastPlaces"
+msgstr ""
+
+#: app/views/login.html
+#: app/views/profile.html
+#: app/views/register.html
+msgid "Lastname"
+msgstr ""
+
+#: app/views/publicprofile.html
+msgid "Less"
+msgstr ""
+
+#: app/views/event.html
+#: app/views/tmp.html
+msgid "LessOptions"
+msgstr ""
+
+#: app/views/publicprofile.html
+msgid "Location"
+msgstr ""
+
+#: app/views/footer.html
+#: app/views/login.html
+#: app/views/nav.html
+msgid "Login"
+msgstr ""
+
+#: app/views/nav.html
+msgid "Logout"
+msgstr ""
+
+#: app/views/profile.html
+msgid "Male"
+msgstr ""
+
+#: app/views/event.html
+#: app/views/tmp.html
+msgid "MaxGuests"
+msgstr ""
+
+#: app/views/event.html
+#: app/views/tmp.html
+msgid "MinGuests"
+msgstr ""
+
+#: app/views/profile.html
+#: app/views/publicprofile.html
+msgid "More"
+msgstr ""
+
+#: app/views/event.html
+#: app/views/tmp.html
+msgid "MoreOptions"
+msgstr ""
+
+#: app/views/gallery.html
+msgid "Not labeled"
+msgstr ""
+
+#: app/views/book.html
+msgid "Number of guests"
+msgstr ""
+
+#: app/views/contact.html
+msgid "OurTeam"
+msgstr ""
+
+#: app/views/profile.html
+#: app/views/publicevent.html
+#: app/views/publicprofile.html
+msgid "Overall satisfaction"
+msgstr ""
+
+#: app/views/event.html
+msgid "PHEventName"
+msgstr ""
+
+#: app/views/error404.html
+msgid "PageNotFound"
+msgstr ""
+
+#: app/views/error404.html
+msgid "PageNotFoundTxt"
+msgstr ""
+
+#: app/views/homepage.html
+#: app/views/posts.html
+msgid "PassedEvents"
+msgstr ""
+
+#: app/views/homepage.html
+#: app/views/posts.html
+msgid "PassedEventsTxt"
+msgstr ""
+
+#: app/views/login.html
+#: app/views/register.html
+msgid "Password"
+msgstr ""
+
+#: app/views/remindpass.html
+msgid "PasswordChanged"
+msgstr ""
+
+#: app/views/remindpass.html
+msgid "PasswordNotMatched"
+msgstr ""
+
+#: app/views/remindpass.html
+msgid "PasswordRequired"
+msgstr ""
+
+#: app/views/profile.html
+msgid "PayEvent"
+msgstr ""
+
+#: app/views/event.html
+#: app/views/profile.html
+#: app/views/tmp.html
+msgid "Payment details"
+msgstr ""
+
+#: app/views/event.html
+#: app/views/profile.html
+msgid "Phone"
+msgstr ""
+
+#: app/views/event.html
+msgid "PortalCommission"
+msgstr ""
+
+#: app/views/event.html
+#: app/views/profile.html
+#: app/views/tmp.html
+msgid "Postal"
+msgstr ""
+
+#: app/views/event.html
+#: app/views/events.html
+#: app/views/tmp.html
+msgid "Price"
+msgstr ""
+
+#: app/views/publicevent.html
+msgid "PricePerPerson"
+msgstr ""
+
+#: app/views/footer.html
+msgid "PrivacyPolicy"
+msgstr ""
+
+#: app/views/publicevent.html
+msgid "PrivateProperty"
+msgstr ""
+
+#: app/views/nav.html
+msgid "Profile"
+msgstr ""
+
+#: app/scripts/services/auth.js
+msgid "Profile saved"
+msgstr ""
+
+#: app/views/profile.html
+msgid "ProfileInfo"
+msgstr ""
+
+#: app/views/posts.html
+msgid "PromoEvent"
+msgstr ""
+
+#: app/views/posts.html
+msgid "PromoEventTxt"
+msgstr ""
+
+#: app/views/profile.html
+msgid "PublicEvent"
+msgstr ""
+
+#: app/views/profile.html
+msgid "PublicEventPage"
+msgstr ""
+
+#: app/views/publicprofile.html
+msgid "RecentlyInvite"
+msgstr ""
+
+#: app/views/homepage.html
+msgid "RecommendedEvents"
+msgstr ""
+
+#: app/views/homepage.html
+msgid "RecommendedEventsTxt"
+msgstr ""
+
+#: app/views/footer.html
+#: app/views/login.html
+#: app/views/register.html
+msgid "Register"
+msgstr ""
+
+#: app/views/profile.html
+msgid "RejectGuest"
+msgstr ""
+
+#: app/views/login.html
+msgid "RemindPass"
+msgstr ""
+
+#: app/views/login.html
+msgid "RemindPassTxt"
+msgstr ""
+
+#: app/views/publicevent.html
+msgid "Restaurant"
+msgstr ""
+
+#: app/views/remindpass.html
+msgid "Retype your pass"
+msgstr ""
+
+#: app/views/remindpass.html
+msgid "RetypeNewPass"
+msgstr ""
+
+#: app/scripts/controllers/reviews.js
+msgid "Review deleted"
+msgstr ""
+
+#: app/views/profile.html
+msgid "ReviewBtn"
+msgstr ""
+
+#: app/views/event.html
+#: app/views/profile.html
+#: app/views/tmp.html
+msgid "Save"
+msgstr ""
+
+#: app/views/homepage.html
+msgid "Search"
+msgstr ""
+
+#: app/views/events.html
+msgid "SearchAccurately"
+msgstr ""
+
+#: app/views/events.html
+msgid "SearchMessage"
+msgstr ""
+
+#: app/views/events.html
+msgid "SearchMessageEventsNotFound"
+msgstr ""
+
+#: app/views/events.html
+msgid "SearchMessageEventsNotFoundTxt"
+msgstr ""
+
+#: app/views/profile.html
+msgid "SecondHint"
+msgstr ""
+
+#: app/views/footer.html
+msgid "SeeAlso"
+msgstr ""
+
+#: app/views/event.html
+msgid "SetPhoto"
+msgstr ""
+
+#: app/views/profile.html
+msgid "Short description"
+msgstr ""
+
+#: app/views/profile.html
+msgid "ShowProfile"
+msgstr ""
+
+#: app/views/profile.html
+msgid "Social url"
+msgstr ""
+
+#: app/views/book.html
+#: app/views/publicevent.html
+#: app/views/publicprofile.html
+msgid "Sold out!"
+msgstr ""
+
+#: app/views/publicevent.html
+msgid "SpotsConfirm"
+msgstr ""
+
+#: app/views/publicevent.html
+msgid "SpotsLeft"
+msgstr ""
+
+#: app/views/event.html
+#: app/views/events.html
+#: app/views/tmp.html
+msgid "Start date"
+msgstr ""
+
+#: app/views/event.html
+#: app/views/profile.html
+#: app/views/tmp.html
+msgid "Tags"
+msgstr ""
+
+#: app/views/footer.html
+msgid "Terms"
+msgstr ""
+
+#: app/views/homepage.html
+msgid "ThereIs"
+msgstr ""
+
+#: app/views/profile.html
+msgid "ThirdHint"
+msgstr ""
+
+#: app/views/defaultmessagetemplate.html
+#: app/views/remindpass.html
+msgid "ThisFieldIsRequired"
+msgstr ""
+
+#: app/views/defaultmessagetemplate.html
+#: app/views/remindpass.html
+msgid "ThisFieldIsTooLong"
+msgstr ""
+
+#: app/views/defaultmessagetemplate.html
+#: app/views/remindpass.html
+msgid "ThisFieldIsTooShort"
+msgstr ""
+
+#: app/views/events.html
+#: app/views/homepage.html
+msgid "Time"
+msgstr ""
+
+#: app/views/book.html
+msgid "Total"
+msgstr ""
+
+#: app/views/publicevent.html
+msgid "TotalPrice"
+msgstr ""
+
+#: app/views/publicevent.html
+msgid "TranslateDescription"
+msgstr ""
+
+#: app/scripts/controllers/rateevent.js
+msgid "Type some text about event"
+msgstr ""
+
+#: app/views/login.html
+msgid "Type your email"
+msgstr ""
+
+#: app/views/remindpass.html
+msgid "Type your pass"
+msgstr ""
+
+#: app/views/remindpass.html
+msgid "TypeNewPass"
+msgstr ""
+
+#: app/views/profile.html
+msgid "URL"
+msgstr ""
+
+#: app/views/event.html
+#: app/views/tmp.html
+msgid "Unlisted"
+msgstr ""
+
+#: app/views/profile.html
+msgid "Unpublish"
+msgstr ""
+
+#: app/views/gallery.html
+msgid "UploadImage"
+msgstr ""
+
+#: app/views/publicevent.html
+#: app/views/publicprofile.html
+msgid "When"
+msgstr ""
+
+#: app/views/book.html
+msgid "Write to Host Your wishes"
+msgstr ""
+
+#: app/scripts/controllers/event.js
+msgid "You have canceled your visit"
+msgstr ""
+
+#: app/scripts/controllers/event.js
+msgid "You have rejected guest"
+msgstr ""
+
+#: app/scripts/controllers/rateevent.js
+msgid "Your rate saved properly. You can manage this rate on event page"
+msgstr ""
+
+#: app/views/defaultmessagetemplate.html
+#: app/views/remindpass.html
+msgid "YourEmailAddressIsInvalid"
+msgstr ""
+
+#: app/views/profile.html
+msgid "YourMap"
+msgstr ""
+
+#: app/views/profile.html
+msgid "YourMapTxt"
+msgstr ""
+
+#: app/views/book.html
+msgid "YourPhone"
+msgstr ""
+
+#: app/views/profile.html
+msgid "YourPlace"
+msgstr ""
+
+#: app/views/profile.html
+msgid "YourPlaceAdress"
+msgstr ""
+
+#: app/views/profile.html
+msgid "YourPlaceBank"
+msgstr ""
+
+#: app/views/profile.html
+msgid "YourPlaceCity"
+msgstr ""
+
+#: app/views/profile.html
+msgid "YourPlaceCountry"
+msgstr ""
+
+#: app/views/profile.html
+msgid "YourPlaceIcal"
+msgstr ""
+
+#: app/views/profile.html
+msgid "YourPublicAdress"
+msgstr ""
+
+#: app/views/profile.html
+msgid "YourPublicAdressEmail"
+msgstr ""
+
+#: app/views/event.html
+#: app/views/profile.html
+msgid "YourPublicAdressPhone"
+msgstr ""
+
+#: app/views/event.html
+msgid "YourPublicAdressPhoneInfo"
+msgstr ""
+
+#: app/views/profile.html
+msgid "YourPublicAdressSocial"
+msgstr ""
+
+#: app/views/profile.html
+msgid "YourPublicData"
+msgstr ""
+
+#: app/views/profile.html
+msgid "YourPublicDataBirthyear"
+msgstr ""
+
+#: app/views/profile.html
+msgid "YourPublicDataDescription"
+msgstr ""
+
+#: app/views/profile.html
+msgid "YourPublicDataGender"
+msgstr ""
+
+#: app/views/profile.html
+msgid "YourPublicDataName"
+msgstr ""
+
+#: app/views/profile.html
+msgid "YourPublicDataShortDesc"
+msgstr ""
+
+#: app/views/profile.html
+msgid "YourPublicDataSurname"
+msgstr ""
+
+#: app/views/profile.html
+msgid "YourURL"
+msgstr ""
+
+#: app/scripts/controllers/event.js
+msgid "and more"
+msgstr ""
+
+#: app/views/remindpass.html
+msgid "changePass"
+msgstr ""
+
+#: app/views/event.html
+#: app/views/tmp.html
+msgid "jemyrazem.pl"
+msgstr ""
+
+#: app/scripts/controllers/privacy.js
+msgid "privacy"
+msgstr ""
+
+#: app/scripts/controllers/tac.js
+msgid "tac"
+msgstr ""

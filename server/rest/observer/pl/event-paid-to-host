@@ -1,0 +1,38 @@
+From: {guest.email}
+To: {host.email}
+Subject: Nowy gość na: {event.name}
+Content-type: text/html; charset=utf8
+
+{include:header.html}
+
+<h2 style="color:#131313; margin-top:0px;">Dzień dobry {host.firstname},</h2>
+
+<p>Nowy gość zarezerwował miejsce na Twoim przyjęciu: <strong>{event.name}</strong> dnia <strong>{event.event_start}</strong>.&nbsp;<br />
+<br />
+Odwiedzi Cię:&nbsp;<strong><a href="{app_root}{guest.url}">{guest.firstname} {guest.lastname}&nbsp;</a></strong></p>
+
+<p>W razie konieczności możesz kontaktować się z tym gościem pod numerem telefonu: <strong>{guest.phone}</strong></p>
+
+<p style="line-height: 20.7999992370605px;">{if:event.price}</p>
+
+<p style="line-height: 20.7999992370605px;">Ten Gość wpłacił już pełną kwotę rezerwacji. Zgodnie z regulaminem JemyRazem.pl zostanie ona przekazana na Twoje konto w ciągu 24 godzin od zakończenia przyjęcia.</p>
+
+<p style="line-height: 20.7999992370605px;">{endif:event.price}</p>
+
+<h3>{if:data.message}</h3>
+
+<h3>Dodatkowa wiadomość od Twojego gościa:</h3>
+
+<p><em>{data.message|nl2br}</em></p>
+
+<p>{endif:data.message}</p>
+
+<p><a href="{app_root}profile#host" style="line-height: 20.7999992370605px;">Tutaj możesz sprawdzić aktualną listę gości.</a></p>
+
+<hr />
+<p>Życzymy Wam udanej zabawy i dziękujemy, że JecieRazem z nami.<br />
+<em><strong>Zespół JemyRazem.pl</strong></em></p>
+
+<hr />
+<p style="color:#555; font-size:0.8em; padding:0.5em;">Jako Gospodarz masz prawo anulować rezerwację każdego Gościa. Pamiętaj jednak by robić to tylko w uzasadnionych przypadkach.</p>
+{include:footer.html}

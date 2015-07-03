@@ -1,0 +1,29 @@
+From: {me.email}
+To: {guest.email}
+Subject: Odwołano przyjęcie: {event.name}
+Content-type: text/html; charset=utf8
+
+{include:header.html}
+
+<p><img src="{event.img.thumbnail}" style="display:block; height:auto; margin-bottom:2em; width:100%" /></p>
+
+<h2 style="color:#131313; margin-top:0px;">Hello {guest.firstname},</h2>
+
+<p>Z przykrością informujemy, że Gospodarz<em><strong> </strong></em><strong>{host.firstname} {host.lastname}</strong> był zmuszony odwołać przyjęcie&nbsp;<strong>{event.name} </strong>zaplanowane na dzień <strong>{event.event_start}</strong>.</p>
+
+<h3>Informacja od gospodarza:</h3>
+
+<p>{cancel_reason}</p>
+
+<p style="line-height: 20.7999992370605px;">{if:event.price}</p>
+
+<p style="line-height: 20.7999992370605px;">W związku z odwołaniem przyjęcia, wniesiona opłata rezerwacyjna - zgodnie z regulaminem JemyRazem.pl - zostanie zwrócona na Twoje konto.</p>
+
+<p style="line-height: 20.7999992370605px;">{endif:event.price}</p>
+
+<p>Zachęcamy do kontaktu z Gospodarzem, na pewno uda się Wam ustalić nowy, dogodny termin przyjęcia.</p>
+
+<hr />
+<p>Pozdrawiamy serdecznie<br />
+<strong><em>Zespół JemyRazem.pl</em></strong></p>
+{include:footer.html}

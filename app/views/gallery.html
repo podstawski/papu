@@ -1,0 +1,60 @@
+	
+<div class="container-fluid main-gallery" ng-controller="GalleryCtrl" flow-init="config" test-chunks="false" ng-style="style" flow-file-success="$file.msg = $message" 
+flow-file-added="!!{png:1,gif:1,jpg:1,jpeg:1}[$file.getExtension()]">
+
+<div class="upload-content">
+ <button type="button" class="btn btn-small btn-default upload-btn" flow-btn flow-attrs="{accept:'image/*'}"><span class="glyphicon glyphicon-camera"></span><span translate>UploadImage</span></button>
+</div>
+	
+<div class="row photos-content"><!-- /photo content-->
+<!-- Photo Upload -->  
+<div class="row container-fluid">
+  <div class="photos-upload table table-hover table-striped">
+      <div class="photos photos-upload" ng-repeat="file in $flow.files">
+	
+	<div class="progress" ng-hide="{{file.isComplete()}}"><div class="progress-bar" role="progressbar" aria-valuenow="{{file.progress()*100}}" aria-valuemin="0" aria-valuemax="100" style="width: {{file.progress()*100}}%;"></div></div>
+	 <img flow-img="file" class="img-responsive" style="opacity:0.3;" />
+          <a class="glyphicon glyphicon-trash" href="" ng-click="file.cancel()"></a>
+         
+         
+      </div>    
+  </div>
+</div>
+<!-- /Photo Upload-->
+
+  <div ng-repeat="label in labels">
+      <div class="row container-fluid">
+          <h3>{{label}}</h3>
+          <!-- Photo -->
+          <div class="photos" ng-repeat="(id,photo) in fotki | filter : label">
+              <img ng-src="{{photo.thumbnail}}" class="img-responsive" ng-click="selectPhoto(photo.id)">
+              <div class="photos-info">
+                  <input type="text" value="" ng-model="photo.title" ng-blur="updatePhoto(photo)">
+                  <a class="glyphicon glyphicon-trash" href="" ng-click="deletePhoto(photo)"></a>
+              </div>
+          </div>
+          <!-- /Photo -->
+      </div>
+  </div>
+  <div class="row container-fluid">
+      <h3 translate>Not labeled</h3> 
+      <!-- Photo -->
+      <div class="photos" ng-repeat="(id,photo) in fotki | filter: nullLabels">
+          <img ng-src="{{photo.thumbnail}}" class="img-responsive" ng-click="selectPhoto(photo.id)">
+          <div class="photos-info">
+              <input type="text" value="" ng-model="photo.title" ng-blur="updatePhoto(photo)">
+              <a class="glyphicon glyphicon-trash" href="" ng-click="deletePhoto(photo)"></a>
+          </div>
+	  
+      </div>
+      <!-- /Photo -->
+  </div>
+
+</div> <!-- /photo content-->
+
+
+</div> <!-- /container-fluid -->
+
+
+
+

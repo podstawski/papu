@@ -1,0 +1,29 @@
+From: {me.email}
+To: {guest.email}
+Subject: Anulowano rezerwację na: {event.name}.
+Content-type: text/html; charset=utf8
+
+{include:header.html}
+
+<p><img src="{event.img.thumbnail}" style="display:block; height:auto; margin-bottom:2em; width:100%" /></p>
+
+<h2 style="color:#131313; margin-top:0px;">Dzień dobry {guest.firstname},</h2>
+
+<p>Z przykrością informujemy, że Gospodarz <a href="{app_root}{guest.url}">{host.firstname} {host.lastname}</a> anulował Twoją rezerwację na przyjęcie <strong>{event.name}</strong> zaplanowane na<strong> {event.event_start}</strong>.</p>
+
+<h3 style="color: rgb(19, 19, 19); margin-top: 0px;">Informacja od gospodarza:</h3>
+
+<p style="color: rgb(19, 19, 19); margin-top: 0px;">{cancel_reason}</p>
+
+<p>{if:event.price}</p>
+
+<p>W związku z anulowaniem rezerwacji, wniesiona przez Ciebe opłata, zgodnie z regulaminem JemyRazem.pl zostanie zwrócona na Twoje konto.</p>
+
+<p>{endif:event.price}</p>
+
+<p>Mamy nadzieję, że&nbsp;następnym razem Wasze spotkanie dojdzie do skutku.</p>
+
+<hr />
+<p>Pozdrawiamy serdecznie<br />
+<em><strong>Zespół JemyRazem.pl</strong></em></p>
+{include:footer.html}

@@ -1,0 +1,224 @@
+<!-- About--
+<div id="about">
+<div id="about-banner">
+    <div class="container">
+     <h1 translate>AboutHeader</h1>
+     <h3 translate>AboutTxt</h3>
+    </div>
+    <div class="container"><img src="images/about-bg.jpg" class="img-responsive" alt=""></div>
+</div>
+</div>
+<!-- /About-->
+
+<!-- Create Event --
+<div class="container event-info">
+    <div class="col-md-6">
+     <img class="img-responsive" src="images/organize-event.jpg" alt="">
+    </div>
+    
+    <div class="col-md-6 col-sm-6">
+<h1>Dla amatorów i profesjonalistów</h1>
+<h2>Zaprezentuj swoje kulinarne umiejętności</h2>
+<h3>Kuchnia to Twoja pasja. Wyraź to. Pozwól innym spróbować Twoich dań.</h3>
+
+<h2>Nawiąż nowe znajomości</h2>
+<h3>Spotkasz się z ciekawymi ludźmi i miło spędzisz czas. </h3>
+
+<h2>Rozwiń swój kulinarny warsztat</h2>
+<h3>Wymienisz się doświadczeniami z innymi fanami gotowania i dobrego jedzenia.</h3>
+
+<h2>Zarabiaj na swojej pasji</h2>
+<h3>Zamień swoją pasję w dodatkowe źródło przychodów.</h3>
+
+<a ng-href="/profile#host" class="nowYouSeeMe-btn"><i class="glyphicon glyphicon-plus"></i> <span translate>AddEvent</span></a>
+
+</div>
+
+</div>
+<!-- /Create Event -->
+
+<!-- Robson's Landing Page -->
+
+<!-- Parallax Promo -->
+<div class="organize" ng-controller="OrganizeeventCtrl" ng-init="">
+
+<section id="first">
+    <div class="container">
+        <h2 translate>AboutH21</h2>
+        <h3 translate>AboutH31</h3>
+        <img class="graphic" src="images/organize-2.png" alt="">
+        <!-- <a ng-href="/profile#host" class="nowYouSeeMe-btn"><i class="glyphicon glyphicon-plus"></i><span translate>AddEvent</span></a> -->
+        <h3 translate>AddEvent</h3>
+        <div class="clearfix"></div>
+        <div class="row">
+         <div class="col-md-3 col-sm-3"></div>
+         <div class="col-md-3 col-sm-3">
+          <a class="google-login" href="{{googleAuth}}" target="_self"><img src="images/google-icon.png" alt=""><span translate>GoogleLogin</span></a>
+         </div>
+         <div class="col-md-3 col-sm-3">
+          <a class="facebook-login col-md-6 col-sm-6" href="{{facebookAuth}}" target="_self"><img src="images/facebook-icon.png" alt=""><span translate>FacebookLogin</span></a>
+         </div>
+         <div class="col-md-3 col-sm-3"></div>
+        </div>
+        <p><span translate>AboutNotSure</span>, <a href="/how-it-works" translate>AboutSeeHowItWorks</a>.</p>
+    </div>
+</section>
+
+
+
+<!-- Parallax Promo -->
+<div class="organize" ng-controller="EventpromoCtrl">
+
+ 
+<section id="second" data-speed="6" data-type="background" style="background: url(images/organize-3.jpg) 50% 0 fixed; ">
+    <div class="container">
+        <h2 translate>AboutH22</h2>
+        <h3 translate>AbourH32</h3>
+        <div class="row">
+         <div class="col-md-3 col-sm-3"></div>
+         <div class="col-md-3 col-sm-3">
+          <a class="google-login" href="{{googleAuth}}" target="_self"><img src="images/google-icon.png" alt=""><span translate>GoogleLogin</span></a>
+         </div>
+         <div class="col-md-3 col-sm-3">
+          <a class="facebook-login col-md-6 col-sm-6" href="{{facebookAuth}}" target="_self"><img src="images/facebook-icon.png" alt=""><span translate>FacebookLogin</span></a>
+         </div>
+         <div class="col-md-3 col-sm-3"></div>
+        </div>
+        <p><span translate>AboutNotSure</span>, <a href="/how-it-works" translate>AboutSeeHowItWorks</a>.</p>
+    </div>
+</section>
+
+</div>
+
+<script>
+ $(document).ready(function(){
+   // cache the window object
+   $window = $(window);
+ 
+   $('section[data-type="background"]').each(function(){
+     // declare the variable to affect the defined data-type
+     var $scroll = $(this);
+                     
+      $(window).scroll(function() {
+        // HTML5 proves useful for helping with creating JS functions!
+        // also, negative value because we're scrolling upwards                             
+        var yPos = -($window.scrollTop() / $scroll.data('speed')); 
+         
+        // background position
+        var coords = '50% '+ yPos + 'px';
+ 
+        // move the background
+        $scroll.css({ backgroundPosition: coords });    
+      }); // end window scroll
+   });  // end section function
+}); // close out script
+</script>
+<!-- /Parallax Promo -->
+<!-- /Robson's Landing Page -->
+
+
+<section id="third">
+    <div class="container">
+        <h2 translate>AboutH23</h2>
+        <h3 translate>AboutH33</h3>
+        <img class="graphic" src="images/organize-4.png" alt="">
+        <div class="row">
+         <div class="col-md-3 col-sm-3"></div>
+         <div class="col-md-3 col-sm-3">
+          <a class="google-login" href="{{googleAuth}}" target="_self"><img src="images/google-icon.png" alt=""><span translate>GoogleLogin</span></a>
+         </div>
+         <div class="col-md-3 col-sm-3">
+          <a class="facebook-login col-md-6 col-sm-6" href="{{facebookAuth}}" target="_self"><img src="images/facebook-icon.png" alt=""><span translate>FacebookLogin</span></a>
+         </div>
+         <div class="col-md-3 col-sm-3"></div>
+        </div>
+        <p><span translate>AboutNotSure</span>, <a href="/how-it-works" translate>AboutSeeHowItWorks</a>.</p>
+    </div>
+</section>
+
+
+<section id="fourth" data-speed="6" data-type="background" style="background: url(images/organize-1.jpg) 50% 0 fixed; ">
+    <div class="container">
+        <h2 translate>AboutH24</h2>
+        <h3 translate>AboutH34</h3>
+        <div class="row">
+         <div class="col-md-3 col-sm-3"></div>
+         <div class="col-md-3 col-sm-3">
+          <a class="google-login" href="{{googleAuth}}" target="_self"><img src="images/google-icon.png" alt=""><span translate>GoogleLogin</span></a>
+         </div>
+         <div class="col-md-3 col-sm-3">
+          <a class="facebook-login col-md-6 col-sm-6" href="{{facebookAuth}}" target="_self"><img src="images/facebook-icon.png" alt=""><span translate>FacebookLogin</span></a>
+         </div>
+         <div class="col-md-3 col-sm-3"></div>
+        </div>
+        <p><span translate>AboutNotSure</span>, <a href="/how-it-works" translate>AboutSeeHowItWorks</a>.</p>
+    </div>
+</section>
+
+</div>
+
+<script>
+ $(document).ready(function(){
+   // cache the window object
+   $window = $(window);
+ 
+   $('section[data-type="background"]').each(function(){
+     // declare the variable to affect the defined data-type
+     var $scroll = $(this);
+                     
+      $(window).scroll(function() {
+        // HTML5 proves useful for helping with creating JS functions!
+        // also, negative value because we're scrolling upwards                             
+        var yPos = -($window.scrollTop() / $scroll.data('speed')); 
+         
+        // background position
+        var coords = '50% '+ yPos + 'px';
+ 
+        // move the background
+        $scroll.css({ backgroundPosition: coords });    
+      }); // end window scroll
+   });  // end section function
+}); // close out script
+</script>
+<!-- /Parallax Promo -->
+<!--
+<section id="fifth">
+    <div class="container">
+        <a ng-href="/profile#host" class="nowYouSeeMe-btn"><i class="glyphicon glyphicon-plus"></i> <div class="clearfix"></div><span translate>AddEvent</span></a>
+        <div class="clearfix"></div>
+        <a class="" href="/how-it-works">Dowiedz sie wiecej</a>
+    </div>
+</section>
+
+<section id="intro-organize" data-speed="6" data-type="background" style="background: url(images/organize-1.jpg) 50% 0 fixed; ">
+    <div class="container">
+        <h1>Dla amatorów i profesjonalistów</h1>
+    </div>
+</section>
+
+</div>
+
+<script>
+ $(document).ready(function(){
+   // cache the window object
+   $window = $(window);
+ 
+   $('section[data-type="background"]').each(function(){
+     // declare the variable to affect the defined data-type
+     var $scroll = $(this);
+                     
+      $(window).scroll(function() {
+        // HTML5 proves useful for helping with creating JS functions!
+        // also, negative value because we're scrolling upwards                             
+        var yPos = -($window.scrollTop() / $scroll.data('speed')); 
+         
+        // background position
+        var coords = '50% '+ yPos + 'px';
+ 
+        // move the background
+        $scroll.css({ backgroundPosition: coords });    
+      }); // end window scroll
+   });  // end section function
+}); // close out script
+</script>
+<!-- /Parallax Promo -->

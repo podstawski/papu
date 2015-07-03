@@ -1,0 +1,21 @@
+From: {guest.email}
+To: {host.email}
+Subject: Gość odwołał rezerwację na: {event.name}
+Content-type: text/html; charset=utf8
+
+{include:header.html}
+
+<h2 style="color:#131313; margin-top:0px;">Dzień dobry&nbsp;{host.firstname},</h2>
+
+<p>Z przykrością informujemy, że gość<strong>&nbsp;{guest.firstname} {guest.lastname}</strong> odwołał właśnie swoją rezerwację na przyjęciu:<strong>&nbsp;{event.name}</strong>&nbsp;zaplanowanym na<strong> {event.event_start}</strong>.</p>
+
+<p>Mamy nadzieję, że następnym razem Wasze spotkanie dojdzie do skutku.</p>
+
+<h3 style="color:#131313; margin-top:0px;">Widomość od gościa:</h3>
+
+<h3 style="color:#131313; margin-top:0px;">{cancel_reason}</h3>
+
+<hr />
+<p>Pozdrawiamy serdecznie<br />
+<em><strong>Zespół JemyRazem.pl</strong></em></p>
+{include:footer.html}

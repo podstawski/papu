@@ -1,0 +1,78 @@
+<h1>Do testow</h1>
+
+
+
+
+<div class="container profile private">
+
+<div class="row">
+
+
+<!-- Promo Event -->
+<div class="event-list" ng-controller="EventpromoCtrl">
+	<div class="container">
+		<h2 translate>PromoEvent</h2>
+		<p class="lead-txt" translate>PromoEventTxt</p>
+		<div class="clearfix"></div>
+		<!-- Host Row -->
+		<div class="host" ng-repeat="event in events">
+			<p>{{event.name}} </p>
+		</div>
+		<!-- /Host Row -->
+	</div>
+</div>
+<!-- /Promo Event -->
+
+
+
+
+<!-- Best Hosts List -->
+<div class="event-list" ng-controller="BesthostCtrl">
+	<div class="container">
+		<h2 translate>BestHosts</h2>
+		<p class="lead-txt" translate>BestHostsTxt</p>
+		<div class="clearfix"></div>
+		<!-- Host Row -->
+		<div class="host" ng-repeat="host in hosts">
+			<p>{{host.firstname}} {{host.lastname}} </p>
+		</div>
+		<!-- /Host Row -->
+	</div>
+</div>
+<!-- /Best Hosts List -->
+
+
+
+
+
+
+
+
+
+
+<!-- Passed Event List -->
+<div class="event-list" ng-controller="EventpassedCtrl">
+	<div class="container">
+		<h2 translate>PassedEvents</h2>
+		<p class="lead-txt" translate>PassedEventsTxt</p>
+		<div class="clearfix"></div>
+		<!-- Event Row -->
+		<div class="events" ng-repeat="event in events">
+			<p>{{event.name}} </p>
+		</div>
+		<!-- /Event Row -->
+	</div>
+</div>
+<!-- /Passed Event List -->
+
+
+
+
+
+
+
+
+
+
+</div>
+</div>
