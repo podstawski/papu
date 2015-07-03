@@ -1,9 +1,9 @@
 <?php
 $pass='';
-if (strstr($_SERVER['HTTP_HOST'],'beta')) $pass=['Gammanet2015','jemyrazem2015','beta'];
+if (strstr($_SERVER['HTTP_HOST'],'beta') || strstr($_SERVER['HTTP_HOST'],'epapu')) $pass=['papu2015'];
 
 if (isset($_SERVER['SERVER_SOFTWARE']) && strstr(strtolower($_SERVER['SERVER_SOFTWARE']),'engine'))
-	if (!strstr($_SERVER['HTTP_HOST'],'beta')) {
+	if (!strstr($_SERVER['HTTP_HOST'],'beta') && !strstr($_SERVER['HTTP_HOST'],'epapu')) {
 		if (!isset($_SERVER['HTTPS']) || $_SERVER['HTTPS']!='on') {
 			header("HTTP/1.1 301 Moved Permanently");
 			Header('Location: https://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);

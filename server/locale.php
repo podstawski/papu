@@ -1,21 +1,14 @@
 <?php
 
-  $country='PL';
+  $country='US';
   $url='https://www.jemyrazem.pl/';
   $lang='en';
   
-  if (strstr(strtolower($_SERVER['HTTP_HOST']),'jemyrazem'))
-  {
-    $country='PL';
-    $url='https://www.jemyrazem.pl/';
-    $lang='pl';
-  }
-  
   if (strstr(strtolower($_SERVER['HTTP_HOST']),'beta'))
   {
-    $country='PL';
-    $url='http://beta.jemyrazem.pl/';
-    $lang='pl';
+    $country='AR';
+    $url='http://beta.epapu.com/';
+    $lang='es';
   }
   
   if (strstr(strtolower($_SERVER['HTTP_HOST']),'webkameleon.com'))
@@ -23,10 +16,10 @@
     $lang='pl';
   } 
   
-  if (strstr(strtolower($_SERVER['HTTP_HOST']),'pudel.webkameleon'))
+  if (strstr(strtolower($_SERVER['HTTP_HOST']),'www.epapu.com'))
   {
-    $url='http://pudel.webkameleon.com:9003/';
-    $lang='es';
+    $url='http://www.epapu.com/';
+    $lang='en';
   }
   
  

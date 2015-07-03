@@ -1,4 +1,4 @@
-From: jemyrazem@jemyrazem.pl
+From: ePapu@epapu.com
 To: {if:me.email}{me.email}{endif:me.email}
 Subject: Witamy w gronie pasjonatów gotowania i dobrego jedzenia!
 Content-type: text/html; charset=utf8
@@ -19,5 +19,5 @@ Content-type: text/html; charset=utf8
 
 <hr />
 <p>Życzymy udanej zabawy i dziękujemy, że JeszRazem z nami.<br />
-<em><strong>Zespół JemyRazem.pl</strong></em></p>
+<em><strong>Zespół ePapu.com</strong></em></p>
 {include:footer.html}

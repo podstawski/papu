@@ -33,7 +33,7 @@ Unfortunatelly <span style="color:#9f111d">{me.firstname} {me.lastname}</span> h
 
 <p style="color:#555; font-size:1em; padding:0.5em;">
     Sincerely,<br/>
-    JemyRazem team
+    ePapu team
 </p>
 
 {include:footer.html}

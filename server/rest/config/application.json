@@ -1,16 +1,16 @@
 {
-    "recaptcha.public":"6Le55fwSAAAAAJWv435Os_Jrw_x7vibjKpXBUG9H",
-    "recaptcha.private":"6Le55fwSAAAAAFlEN-oSsufLqIqkvyBYVxyRgWMp",
+    "recaptcha.public":"fill_it",
+    "recaptcha.private":"fill_it",
     
     "protocol":"http",
     
-    "oauth2.client_id":"153512839723-83hjjp9n9v81n26q044hgctp8j9hcftr.apps.googleusercontent.com",
-    "oauth2.client_secret":"o6DLUYKQUToTGfkxjbHzi9qj",
+    "oauth2.client_id":"fill_it",
+    "oauth2.client_secret":"fill_it",
     
-    "fb.app_id": "1572783426266504",
-    "fb.app_secret":"06808a24517b0f91d6f6b17fa1f23d2e",
+    "fb.app_id": "fill_it",
+    "fb.app_secret":"fill_it",
     
-    "maps.api_key":"AIzaSyBMpDPg7BibacB6R8CdznzHS1cZrfLgSv0",
+    "maps.api_key":"fill_it",
     
     "thumbnail_size": 730,
     "square_size": 350,

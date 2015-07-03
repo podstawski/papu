@@ -1,4 +1,4 @@
-From: jemyrazem@jemyrazem.pl
+From: ePapu@epapu.com
 To: {host.email}
 Subject: Przyjęcie {event.name} zostało aktywowane.
 Content-type: text/html; charset=utf8
@@ -39,5 +39,5 @@ data: {event.event_start}, {event.duration|/3600}h</p>
 
 <hr />
 <p>Życzymy udanej zabawy i dziękujemy, że JeszRazem z nami.<br />
-<em><strong>Zespół JemyRazem.pl</strong></em></p>
+<em><strong>Zespół ePapu.com</strong></em></p>
 {include:footer.html}

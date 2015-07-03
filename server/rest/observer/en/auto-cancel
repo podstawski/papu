@@ -7,7 +7,7 @@ Content-type: text/html; charset=utf8
 
 <img src="{app_root}images/login-bg.jpg" style="width:100%; height:auto; display:block; margin-bottom:2em;"  />
 <h2 style="color:#131313; margin-top:0px;">Hello {guest.firstname}</h2>
-<h3 style="color:#131313; margin-top:0px;">Thank you for joining JemyRazem.pl</h3>
+<h3 style="color:#131313; margin-top:0px;">Thank you for joining ePapu.com</h3>
 <p style="color:#555; font-size:1em;">
 Unfortunatelly <b>{event.name}</b> planned on {event.event_start}
 will not take place due to little number of guests.
@@ -22,7 +22,7 @@ will not take place due to little number of guests.
 {endif:event.price}
 <p style="color:#555; font-size:1.2em;">
     Sincerely,<br/>
-    <i><strong>JemyRazem team</strong></i>
+    <i><strong>ePapu team</strong></i>
 <p>
 
 {include:footer.html}

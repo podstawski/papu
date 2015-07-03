@@ -17,5 +17,5 @@ Content-type: text/html; charset=utf8
 
 <hr />
 <p>Pozdrawiamy serdecznie<br />
-<em><strong>Zespół JemyRazem.pl</strong></em></p>
+<em><strong>Zespół ePapu.com</strong></em></p>
 {include:footer.html}

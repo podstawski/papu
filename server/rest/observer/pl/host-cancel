@@ -17,7 +17,7 @@ Content-type: text/html; charset=utf8
 
 <p style="line-height: 20.7999992370605px;">{if:event.price}</p>
 
-<p style="line-height: 20.7999992370605px;">W związku z odwołaniem przyjęcia, wniesiona opłata rezerwacyjna - zgodnie z regulaminem JemyRazem.pl - zostanie zwrócona na Twoje konto.</p>
+<p style="line-height: 20.7999992370605px;">W związku z odwołaniem przyjęcia, wniesiona opłata rezerwacyjna - zgodnie z regulaminem ePapu.com - zostanie zwrócona na Twoje konto.</p>
 
 <p style="line-height: 20.7999992370605px;">{endif:event.price}</p>
 
@@ -25,5 +25,5 @@ Content-type: text/html; charset=utf8
 
 <hr />
 <p>Pozdrawiamy serdecznie<br />
-<strong><em>Zespół JemyRazem.pl</em></strong></p>
+<strong><em>Zespół ePapu.com</em></strong></p>
 {include:footer.html}

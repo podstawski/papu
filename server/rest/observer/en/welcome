@@ -1,15 +1,15 @@
-From: jemyrazem@jemyrazem.pl
+From: ePapu@epapu.com
 To: {if:me.email}{me.email}{endif:me.email}
-Subject: welcome to jemyrazem.pl
+Subject: welcome to ePapu.com
 Content-type: text/html; charset=utf8
 
 {include:header.html}
 <img src="{app_root}images/jemyrazem-banner.jpg" style="width:100%; height:auto; display:block; margin-bottom:2em;"  />
 <h2 style="color:#131313; margin-top:0px;">Dear {me.firstname} </h2>
-<h3 style="color:#131313; margin-top:0px;">Thank you for joining JemyRazem.pl</h3>
+<h3 style="color:#131313; margin-top:0px;">Thank you for joining ePapu.com</h3>
 <p style="color:#555; font-size:1em;">
     You are about to meet new friends and enjoy parties!
-    <a href="https://www.jemyrazem.pl">Click here</a> to book fantastic meals organized by hosts of our society.
+    <a href="{app_root}">Click here</a> to book fantastic meals organized by hosts of our society.
 </p>
 <p style="color:#555; font-size:1em;">
     If you want to feel like masterchef and present your cooking skills,
@@ -20,7 +20,7 @@ Content-type: text/html; charset=utf8
 </p>
 <p style="color:#555; font-size:1.2em;">
     Sincerely,<br/>
-    <i><strong>JemyRazem team</strong></i>
+    <i><strong>ePapu team</strong></i>
 <p>
 
 {include:footer.html}

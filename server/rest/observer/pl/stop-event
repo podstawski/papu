@@ -1,4 +1,4 @@
-From: jemyrazem@jemyrazem.pl
+From: ePapu@epapu.com
 To: {host.email}
 Subject: Przyjęcie: {event.name} nie jest aktywne.
 Content-type: text/html; charset=utf8
@@ -15,5 +15,5 @@ Content-type: text/html; charset=utf8
 
 <hr />
 <p>Życzymy udanej zabawy i dziękujemy, że JeszRazem z nami.<br />
-<strong>Zespół JemyRazem.pl</strong></p>
+<strong>Zespół ePapu.com</strong></p>
 {include:footer.html}

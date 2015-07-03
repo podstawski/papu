@@ -1,7 +1,7 @@
 <?php
     chdir(__DIR__);
 
-    $url='https://docs.google.com/spreadsheet/ccc?key=0Amv2idDALj8-dFU0QWF5bi1LT1BRSGpHNmwxZGI2anc&output=csv';
+    $url='https://docs.google.com/spreadsheet/ccc?key=1w9Le5-gXaU8xoTL-qAx-QOhOFl24Pphv29ORqFcOL2Q&output=csv';
 
     $cmd="wget -q -O csv \"$url\"";
     //echo "$cmd\n";
@@ -48,7 +48,7 @@
             $langs[$header[$j]][$label]=$line[$j];
         }
     }
-    system("git pull ".realpath(__DIR__.'/..'));
+    //system("git pull ".realpath(__DIR__.'/..'));
 
     $js="'use strict';\nangular.module('gettext').run(['gettextCatalog', function (gettextCatalog) {\n";
     
@@ -63,8 +63,8 @@
     
     file_put_contents(__DIR__.'/../app/scripts/translations.js',$js);
     
-    system("git commit -m lang ".__DIR__.'/../server/rest/langs '.__DIR__.'/../app/scripts/translations.js');
-    system("git push origin master");
+    //system("git commit -m lang ".__DIR__.'/../server/rest/langs '.__DIR__.'/../app/scripts/translations.js');
+    //system("git push origin master");
     $cmd="cd ..; grunt nggettext_extract";
     system ($cmd);
     $po=file_get_contents(__DIR__.'/../po/template.pot');

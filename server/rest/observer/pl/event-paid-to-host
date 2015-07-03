@@ -15,7 +15,7 @@ Odwiedzi Cię:&nbsp;<strong><a href="{app_root}{guest.url}">{guest.firstname} {g
 
 <p style="line-height: 20.7999992370605px;">{if:event.price}</p>
 
-<p style="line-height: 20.7999992370605px;">Ten Gość wpłacił już pełną kwotę rezerwacji. Zgodnie z regulaminem JemyRazem.pl zostanie ona przekazana na Twoje konto w ciągu 24 godzin od zakończenia przyjęcia.</p>
+<p style="line-height: 20.7999992370605px;">Ten Gość wpłacił już pełną kwotę rezerwacji. Zgodnie z regulaminem ePapu.com zostanie ona przekazana na Twoje konto w ciągu 24 godzin od zakończenia przyjęcia.</p>
 
 <p style="line-height: 20.7999992370605px;">{endif:event.price}</p>
 
@@ -31,7 +31,7 @@ Odwiedzi Cię:&nbsp;<strong><a href="{app_root}{guest.url}">{guest.firstname} {g
 
 <hr />
 <p>Życzymy Wam udanej zabawy i dziękujemy, że JecieRazem z nami.<br />
-<em><strong>Zespół JemyRazem.pl</strong></em></p>
+<em><strong>Zespół ePapu.com</strong></em></p>
 
 <hr />
 <p style="color:#555; font-size:0.8em; padding:0.5em;">Jako Gospodarz masz prawo anulować rezerwację każdego Gościa. Pamiętaj jednak by robić to tylko w uzasadnionych przypadkach.</p>

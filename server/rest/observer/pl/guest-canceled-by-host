@@ -17,7 +17,7 @@ Content-type: text/html; charset=utf8
 
 <p>{if:event.price}</p>
 
-<p>W związku z anulowaniem rezerwacji, wniesiona przez Ciebe opłata, zgodnie z regulaminem JemyRazem.pl zostanie zwrócona na Twoje konto.</p>
+<p>W związku z anulowaniem rezerwacji, wniesiona przez Ciebe opłata, zgodnie z regulaminem ePapu.com zostanie zwrócona na Twoje konto.</p>
 
 <p>{endif:event.price}</p>
 
@@ -25,5 +25,5 @@ Content-type: text/html; charset=utf8
 
 <hr />
 <p>Pozdrawiamy serdecznie<br />
-<em><strong>Zespół JemyRazem.pl</strong></em></p>
+<em><strong>Zespół ePapu.com</strong></em></p>
 {include:footer.html}

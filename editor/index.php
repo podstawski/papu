@@ -1,6 +1,6 @@
 <?php
 
-$pass=['Gammanet2015','jemyrazem2015'];
+$pass=['papupapu'];
 
 if ($pass) {	
     if (isset($_POST['_pass'])) {
@@ -102,7 +102,7 @@ if (isset($_GET['edit'])) {
         </li>
     <?php endforeach; ?>
     
-        <li>
+        <li style="display:none">
             <a href="index.php?deploy=1" onclick="return confirm('Jesteś pewny')">deploy &raquo; beta</a>
         </li>
     </ul>
@@ -134,8 +134,8 @@ if (isset($_GET['edit'])) {
         echo '<pre>';
         
         //system("cd ../tools; php langs.php; ");
+	system("cd ../tools; php langs.php");
         system("cd ../appengine; php deploy.php; echo OK");
-        system("svn ci -m maile ../server/rest/observer");
         echo '</pre>';
     }
     ?>

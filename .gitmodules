@@ -1,0 +1,6 @@
+[submodule "server/admin/lib/Doctrine"]
+	path = server/admin/lib/Doctrine
+	url = https://github.com/GammanetPL/Doctrine
+[submodule "server/rest/library/backend"]
+	path = server/rest/library/backend
+	url = https://github.com/podstawski/backend

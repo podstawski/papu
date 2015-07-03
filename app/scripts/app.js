@@ -39,8 +39,7 @@ var app = angular
     ])
     .config(function(uiGmapGoogleMapApiProvider) {
         uiGmapGoogleMapApiProvider.configure({
-            key: 'alamakotagdziesgdziegoniewidac',
-            kluczyk: 'AIzaSyDaAo7uINyxYaszVBCMQIWcpIvJ2dpE8u8',
+            key: 'AIzaSyCehlb1DxZ1pxdACYBBUm7ocnjZORSxOY0',
             v: '3.17',
             //libraries: 'places,weather,geometry,visualization'
         });
