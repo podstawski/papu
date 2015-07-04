@@ -1,0 +1,19 @@
+From: ePapu@epapu.com
+To: {host.email}
+Subject: Przyjęcie: {event.name} nie jest aktywne.
+Content-type: text/html; charset=utf8
+
+{include:header.html}
+
+<p><img src="{event.img.thumbnail}" style="display:block; height:auto; margin-bottom:2em; width:100%" /></p>
+
+<h2 style="color:#131313; margin-top:0px;">Dzień dobry {host.firstname},</h2>
+
+<p>Twoje przyjęcie: <strong><a href="{app_root}event/{event.id}">{event.name}</a>&nbsp;</strong>nie jest aktywne. &nbsp;</p>
+
+<p>Możesz teraz spokojnie poprawić i uzupełnić wszystkie informacje. Pamiętaj jednak, że goście czekają na Twoją ofertę. Pośpiesz się więc i <a href="{app_root}profile#host">aktywuj przyjęcie ponownie.</a></p>
+
+<hr />
+<p>Życzymy udanej zabawy i dziękujemy, że JeszRazem z nami.<br />
+<strong>Zespół ePapu.com</strong></p>
+{include:footer.html}

@@ -1,0 +1,25 @@
+From: {host.email}
+To: {guest.email}
+Subject: Przyjęcie: {event.name} nie odbędzie się.
+Content-type: text/html; charset=utf8
+
+{include:header.html}
+
+<p><img src="{app_root}images/login-bg.jpg" style="display:block; height:auto; margin-bottom:2em; width:100%" /></p>
+
+<h2 style="color:#131313; margin-top:0px;">Dzień dobry {guest.firstname},</h2>
+
+<p>Z przykrością informujemy, że z uwagi na niewielką liczbę gości, przyjęcie <strong>{event.name}</strong> planowane na<strong> {event.event_start}</strong>&nbsp;nie odbędzie się.</p>
+
+<p>Zaproponuj gospodarzowi by zorganizował przyjęcie w innym terminie. Napisz pod adres: {host.email}. Mamy nadzieję, że kolejnym razem spotkanie dojdzie do skutku.</p>
+
+<p>{if:event.price}</p>
+
+<p>W związku z odwołaniem przyjęcia, wniesiona opłata rezerwacyjna - zgodnie z regulaminem ePapu.com - zostanie zwrócona na Twoje konto.</p>
+
+<p>{endif:event.price}</p>
+
+<hr />
+<p>Pozdrawiamy serdecznie.<br />
+<em><strong>Zespół ePapu.com</strong></em></p>
+{include:footer.html}

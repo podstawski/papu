@@ -1,0 +1,25 @@
+From: {host.email}
+To: {guest.email}
+Subject: Dokończ płatność za: {event.name}
+Content-type: text/html; charset=utf8
+
+{include:header.html}
+
+<p><img src="{event.img.thumbnail}" style="display:block; height:auto; margin-bottom:2em; width:100%" /></p>
+
+<h2 style="color:#131313; margin-top:0px;">Dzień dobry {guest.firstname},</h2>
+
+<p>Cieszymy się, że zarezerwowałaś(eś) miejsce na przyjęciu:<strong>&nbsp;{event.name}</strong>&nbsp;dnia&nbsp;<strong>{event.event_start}</strong>.</p>
+
+<p>Z jakiegoś powodu Twoja płatność nie została zrealizowana. Możesz dokończyć ten proces teraz - <a href="{app_root}profile#guest">klikając tutaj.</a></p>
+
+<p>To bardzo ważne, ponieważ do czasu otrzymania płatności Twoja rezerwacja nie jest potwierdzona i inni goście mogą zająć Twoje miejsce.</p>
+
+<h3>Dołącz do nas!</h3>
+
+<p>Przyjęcie <strong>{event.name}</strong>&nbsp;bez Ciebie nie będzie takie fajne :)</p>
+
+<hr />
+<p>Mamy nadzieję, że wkrótce się spotkamy. Czekamy i pozdrawiamy.<br />
+<em><strong>Zespół ePapu.com</strong></em></p>
+{include:footer.html}

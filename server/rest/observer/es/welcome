@@ -1,0 +1,23 @@
+From: ePapu@epapu.com
+To: {if:me.email}{me.email}{endif:me.email}
+Subject: Witamy w gronie pasjonatów gotowania i dobrego jedzenia!
+Content-type: text/html; charset=utf8
+
+{include:header.html}
+
+<p><img src="{app_root}images/jemyrazem-banner.jpg" style="display:block; height:auto; margin-bottom:2em; width:100%" /></p>
+
+<h2 style="color:#131313; margin-top:0px;">Dzień dobry {me.firstname},</h2>
+
+<p><strong><em>Dziękujemy, że przyłączyłaś(eś)&nbsp;się do nas.</em></strong></p>
+
+<p style="color:#555; font-size:1em;">Jesteś już tylko jeden krok od nawiązania nowych znajomości i świetnej zabawy!</p>
+
+<p style="color:#555; font-size:1em;"><a href="{app_root}">Kliknij tutaj</a> by zarezerwować miejsce na przyjęciach organizowanych przez wspaniałych ludzi, których pasją jest gotowanie.</p>
+
+<p style="color:#555; font-size:1em;">Jeśli również i Ty chcesz poczuć się jak prawdziwy szef kuchni i zaprezentować swoje kulinarne umiejętności - <a href="{app_root}profile#host">kliknij tu</a> by uzupełnić swój profil i zorganizować pierwsze przyjęcie.</p>
+
+<hr />
+<p>Życzymy udanej zabawy i dziękujemy, że JeszRazem z nami.<br />
+<em><strong>Zespół ePapu.com</strong></em></p>
+{include:footer.html}

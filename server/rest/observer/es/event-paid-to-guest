@@ -1,0 +1,54 @@
+From: {host.email}
+To: {guest.email}
+Subject: Twoja rezerwacja na: {event.name}
+Content-type: text/html; charset=utf8
+
+{include:header.html}
+
+<p><img src="{event.img.thumbnail}" style="display:block; height:auto; margin-bottom:2em; width:100%" /></p>
+
+<h2 style="color:#131313; margin-top:0px;">Dzień dobry {guest.firstname},</h2>
+
+<p>Właśnie zarezerwowałaś(eś) <strong>{data.persons} {if:data.persons=1}miejsce{endif:data.persons=1}{if:!data.persons=1}miejsca{endif:!data.persons=1}</strong> na przyjęciu:<strong> {event.name}</strong>.</p>
+
+<p>Gratulujemy świetnego wyboru!</p>
+
+<p>Życzymy udanej zabawy i wielu pozytywnych wrażeń.</p>
+
+<p>Wierzymy, że miło spędzisz czas i docenisz zaangażowanie gospodarza przyjęcia.</p>
+
+<h3 style="color: rgb(19, 19, 19); margin-top: 0px;">Twój gospodarz:</h3>
+
+<p style="color:#555; font-size:1em; background-color:#dedede; min-height:100px; padding:0.5em;"><a href="{app_root}{host.url}"><img src="{host.photo}" style="display:block; float:left; height:100px; margin-right:0.5em; width:100px" />{host.firstname} {host.lastname} </a><br />
+{event.address}<br />
+{event.postal} {event.city}<br />
+tel.: <a href="tel:{host.phone}">{host.phone}</a><br />
+mail: {host.email}</p>
+
+<h3>Termin przyjęcia:</h3>
+
+<p style="color:#555; font-size:1em; padding:0.5em;">Data i godzina rozpoczęcia: {event.event_start}<br />
+Orientacyjny czas trwania: {event.duration|/3600}h<br />
+{if:notify.session_id} Identyfikator płatności: {notify.session_id}<br />
+{endif:notify.session_id}</p>
+
+<h3>Jak dojechać:</h3>
+
+<p style="color:#131313; margin-top:0px;"><a href="https://www.google.pl/maps/place/{event.address|urlencode},+{event.postal|urlencode}+{event.city|urlencode}/@{event.lat},{event.lng},14z"><img src="{app_root}map.php/{event.lat},{event.lng}" style="max-height:300px; width:100%" /></a></p>
+
+<p>{if:event.hints}</p>
+
+<h3>Wskazówki dojazdu:</h3>
+
+<p>{event.hints|nl2br}</p>
+
+<p>{endif:event.hints}</p>
+
+<h3>To ważne:</h3>
+
+<p>Zabierz ze sobą dobry humor i baw się dobrze!</p>
+
+<hr />
+<p>Życzymy Wam udanej zabawy i dziękujemy, że JecieRazem z nami.<br />
+<strong><em>Zespół ePapu.com</em></strong></p>
+{include:footer.html}

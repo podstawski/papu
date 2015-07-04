@@ -1,0 +1,29 @@
+From: ePapu@epapu.com
+To: {guest.email}
+Subject: Odwołano rezerwację na: {event.name}
+Content-type: text/html; charset=utf8
+
+{include:header.html}
+
+<p><img src="{event.img.thumbnail}" style="display:block; height:auto; margin-bottom:2em; width:100%" /></p>
+
+<h2 style="color:#131313; margin-top:0px;">Dzień dobry {guest.firstname},</h2>
+
+<p style="color: rgb(19, 19, 19); margin-top: 0px;">Właśnie odwołałaś(eś) rezerwację na przyjęciu:&nbsp;<strong>{event.name}</strong> zaplanowanym&nbsp;na dzień <strong>{event.event_start}</strong></p>
+
+<p style="color: rgb(19, 19, 19); margin-top: 0px;">Szkoda, że nie będziemy mogli poznać się&nbsp;bliżej.</p>
+
+<p style="color: rgb(19, 19, 19); margin-top: 0px;">Mamy nadzieję, że następnym razem uda nam się zobaczyć.</p>
+
+<p>{if:event.price}</p>
+
+<p>W związku z odwołaniem rezerwacji, wniesiona przez Ciebe opłata -&nbsp;zgodnie z regulaminem ePapu.com - zostanie zwrócona na Twoje konto.</p>
+
+<p>{endif:event.price}</p>
+
+<p>a zatem do kolejnego przyjęcia&hellip;,</p>
+
+<hr />
+<p>Pozdrawiamy serdecznie<br />
+<em><strong>Zespół ePapu.com</strong></em></p>
+{include:footer.html}
