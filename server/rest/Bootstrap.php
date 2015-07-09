@@ -12,7 +12,21 @@ class Bootstrap
     public $user;
     public $datetime_format='Y-m-d\TH:i:s\Z';
     public $tags;
-    public $currency='PLN'; //ARS pesos argentinos
+    public $currency='PLN';
+    /*
+    ARS pesos argentinos,
+    https://www.mercadopago.com.ar/developers/
+    www.mercadopago.com.ar
+    info@mediahat.net
+    ({pBD8K{j^b2b
+
+    Client_id:		5690133368745219
+    Client_secret:	gjOERyZFs3mvqvxdPrze67avJvjTqy8c
+    
+    https://www.mercadopago.com.ar/developers/en/tools/sdk/server/php#install
+    
+    */
+    
     public $lang,$langs;
     public $appengine=false;
     public $beta=false;
