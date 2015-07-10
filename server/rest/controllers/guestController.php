@@ -64,7 +64,7 @@ class guestController extends Controller {
 		$ticket['guests']=$eventController->get_guests($ticket['event_id']);
 		if (!$ticket['d_cancel'] && !$ticket['d_payment'])
 		{
-		    $ticket['payu']=Bootstrap::$main->getConfig('protocol').'://'.$_SERVER['HTTP_HOST'].Bootstrap::$main->getRoot().'guest/payu/'.$ticket['id'].'?t='.time();
+		    $ticket['payu']=$this->get_pay_link($ticket['id']);
 		}
 		
 		$ticket['sort']=abs(Bootstrap::$main->now - $ticket['d_event_start']);
@@ -82,6 +82,27 @@ class guestController extends Controller {
     }
     
  
+    protected function get_pay_link($id)
+    {
+	$guest=$this->guest()->get($id);
+	$event=$this->event()->get($guest['event']);
+	
+	$operator='paypal';
+	switch ($event['currency'])
+	{
+	    case 'PLN':
+		$operator='payu';
+		break;
+	    case 'ARS':
+		$operator='mercadopago';
+		break;
+	}
+	
+	
+	return Bootstrap::$main->getConfig('protocol').'://'.$_SERVER['HTTP_HOST'].Bootstrap::$main->getRoot().'guest/'.$operator.'/'.$id;
+
+	
+    }
     
     public function post()
     {
@@ -135,7 +156,7 @@ class guestController extends Controller {
 		}
 	    }
 	    
-	    if ($event['price']>0) $data['payu']=Bootstrap::$main->getConfig('protocol').'://'.$_SERVER['HTTP_HOST'].Bootstrap::$main->getRoot().'guest/payu/'.$model->id;
+	    if ($event['price']>0) $data['payu']=$this->get_pay_link($model->id);
 	
 	    
 	    if ($event['price']+0==0) {
@@ -234,19 +255,152 @@ class guestController extends Controller {
     }
     
     
+    protected function before_operator($guest,$event)
+    {
+	$this->requiresLogin();
+	if (!isset($guest['user'])) $this->error(29);
+	//if ($guest['user']!=Bootstrap::$main->user['id']) $this->error(19);
+		if ($guest['d_payment']) $this->error(56);
+	if ($guest['d_cancel']) $this->error(58);
+	if ($event['active']!=1) $this->error(62);
+    }
+    
+    public function get_mercadopago()
+    {
+	Bootstrap::$main->human_datetime_format();
+	$guest=$this->guest()->get($this->id);
+	$event=$this->event()->get($guest['event']);
+	$this->before_operator($guest,$event);
+	
+	$config=Bootstrap::$main->getConfig();
+	
+	$data=Bootstrap::$main->user;
+	$data['client_ip']=Bootstrap::$main->ip;
+	foreach($config AS $k=>$v) if (current($a=explode('.',$k))=='mercadopago') $data[end($a)]=$v;
+	
+	require_once __DIR__.'/../class/mercadopago.php';
+
+	$preference_data = array(
+	    "items" => array(
+		    array(
+			    "title" => $event['name'],
+			    "quantity" => $guest['persons'],
+			    "currency_id" => $event['currency'], 
+			    "unit_price" => $guest['guest_price']
+		    )
+	    ),
+	    "payer" => array (
+		'name' => Bootstrap::$main->user['firstname'],
+		'surname' => Bootstrap::$main->user['lastname'],
+		'email' => Bootstrap::$main->user['email'],
+	    ),
+	    
+	    "back_urls" => array (
+		'success'=>$config['app.root'].'profile',
+		'pending'=>$config['app.root'].'profile',
+		'failure'=>$config['app.root'].'profile',
+	    ),
+	    
+	    "notification_url" => Bootstrap::$main->getConfig('protocol').'://'.$_SERVER['HTTP_HOST'].Bootstrap::$main->getRoot().'guest/mercadopago'
+	);
+	
+
+	try {
+	    $mp = new MP($data['client_id'], $data['client_secret']);
+	    $preference = $mp->create_preference($preference_data);
+	    
+	} catch (Exception $e) {
+	    mydie($e);
+	}
+
+	//mydie($preference);
+	
+	$data=array_merge($data,$event,$guest);
+	$user=new userModel($event['user']);
+	
+	$payment=new paymentModel();
+	$payment->status=1;
+	$payment->guest=$this->id;
+	$payment->d_create=Bootstrap::$main->now;
+	$payment->channel='mercadopago';
+	$payment->amount=$data['guest_price']*$data['persons'];
+	$payment->order_id=$preference['response']['id'];
+	$payment->save();
+	
+	
+	$html=file_get_contents(__DIR__.'/../resources/mercadopago.html');
+	
+	
+	foreach ($preference['response'] AS $k=>$v) if (!is_array($v)) $html=str_replace('{'.$k.'}',$v,$html);
+	
+	die($html);
+	
+    }
+    
+    public function post_mercadopago()
+    {
+	require_once __DIR__.'/../class/mercadopago.php';
+	$config=Bootstrap::$main->getConfig();
+	
+	try {
+	    $mp = new MP($config['mercadopago.client_id'], $config['mercadopago.client_secret']);
+
+	    $topic = $this->data["topic"];
+	    $merchant_order_info = null;
+	    
+	    switch ($topic) {
+		case 'payment':
+		    $payment_info = $mp->get("/collections/notifications/".$_GET["id"]);
+		    $merchant_order_info = $mp->get("/merchant_orders/".$payment_info["response"]["collection"]["merchant_order_id"]);
+		    break;
+		case 'merchant_order':
+		    $merchant_order_info = $mp->get("/merchant_orders/".$_GET["id"]);
+		    break;
+		default:
+		    $merchant_order_info = null;
+	    }
+	    
+	    if($merchant_order_info == null) {
+		echo "Error obtaining the merchant_order";
+		die();
+	    }
+	    
+	    if ($merchant_order_info["status"] == 200) {
+		$payment=new paymentModel();
+		$payment->find_one_by_order_id($merchant_order_info['response']['preference_id']);
+    
+		if ($payment->id) {
+		    $payment->d_response=Bootstrap::$main->now;
+		    $payment->notify=json_encode($this->data);
+		    if (!$payment->response) $payment->response='';
+		    $payment->response=$payment->response.date('d-m-Y H:i:s')." GMT\n".print_r($merchant_order_info['response'],1)."\n";	
+		    $payment->save();
+		    $this->paid($payment,$merchant_order_info['response']['total_amount']);
+		}
+
+	    }
+
+	    
+	    
+	    
+	    
+	} catch (Exception $e) {
+	    mydie($e);
+	}
+	
+	
+	
+	
+	
+	
+    }
     
     public function get_payu()
     {
-	$this->requiresLogin();
-	
 	Bootstrap::$main->human_datetime_format();
 	$guest=$this->guest()->get($this->id);
-	if (!isset($guest['user'])) $this->error(29);
-	//if ($guest['user']!=Bootstrap::$main->user['id']) $this->error(19);
 	$event=$this->event()->get($guest['event']);
-	if ($guest['d_payment']) $this->error(56);
-	if ($guest['d_cancel']) $this->error(58);
-	if ($event['active']!=1) $this->error(62);
+	$this->before_operator($guest,$event);
 	
 	$config=Bootstrap::$main->getConfig();
 	
@@ -297,6 +451,9 @@ class guestController extends Controller {
 	die($html);
 	
     }
+    
+    
+
     
     public function post_payu()
     {

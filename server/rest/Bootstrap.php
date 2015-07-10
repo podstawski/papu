@@ -20,8 +20,6 @@ class Bootstrap
     info@mediahat.net
     ({pBD8K{j^b2b
 
-    Client_id:		5690133368745219
-    Client_secret:	gjOERyZFs3mvqvxdPrze67avJvjTqy8c
     
     https://www.mercadopago.com.ar/developers/en/tools/sdk/server/php#install
     

@@ -50,6 +50,21 @@ class Tools {
 	    if ($price>=30) $add=0.07*$price;
 	    return ceil($price+$add);
 	}
+	
+	if ($currency=='USD')
+	{
+	    $add=1;
+	    if ($price>=10) $add=0.1*$price;
+	    return ceil($price+$add);
+	}
+	if ($currency=='ARS')
+	{
+	    $add=2;
+	    if ($price>=20) $add=0.15*$price;
+	    return ceil($price+$add);
+	}
+	
+	
 	return $price;
     }
     

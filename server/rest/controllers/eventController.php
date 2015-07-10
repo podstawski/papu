@@ -111,7 +111,8 @@ class eventController extends Controller {
     
     protected function verify_data(&$data,$model=null,$name_required=false)
     {
-	$data['currency']=Bootstrap::$main->currency;
+	$data['currency']=$this->country2currency($data['country']?:$model->country);
+
 	if (!$model) $model=$this->event();
 	
 	if ($name_required && !$model->name)  if (!isset($data['name']) || !$data['name']) return $this->error(21);
@@ -240,13 +241,28 @@ class eventController extends Controller {
 	
 	if (isset($data['active']))
 	{
-	    if ($data['active'] && !$model->active) @$this->may_activate($data,$model);
+	    if ($data['active'] && !$model->active) {
+		@$this->may_activate($data,$model);		
+	    }
 	    if (!$data['active'] && $model->active) $this->may_deactivate($model);
 	    
 	}
 	
 	if (isset($data['img']['id'])) $data['img']=$data['img']['id'];
 
+    }
+    
+    protected function country2currency($country)
+    {
+	switch ($country)
+	{
+	    case 'PL':
+		return 'PLN';
+	    case 'AR':
+		return 'ARS';
+	    default:
+		return 'USD';
+	}
     }
     
     protected function may_activate($data,$model)

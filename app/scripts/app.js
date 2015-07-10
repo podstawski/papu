@@ -75,7 +75,7 @@ var app = angular
     })
     .config(function($routeProvider, $locationProvider,$httpProvider, reCAPTCHAProvider) {
         
-        reCAPTCHAProvider.setPublicKey('6Le55fwSAAAAAJWv435Os_Jrw_x7vibjKpXBUG9H');
+        reCAPTCHAProvider.setPublicKey('6Ld_QwkTAAAAAOQAXp2xkaGAGs96fFi0uRiRgohn');
          // optional: gets passed into the Recaptcha.create call
         reCAPTCHAProvider.setOptions({
                 theme: 'clean'

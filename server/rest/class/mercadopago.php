@@ -372,7 +372,7 @@ class MPRestClient {
             if (gettype($data) == "string") {
                 json_decode($data, true);
             } else {
-                $data = json_encode($data);
+                $data = json_encode($data,JSON_NUMERIC_CHECK);
             }
 
             if(function_exists('json_last_error')) {
@@ -387,10 +387,12 @@ class MPRestClient {
     }
 
     private static function exec($method, $uri, $data, $content_type) {
+        
         $connect = self::get_connect($uri, $method, $content_type);
         if ($data) {
             self::set_data($connect, $data, $content_type);
         }
+        
 
         $api_result = curl_exec($connect);
         $api_http_code = curl_getinfo($connect, CURLINFO_HTTP_CODE);
