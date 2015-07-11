@@ -1,6 +1,8 @@
 <?php
 $pass='';
-if (strstr($_SERVER['HTTP_HOST'],'beta') || strstr($_SERVER['HTTP_HOST'],'epapu')) $pass=['papu2015'];
+if (strstr($_SERVER['HTTP_HOST'],'beta')) $pass=['papu2015'];
+if (strstr($_SERVER['HTTP_HOST'],'epapu')) $pass=['notsofast'];
+
 
 if (isset($_SERVER['SERVER_SOFTWARE']) && strstr(strtolower($_SERVER['SERVER_SOFTWARE']),'engine'))
 	if (!strstr($_SERVER['HTTP_HOST'],'beta') && !strstr($_SERVER['HTTP_HOST'],'epapu')) {
