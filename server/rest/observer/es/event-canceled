@@ -1,29 +1,25 @@
 From: ePapu@epapu.com
 To: {guest.email}
-Subject: Odwołano rezerwację na: {event.name}
+Subject: Anulada la reserva para {event.name}
 Content-type: text/html; charset=utf8
 
 {include:header.html}
 
 <p><img src="{event.img.thumbnail}" style="display:block; height:auto; margin-bottom:2em; width:100%" /></p>
 
-<h2 style="color:#131313; margin-top:0px;">Dzień dobry {guest.firstname},</h2>
+<h2 style="color:#131313; margin-top:0px;">Estimado/a {guest.firstname},</h2>
 
-<p style="color: rgb(19, 19, 19); margin-top: 0px;">Właśnie odwołałaś(eś) rezerwację na przyjęciu:&nbsp;<strong>{event.name}</strong> zaplanowanym&nbsp;na dzień <strong>{event.event_start}</strong></p>
+<p style="color: rgb(19, 19, 19); margin-top: 0px;">Acab&aacute;s de anular la reserva para el evento&nbsp;<strong>{event.name}</strong> previsto para el d&iacute;a&nbsp;<strong>{event.event_start}.</strong></p>
 
-<p style="color: rgb(19, 19, 19); margin-top: 0px;">Szkoda, że nie będziemy mogli poznać się&nbsp;bliżej.</p>
-
-<p style="color: rgb(19, 19, 19); margin-top: 0px;">Mamy nadzieję, że następnym razem uda nam się zobaczyć.</p>
+<p style="color: rgb(19, 19, 19); margin-top: 0px;">Es una pena que no puedas disfrutar de este encuentro.&nbsp;Esperamos que la próxima vez se nos d&eacute; la posibilidad de hacerte pasar un agradable rato en nueva compa&ntilde;&iacute;a.</p>
 
 <p>{if:event.price}</p>
 
-<p>W związku z odwołaniem rezerwacji, wniesiona przez Ciebe opłata -&nbsp;zgodnie z regulaminem ePapu.com - zostanie zwrócona na Twoje konto.</p>
+<p style="line-height: 20.7999992370605px;">Dada la anulación del evento, te reintegraremos el monto de la reserva a tu cuenta, tal como est&aacute; previsto en el reglamento de epapu.com.</p>
 
-<p>{endif:event.price}</p>
+<p style="line-height: 20.7999992370605px;">{endif:event.price}</p>
 
-<p>a zatem do kolejnego przyjęcia&hellip;,</p>
-
-<hr />
-<p>Pozdrawiamy serdecznie<br />
-<em><strong>Zespół ePapu.com</strong></em></p>
+<hr style="line-height: 20.7999992370605px;" />
+<p style="line-height: 20.7999992370605px;">Te mandamos un saludo muy cordial,<br />
+<em><strong>El equipo de epapu.com</strong></em></p>
 {include:footer.html}

@@ -157,7 +157,7 @@ class Bootstrap extends Bootstrapbase
 	{
 	    $result['status']=false;
 	    ini_set('display_erros','on');
-	    require_once __DIR__.'/class/Error.php';
+	    require_once __DIR__.'/Error.php';
 	    $result['error']=Error::e($error);
 
 	}

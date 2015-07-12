@@ -1,38 +1,39 @@
 From: {guest.email}
 To: {host.email}
-Subject: Nowy gość na: {event.name}
+Subject: Ten&eacute;s un invitado nuevo para {event.name}
 Content-type: text/html; charset=utf8
 
 {include:header.html}
 
-<h2 style="color:#131313; margin-top:0px;">Dzień dobry {host.firstname},</h2>
+<h2 style="color:#131313; margin-top:0px;">Estimado/a {host.firstname},</h2>
 
-<p>Nowy gość zarezerwował miejsce na Twoim przyjęciu: <strong>{event.name}</strong> dnia <strong>{event.event_start}</strong>.&nbsp;<br />
+<p>Un nuevo invitado reservó un lugar en tu evento&nbsp;<strong>{event.name}</strong>&nbsp;previsto para el d&iacute;a&nbsp;<strong>{event.event_start}</strong>.&nbsp;<br />
 <br />
-Odwiedzi Cię:&nbsp;<strong><a href="{app_root}{guest.url}">{guest.firstname} {guest.lastname}&nbsp;</a></strong></p>
+El invitado se llama&nbsp;<strong><a href="{app_root}{guest.url}">{guest.firstname} {guest.lastname}&nbsp;</a></strong>.</p>
 
-<p>W razie konieczności możesz kontaktować się z tym gościem pod numerem telefonu: <strong>{guest.phone}</strong></p>
+<p>En caso de necesidad, pod&eacute;s contactarte con el por tel&eacute;fono. Su n&uacute;mero es&nbsp;<strong>{guest.phone}</strong>.</p>
 
 <p style="line-height: 20.7999992370605px;">{if:event.price}</p>
 
-<p style="line-height: 20.7999992370605px;">Ten Gość wpłacił już pełną kwotę rezerwacji. Zgodnie z regulaminem ePapu.com zostanie ona przekazana na Twoje konto w ciągu 24 godzin od zakończenia przyjęcia.</p>
+<p style="line-height: 20.7999992370605px;">El invitado ya pagó en su totalidad la reserva. Conforme al reglamento de epapu.com, se te transferir&aacute; el dinero en un plazo de 24 horas despu&eacute;s de la finalización del evento.</p>
 
 <p style="line-height: 20.7999992370605px;">{endif:event.price}</p>
 
 <h3>{if:data.message}</h3>
 
-<h3>Dodatkowa wiadomość od Twojego gościa:</h3>
+<h3>Mensaje de tu nuevo invitado:</h3>
 
 <p><em>{data.message|nl2br}</em></p>
 
 <p>{endif:data.message}</p>
 
-<p><a href="{app_root}profile#host" style="line-height: 20.7999992370605px;">Tutaj możesz sprawdzić aktualną listę gości.</a></p>
+<p><a href="{app_root}profile#host" style="line-height: 20.7999992370605px;">Ac&aacute; pod&eacute;s revisar tu lista de invitados.</a></p>
 
 <hr />
-<p>Życzymy Wam udanej zabawy i dziękujemy, że JecieRazem z nami.<br />
-<em><strong>Zespół ePapu.com</strong></em></p>
+<p>&iexcl;Te deseamos que te diviertas much&iacute;simo!&nbsp;<br />
+Un saludo muy cordial,<br />
+<em><strong>El equipo de epapu.com</strong></em></p>
 
 <hr />
-<p style="color:#555; font-size:0.8em; padding:0.5em;">Jako Gospodarz masz prawo anulować rezerwację każdego Gościa. Pamiętaj jednak by robić to tylko w uzasadnionych przypadkach.</p>
+<p style="color:#555; font-size:0.8em; padding:0.5em;">Como anfitrión ten&eacute;s el derecho de anular la reserva de cada invitado. De hacerlo, te pedimos que lo hagas con una justificación adecuada.</p>
 {include:footer.html}

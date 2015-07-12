@@ -1,21 +1,21 @@
 From: {guest.email}
 To: {host.email}
-Subject: Gość odwołał rezerwację na: {event.name}
+Subject: Un invitado canceló la reserva para {event.name}
 Content-type: text/html; charset=utf8
 
 {include:header.html}
 
-<h2 style="color:#131313; margin-top:0px;">Dzień dobry&nbsp;{host.firstname},</h2>
+<h2 style="color:#131313; margin-top:0px;">Estimado/a {host.firstname},</h2>
 
-<p>Z przykrością informujemy, że gość<strong>&nbsp;{guest.firstname} {guest.lastname}</strong> odwołał właśnie swoją rezerwację na przyjęciu:<strong>&nbsp;{event.name}</strong>&nbsp;zaplanowanym na<strong> {event.event_start}</strong>.</p>
+<p>Lamentamos informarte que el invitado<strong>&nbsp;{guest.firstname} {guest.lastname}</strong> acaba de cancelar su reserva para tu evento<strong>&nbsp;{event.name}</strong>&nbsp;previsto para el d&iacute;a<strong> {event.event_start}</strong>.</p>
 
-<p>Mamy nadzieję, że następnym razem Wasze spotkanie dojdzie do skutku.</p>
+<p>Esperamos que la próxima vez puedas conocer a esta persona.</p>
 
-<h3 style="color:#131313; margin-top:0px;">Widomość od gościa:</h3>
+<h3 style="color:#131313; margin-top:0px;">El mensaje de tu invitado:</h3>
 
 <h3 style="color:#131313; margin-top:0px;">{cancel_reason}</h3>
 
 <hr />
-<p>Pozdrawiamy serdecznie<br />
-<em><strong>Zespół ePapu.com</strong></em></p>
+<p>Te mandamos un saludo muy cordial,<br />
+<em><strong>El equipo de epapu.com</strong></em></p>
 {include:footer.html}
