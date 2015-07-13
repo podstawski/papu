@@ -1,25 +1,25 @@
 From: {host.email}
 To: {guest.email}
-Subject: Dokończ płatność za: {event.name}
+Subject: Realiz&aacute; el pago por &quot;{event.name}&quot;
 Content-type: text/html; charset=utf8
 
 {include:header.html}
 
 <p><img src="{event.img.thumbnail}" style="display:block; height:auto; margin-bottom:2em; width:100%" /></p>
 
-<h2 style="color:#131313; margin-top:0px;">Dzień dobry {guest.firstname},</h2>
+<h2 style="color:#131313; margin-top:0px;">Estimado/a {guest.firstname},</h2>
 
-<p>Cieszymy się, że zarezerwowałaś(eś) miejsce na przyjęciu:<strong>&nbsp;{event.name}</strong>&nbsp;dnia&nbsp;<strong>{event.event_start}</strong>.</p>
+<p>Nos alegra que hayas reservado un lugar en el evento<strong>&nbsp;</strong>&quot;<strong>{event.name}</strong>&quot;,&nbsp;previsto para el d&iacute;a&nbsp;<strong>{event.event_start}</strong>.</p>
 
-<p>Z jakiegoś powodu Twoja płatność nie została zrealizowana. Możesz dokończyć ten proces teraz - <a href="{app_root}profile#guest">klikając tutaj.</a></p>
+<p>Por alg&uacute;n motivo tu pago no fue realizado con &eacute;xito. Pod&eacute;s finalizar el proceso <a href="{app_root}profile#guest">haciendo click ac&aacute;.</a></p>
 
-<p>To bardzo ważne, ponieważ do czasu otrzymania płatności Twoja rezerwacja nie jest potwierdzona i inni goście mogą zająć Twoje miejsce.</p>
+<p>Es muy importante que lo hagas, ya que hasta que no recibamos tu pago tu reserva no quedar&aacute; confirmada y otras personas podr&aacute;n ocupar tu lugar.</p>
 
-<h3>Dołącz do nas!</h3>
+<h3>&iexcl;Sumate a nosotros!</h3>
 
-<p>Przyjęcie <strong>{event.name}</strong>&nbsp;bez Ciebie nie będzie takie fajne :)</p>
+<p>El evento &quot;<strong>{event.name}</strong>&quot;&nbsp;no va a ser lo mismo sin tu presencia. ;-)</p>
 
 <hr />
-<p>Mamy nadzieję, że wkrótce się spotkamy. Czekamy i pozdrawiamy.<br />
-<em><strong>Zespół ePapu.com</strong></em></p>
+<p>Ojal&aacute; nos veamos pronto. Te esperamos y mandamos un saludo.<br />
+<strong>El equipo de epapu.com</strong></p>
 {include:footer.html}

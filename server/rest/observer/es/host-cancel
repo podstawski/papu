@@ -1,6 +1,6 @@
 From: {me.email}
 To: {guest.email}
-Subject: Cancelación del evento {event.name}
+Subject: Cancelación del evento &quot;{event.name}&quot;.
 Content-type: text/html; charset=utf8
 
 {include:header.html}
@@ -9,7 +9,7 @@ Content-type: text/html; charset=utf8
 
 <h2 style="color:#131313; margin-top:0px;">Estimado/a {guest.firstname},</h2>
 
-<p>Lamentamos informarte que el anfitrión<em><strong> </strong></em><strong>{host.firstname} {host.lastname}</strong> se vio obligado a cancelar el evento&nbsp;<strong>{event.name} </strong>previsto para el d&iacute;a&nbsp;<strong>{event.event_start}</strong>.</p>
+<p>Lamentamos informarte que el anfitrión<em><strong> </strong></em><strong>{host.firstname} {host.lastname}</strong> se vio obligado a cancelar el evento&nbsp;<strong>{event.name}</strong>,<strong>&nbsp;</strong>previsto para el d&iacute;a&nbsp;<strong>{event.event_start}</strong>.</p>
 
 <h3>Mensaje del anfitrión:</h3>
 
@@ -17,7 +17,7 @@ Content-type: text/html; charset=utf8
 
 <p style="line-height: 20.7999992370605px;">{if:event.price}</p>
 
-<p style="line-height: 20.7999992370605px;">Dada la anulación del evento, te reintegraremos el monto de la reserva a tu cuenta, tal como est&aacute; previsto en el reglamento de epapu.com.</p>
+<p style="line-height: 20.7999992370605px;">Debido a la anulación del evento, te te vamos a reintegrar el monto de la reserva a tu cuenta, tal como est&aacute; contemplado en el reglamento de epapu.com.</p>
 
 <p style="line-height: 20.7999992370605px;">{endif:event.price}</p>
 
@@ -25,5 +25,5 @@ Content-type: text/html; charset=utf8
 
 <hr style="line-height: 20.7999992370605px;" />
 <p style="line-height: 20.7999992370605px;">Te mandamos un saludo muy cordial,<br />
-<em><strong>El equipo de epapu.com</strong></em></p>
+<strong>El equipo de epapu.com</strong></p>
 {include:footer.html}

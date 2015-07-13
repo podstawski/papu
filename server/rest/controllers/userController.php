@@ -1043,8 +1043,8 @@ class userController extends Controller {
     
     public function ranking($vip=null)
     {
-	if (!$vip) $users=$this->user()->getAll();
-	else $users=$this->user()->find_by__vip($vip);
+	if (!$vip) $users=$this->user()->getAll()?:[];
+	else $users=$this->user()->find_by__vip($vip)?:[];
 
 
 	$ratemodel=new rateModel();

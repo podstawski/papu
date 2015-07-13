@@ -1,7 +1,8 @@
 <?php
 $pass='';
-if (strstr($_SERVER['HTTP_HOST'],'beta')) $pass=['papu2015'];
 if (strstr($_SERVER['HTTP_HOST'],'epapu')) $pass=['notsofast'];
+if (strstr($_SERVER['HTTP_HOST'],'beta')) $pass=['papu2015'];
+
 
 
 if (isset($_SERVER['SERVER_SOFTWARE']) && strstr(strtolower($_SERVER['SERVER_SOFTWARE']),'engine'))

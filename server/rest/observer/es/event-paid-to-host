@@ -1,17 +1,17 @@
 From: {guest.email}
 To: {host.email}
-Subject: Ten&eacute;s un invitado nuevo para {event.name}
+Subject: Ten&eacute;s un invitado nuevo para &quot;{event.name}&quot;.
 Content-type: text/html; charset=utf8
 
 {include:header.html}
 
 <h2 style="color:#131313; margin-top:0px;">Estimado/a {host.firstname},</h2>
 
-<p>Un nuevo invitado reservó un lugar en tu evento&nbsp;<strong>{event.name}</strong>&nbsp;previsto para el d&iacute;a&nbsp;<strong>{event.event_start}</strong>.&nbsp;<br />
+<p>Un nuevo invitado reservó un lugar en tu evento&nbsp;<strong>{event.name}</strong>,&nbsp;previsto para el d&iacute;a&nbsp;<strong>{event.event_start}</strong>.&nbsp;<br />
 <br />
-El invitado se llama&nbsp;<strong><a href="{app_root}{guest.url}">{guest.firstname} {guest.lastname}&nbsp;</a></strong>.</p>
+El invitado&nbsp;se llama&nbsp;<strong><a href="{app_root}{guest.url}">{guest.firstname} {guest.lastname}&nbsp;</a></strong>.</p>
 
-<p>En caso de necesidad, pod&eacute;s contactarte con el por tel&eacute;fono. Su n&uacute;mero es&nbsp;<strong>{guest.phone}</strong>.</p>
+<p>En caso de necesidad, pod&eacute;s contactarte con &eacute;l por tel&eacute;fono. Su n&uacute;mero es&nbsp;<strong>{guest.phone}</strong>.</p>
 
 <p style="line-height: 20.7999992370605px;">{if:event.price}</p>
 
@@ -32,7 +32,7 @@ El invitado se llama&nbsp;<strong><a href="{app_root}{guest.url}">{guest.firstna
 <hr />
 <p>&iexcl;Te deseamos que te diviertas much&iacute;simo!&nbsp;<br />
 Un saludo muy cordial,<br />
-<em><strong>El equipo de epapu.com</strong></em></p>
+<strong>El equipo de epapu.com</strong></p>
 
 <hr />
 <p style="color:#555; font-size:0.8em; padding:0.5em;">Como anfitrión ten&eacute;s el derecho de anular la reserva de cada invitado. De hacerlo, te pedimos que lo hagas con una justificación adecuada.</p>

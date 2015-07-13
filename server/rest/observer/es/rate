@@ -1,23 +1,24 @@
 From: {host.email}
 To: {guest.email}
-Subject: Oceń przyjęcie: {event.name}
+Subject: Calific&aacute; el evento &quot;{event.name}&quot;.
 Content-type: text/html; charset=utf8
 
 {include:header.html}
 
 <p><img src="{event.img.thumbnail}" style="display:block; height:auto; margin-bottom:2em; width:100%" /></p>
 
-<h2 style="color:#131313; margin-top:0px;">Dzień dobry {guest.firstname},</h2>
+<h2 style="color:#131313; margin-top:0px;">Estimado/a {guest.firstname},</h2>
 
-<p>Mamy nadzieję, że dobrze bawiłeś sie na przyjęciu: <strong>{event.name}</strong>.</p>
+<p>Esperamos que la hayas pasado genial en el evento&nbsp;&quot;<strong>{event.name}</strong>&quot;.</p>
 
-<p>Twój gospodarz bardzo się starał by Wasze spotkanie upłynęło w przyjaznej atmosferze&nbsp;przy wspaniałym jedzeniu.</p>
+<p>Tu anfitrión puso todo su empe&ntilde;o para que todo saliera lo mejor posible, en buena compa&ntilde;&iacute;a y con la mejor comida.</p>
 
-<p>Jeśli jesteś zadowolona(y)&nbsp;<a href="{app_root}profile#guest">kliknij tutaj</a>, by pochwalić gospodarza i polecić go innym użytkownikom ePapu.com.</p>
+<p>Si est&aacute;s satisfecho/a,&nbsp;<a href="{app_root}profile#guest">hac&eacute; click ac&aacute;</a>&nbsp;para darle el merecido&nbsp;reconocimiento a tu anfitrión y recomendarlo a otros usuarios de epapu.com.</p>
 
-<p style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;">Jeśli i Ty chcesz poczuć się jak prawdziwy szef kuchni,<strong> <a href="{app_root}profile">kliknij tu by zorganizować własne przyjęcie</a>. </strong>Może teraz<strong> </strong><strong style="line-height:20.7999992370605px">{host.firstname} {host.lastname}</strong>&nbsp;będzie Twoim gościem...?</p>
+<p style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;">Si sos vos quien quiere ocupar el rol de&nbsp;chef,<strong> <a href="{app_root}profile">entr&aacute; ac&aacute; para organizar tu propio evento</a></strong>.<strong> </strong>&iquest;Y si ahora<strong> </strong><strong style="line-height:20.7999992370605px">{host.firstname} {host.lastname}</strong>&nbsp;se convierte en tu invitado?</p>
 
 <hr />
-<p>Życzymy udanej zabawy i dziękujemy, że JeszRazem z nami.<br />
-<em><strong>Zespół ePapu.com</strong></em></p>
+<p>&iexcl;Gracias por disfrutar con nosotros!<br />
+Te mandamos un saludo afectuoso,<br />
+<strong>El equipo de epapu.com</strong></p>
 {include:footer.html}

@@ -1,6 +1,6 @@
 From: {host.email}
 To: {guest.email}
-Subject: El evento {event.name} no se realizar&aacute;.
+Subject: El evento &quot;{event.name}&quot; fue cancelado.
 Content-type: text/html; charset=utf8
 
 {include:header.html}
@@ -9,17 +9,17 @@ Content-type: text/html; charset=utf8
 
 <h2 style="color:#131313; margin-top:0px;">Estimado/a {guest.firstname},</h2>
 
-<p>Lamentablemente, debido a la insuficiente cantidad de invitados no se realizar&aacute; el evento&nbsp;<strong>{event.name}</strong> previsto para el d&iacute;a<strong> {event.event_start}</strong>.</p>
+<p>Lamentablemente, debido a la insuficiente cantidad de invitados no se realizar&aacute; el evento &quot;<strong>{event.name}</strong>&quot;, previsto para el d&iacute;a<strong> {event.event_start}</strong>.</p>
 
-<p>Pod&eacute;s proponerle al anfitrión que postergue el evento para otro d&iacute;a. Escribile a&nbsp;{host.email}. Esperamos que la próxima vez el evento pueda realizarse con exito.</p>
+<p>Si quer&eacute;s, pod&eacute;s proponerle al anfitrión que postergue el evento para otro d&iacute;a. Escribile a&nbsp;<strong>{host.email}</strong>. Esperamos que la próxima vez el evento pueda realizarse con &eacute;xito.</p>
 
 <p>{if:event.price}</p>
 
-<p>Dada la anulación del evento, te reintegraremos el monto de la reserva a tu cuenta, tal como est&aacute; previsto en el reglamento de epapu.com.</p>
+<p>Debido a la anulación del evento, te vamos a reintegrar el monto de la reserva a tu cuenta, tal como est&aacute; contemplado en el reglamento de epapu.com.</p>
 
 <p>{endif:event.price}</p>
 
 <hr />
 <p>Te mandamos un saludo muy cordial,<br />
-<em><strong>El equipo de epapu.com</strong></em></p>
+<strong>El equipo de epapu.com</strong></p>
 {include:footer.html}

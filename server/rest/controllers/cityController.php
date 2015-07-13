@@ -37,7 +37,7 @@ class cityController extends Controller {
 	
 	if ($data=Tools::memcache($token)) return $this->status($data,true,'cities');
 	
-	$cities=$this->city()->country($country);
+	$cities=$this->city()->country($country)?:[];
 
 	$data=array();
 	$event=new eventModel();
