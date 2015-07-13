@@ -1,6 +1,6 @@
 From: {host.email}
 To: {guest.email}
-Subject: Tu reserva para &quot;{event.name}&quot;
+Subject: Tu reserva para "{event.name}"
 Content-type: text/html; charset=utf8
 
 {include:header.html}
@@ -9,7 +9,7 @@ Content-type: text/html; charset=utf8
 
 <h2 style="color:#131313; margin-top:0px;">Estimado/a {guest.firstname},</h2>
 
-<p>Acab&aacute;s de reservar&nbsp;<strong>{data.persons} {if:data.persons=1}lugar{endif:data.persons=1}{if:!data.persons=1}lugares{endif:!data.persons=1}</strong> en el evento<strong>&nbsp;</strong>&quot;<strong>{event.name}</strong>&quot;.</p>
+<p>Acabás de reservar&nbsp;<strong>{data.persons} {if:data.persons=1}lugar{endif:data.persons=1}{if:!data.persons=1}lugares{endif:!data.persons=1}</strong> en el evento<strong>&nbsp;</strong>"<strong>{event.name}</strong>".</p>
 
 <p>&iexcl;Felicitaciones por la decisión!&nbsp;&iexcl;Que te diviertas y puedas compartir una experiencia maravillosa!</p>
 
@@ -18,7 +18,7 @@ Content-type: text/html; charset=utf8
 <p style="color:#555; font-size:1em; background-color:#dedede; min-height:100px; padding:0.5em;"><a href="{app_root}{host.url}"><img src="{host.photo}" style="display:block; float:left; height:100px; margin-right:0.5em; width:100px" />{host.firstname} {host.lastname} </a><br />
 {event.address}<br />
 {event.postal} {event.city}<br />
-Tel&eacute;fono: <a href="tel:{host.phone}">{host.phone}</a><br />
+Teléfono: <a href="tel:{host.phone}">{host.phone}</a><br />
 E-mail: {host.email}</p>
 
 <h3>Fecha del evento:</h3>
@@ -42,7 +42,7 @@ Duración aproximada del evento: {event.duration|/3600} hora(s)<br />
 
 <h3>Importante:</h3>
 
-<p>&iexcl;And&aacute; de buen humor y pasala bien!</p>
+<p>&iexcl;Andá de buen humor y pasala bien!</p>
 
 <hr />
 <p>Te mandamos un saludo grande,<br />

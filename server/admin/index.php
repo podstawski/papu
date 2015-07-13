@@ -14,8 +14,6 @@
 	if ($pos = strpos($admin_path, '?')) $admin_path = substr($admin_path, 0, $pos);
 	if ($admin_path[strlen($admin_path)-1]!='/') $admin_path.='/';
 	
-	require_once __DIR__.'/../rest/class/Session.php';
-	session_start();
 	include __DIR__.'/base.php';
 	require_once __DIR__.'/../rest/models/userModel.php';
 	require_once __DIR__.'/../rest/models/eventModel.php';

@@ -34,8 +34,11 @@ if (isset($_POST['edit']) && isset($_POST['data']) ) {
     $data.="{include:footer.html}";
     
     $data=str_replace("<p>&nbsp;</p>",'',$data);
+    $data=str_replace("&quot;",'"',$data);
+    
     $data=str_replace("\r",'',$data);
-    $data=str_replace('&oacute;','ó',$data);
+    $data=str_replace(['&oacute;','&iacute;','&aacute;','&eacute;','&uacute;'],
+                      ['ó','í','á','é','ú'],$data);
     $data=str_replace('http://beta.jemyrazem.pl/','{app_root}',$data);
     $data=str_replace('https://www.jemyrazem.pl/','{app_root}',$data);
     
@@ -122,7 +125,8 @@ if (isset($_GET['edit'])) {
             
             CKEDITOR.replace( 'mailmsg', {
                 extraAllowedContent: '*{*}',
-                height: '70%'
+                height: '70%',
+                language: '<?php echo isset($_GET['edit'])?dirname($_GET['edit']):'pl'?>'
             });
             
         </script>

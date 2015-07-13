@@ -11,11 +11,11 @@ Content-type: text/html; charset=utf8
 
 <p><strong>Nos encanta que te hayas unido a nosotros.</strong></p>
 
-<p style="color:#555; font-size:1em;">&iexcl;Est&aacute;s a tan sólo un paso de hacer nuevos amigos y divertirte much&iacute;simo!</p>
+<p style="color:#555; font-size:1em;">&iexcl;Estás a tan sólo un paso de hacer nuevos amigos y divertirte muchísimo!</p>
 
-<p style="color:#555; font-size:1em;"><a href="{app_root}">Hac&eacute; click ac&aacute;</a>&nbsp;para reservar un lugar en alguno de los eventos organizados por nuestros maravillosos usuarios, apasionados por la cocina y la buena mesa.</p>
+<p style="color:#555; font-size:1em;"><a href="{app_root}">Hacé click acá</a>&nbsp;para reservar un lugar en alguno de los eventos organizados por nuestros maravillosos usuarios, apasionados por la cocina y la buena mesa.</p>
 
-<p style="color:#555; font-size:1em;">Si tambi&eacute;n quer&eacute;s sentirte como un verdadero chef y compartir los frutos de tu habilidad en la cocina,&nbsp;<a href="{app_root}profile#host">hac&eacute; click ac&aacute;</a>&nbsp;para completar tu perfil y organizar tu primer evento.</p>
+<p style="color:#555; font-size:1em;">Si también querés sentirte como un verdadero chef y compartir los frutos de tu habilidad en la cocina,&nbsp;<a href="{app_root}profile#host">hacé click acá</a>&nbsp;para completar tu perfil y organizar tu primer evento.</p>
 
 <hr />
 <p>Te deseamos mucha diversión y te mandamos un saludo enorme,<br />

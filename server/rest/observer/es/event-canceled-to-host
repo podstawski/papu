@@ -1,13 +1,13 @@
 From: {guest.email}
 To: {host.email}
-Subject: Un invitado canceló la reserva para &quot;{event.name}&quot;.
+Subject: Un invitado canceló la reserva para "{event.name}".
 Content-type: text/html; charset=utf8
 
 {include:header.html}
 
 <h2 style="color:#131313; margin-top:0px;">Estimado/a {host.firstname},</h2>
 
-<p>Lamentamos informarte que el invitado<strong>&nbsp;{guest.firstname} {guest.lastname}</strong> acaba de cancelar su reserva para tu evento<strong>&nbsp;</strong>&quot;<strong>{event.name}</strong>&quot;,&nbsp;previsto para el d&iacute;a<strong> {event.event_start}</strong>.</p>
+<p>Lamentamos informarte que el invitado<strong>&nbsp;{guest.firstname} {guest.lastname}</strong> acaba de cancelar su reserva para tu evento<strong>&nbsp;</strong>"<strong>{event.name}</strong>",&nbsp;previsto para el día<strong> {event.event_start}</strong>.</p>
 
 <p>Esperamos que la próxima vez puedas conocer a esta persona.</p>
 

@@ -1,6 +1,6 @@
 From: {host.email}
 To: {guest.email}
-Subject: Realiz&aacute; el pago por &quot;{event.name}&quot;
+Subject: Realizá el pago por "{event.name}"
 Content-type: text/html; charset=utf8
 
 {include:header.html}
@@ -9,17 +9,17 @@ Content-type: text/html; charset=utf8
 
 <h2 style="color:#131313; margin-top:0px;">Estimado/a {guest.firstname},</h2>
 
-<p>Nos alegra que hayas reservado un lugar en el evento<strong>&nbsp;</strong>&quot;<strong>{event.name}</strong>&quot;,&nbsp;previsto para el d&iacute;a&nbsp;<strong>{event.event_start}</strong>.</p>
+<p>Nos alegra que hayas reservado un lugar en el evento<strong>&nbsp;</strong>"<strong>{event.name}</strong>",&nbsp;previsto para el día&nbsp;<strong>{event.event_start}</strong>.</p>
 
-<p>Por alg&uacute;n motivo tu pago no fue realizado con &eacute;xito. Pod&eacute;s finalizar el proceso <a href="{app_root}profile#guest">haciendo click ac&aacute;.</a></p>
+<p>Por algún motivo tu pago no fue realizado con éxito. Podés finalizar el proceso <a href="{app_root}profile#guest">haciendo click acá.</a></p>
 
-<p>Es muy importante que lo hagas, ya que hasta que no recibamos tu pago tu reserva no quedar&aacute; confirmada y otras personas podr&aacute;n ocupar tu lugar.</p>
+<p>Es muy importante que lo hagas, ya que hasta que no recibamos tu pago tu reserva no quedará confirmada y otras personas podrán ocupar tu lugar.</p>
 
 <h3>&iexcl;Sumate a nosotros!</h3>
 
-<p>El evento &quot;<strong>{event.name}</strong>&quot;&nbsp;no va a ser lo mismo sin tu presencia. ;-)</p>
+<p>El evento "<strong>{event.name}</strong>"&nbsp;no va a ser lo mismo sin tu presencia. ;-)</p>
 
 <hr />
-<p>Ojal&aacute; nos veamos pronto. Te esperamos y mandamos un saludo.<br />
+<p>Ojalá nos veamos pronto. Te esperamos y mandamos un saludo.<br />
 <strong>El equipo de epapu.com</strong></p>
 {include:footer.html}

@@ -1,6 +1,6 @@
 From: {host.email}
 To: {guest.email}
-Subject: Calific&aacute; el evento &quot;{event.name}&quot;.
+Subject: Calificá el evento "{event.name}".
 Content-type: text/html; charset=utf8
 
 {include:header.html}
@@ -9,13 +9,13 @@ Content-type: text/html; charset=utf8
 
 <h2 style="color:#131313; margin-top:0px;">Estimado/a {guest.firstname},</h2>
 
-<p>Esperamos que la hayas pasado genial en el evento&nbsp;&quot;<strong>{event.name}</strong>&quot;.</p>
+<p>Esperamos que la hayas pasado genial en el evento&nbsp;"<strong>{event.name}</strong>".</p>
 
-<p>Tu anfitrión puso todo su empe&ntilde;o para que todo saliera lo mejor posible, en buena compa&ntilde;&iacute;a y con la mejor comida.</p>
+<p>Tu anfitrión puso todo su empe&ntilde;o para que todo saliera lo mejor posible, en buena compa&ntilde;ía y con la mejor comida.</p>
 
-<p>Si est&aacute;s satisfecho/a,&nbsp;<a href="{app_root}profile#guest">hac&eacute; click ac&aacute;</a>&nbsp;para darle el merecido&nbsp;reconocimiento a tu anfitrión y recomendarlo a otros usuarios de epapu.com.</p>
+<p>Si estás satisfecho/a,&nbsp;<a href="{app_root}profile#guest">hacé click acá</a>&nbsp;para darle el merecido&nbsp;reconocimiento a tu anfitrión y recomendarlo a otros usuarios de epapu.com.</p>
 
-<p style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;">Si sos vos quien quiere ocupar el rol de&nbsp;chef,<strong> <a href="{app_root}profile">entr&aacute; ac&aacute; para organizar tu propio evento</a></strong>.<strong> </strong>&iquest;Y si ahora<strong> </strong><strong style="line-height:20.7999992370605px">{host.firstname} {host.lastname}</strong>&nbsp;se convierte en tu invitado?</p>
+<p style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;">Si sos vos quien quiere ocupar el rol de&nbsp;chef,<strong> <a href="{app_root}profile">entrá acá para organizar tu propio evento</a></strong>.<strong> </strong>&iquest;Y si ahora<strong> </strong><strong style="line-height:20.7999992370605px">{host.firstname} {host.lastname}</strong>&nbsp;se convierte en tu invitado?</p>
 
 <hr />
 <p>&iexcl;Gracias por disfrutar con nosotros!<br />

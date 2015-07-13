@@ -1,21 +1,21 @@
 From: {guest.email}
 To: {host.email}
-Subject: Ten&eacute;s un invitado nuevo para &quot;{event.name}&quot;.
+Subject: Tenés un invitado nuevo para "{event.name}".
 Content-type: text/html; charset=utf8
 
 {include:header.html}
 
 <h2 style="color:#131313; margin-top:0px;">Estimado/a {host.firstname},</h2>
 
-<p>Un nuevo invitado reservó un lugar en tu evento&nbsp;<strong>{event.name}</strong>,&nbsp;previsto para el d&iacute;a&nbsp;<strong>{event.event_start}</strong>.&nbsp;<br />
+<p>Un nuevo invitado reservó un lugar en tu evento&nbsp;<strong>{event.name}</strong>,&nbsp;previsto para el día&nbsp;<strong>{event.event_start}</strong>.&nbsp;<br />
 <br />
 El invitado&nbsp;se llama&nbsp;<strong><a href="{app_root}{guest.url}">{guest.firstname} {guest.lastname}&nbsp;</a></strong>.</p>
 
-<p>En caso de necesidad, pod&eacute;s contactarte con &eacute;l por tel&eacute;fono. Su n&uacute;mero es&nbsp;<strong>{guest.phone}</strong>.</p>
+<p>En caso de necesidad, podés contactarte con él por teléfono. Su número es&nbsp;<strong>{guest.phone}</strong>.</p>
 
 <p style="line-height: 20.7999992370605px;">{if:event.price}</p>
 
-<p style="line-height: 20.7999992370605px;">El invitado ya pagó en su totalidad la reserva. Conforme al reglamento de epapu.com, se te transferir&aacute; el dinero en un plazo de 24 horas despu&eacute;s de la finalización del evento.</p>
+<p style="line-height: 20.7999992370605px;">El invitado ya pagó en su totalidad la reserva. Conforme al reglamento de epapu.com, se te transferirá el dinero en un plazo de 24 horas después de la finalización del evento.</p>
 
 <p style="line-height: 20.7999992370605px;">{endif:event.price}</p>
 
@@ -27,13 +27,13 @@ El invitado&nbsp;se llama&nbsp;<strong><a href="{app_root}{guest.url}">{guest.fi
 
 <p>{endif:data.message}</p>
 
-<p><a href="{app_root}profile#host" style="line-height: 20.7999992370605px;">Ac&aacute; pod&eacute;s revisar tu lista de invitados.</a></p>
+<p><a href="{app_root}profile#host" style="line-height: 20.7999992370605px;">Acá podés revisar tu lista de invitados.</a></p>
 
 <hr />
-<p>&iexcl;Te deseamos que te diviertas much&iacute;simo!&nbsp;<br />
+<p>&iexcl;Te deseamos que te diviertas muchísimo!&nbsp;<br />
 Un saludo muy cordial,<br />
 <strong>El equipo de epapu.com</strong></p>
 
 <hr />
-<p style="color:#555; font-size:0.8em; padding:0.5em;">Como anfitrión ten&eacute;s el derecho de anular la reserva de cada invitado. De hacerlo, te pedimos que lo hagas con una justificación adecuada.</p>
+<p style="color:#555; font-size:0.8em; padding:0.5em;">Como anfitrión tenés el derecho de anular la reserva de cada invitado. De hacerlo, te pedimos que lo hagas con una justificación adecuada.</p>
 {include:footer.html}
