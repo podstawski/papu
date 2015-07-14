@@ -59,7 +59,7 @@ class Tools {
 	}
 	if ($currency=='ARS')
 	{
-	    $add=2;
+	    $add=0;
 	    if ($price>=20) $add=0.15*$price;
 	    return ceil($price+$add);
 	}
@@ -403,26 +403,14 @@ class Tools {
 	}
 	else
 	{
-	    require_once __DIR__.'/sendgrid-google-php/SendGrid_loader.php';
-	    $sendgrid = new SendGrid\SendGrid('gammanet', 'JemyRazem2015');
-	    $message  = new SendGrid\Mail();
-	    
-	    $message->addTo($mail['to'])->
-			setFrom('jemyrazem@jemyrazem.pl')->
-			setSubject($mail['subject'])->
-			setHtml($mail['msg'])->
-			setReplyTo($mail['from']);
-			
-	    return $sendgrid->send($message);
-	    
-	    /*
+
 	    $_att='';
 	    foreach ($att AS $a) foreach ($a AS $k=>$v)
 	    {
 		    $_att.='<h3>'.$k.'</h3><pre>'.$v.'</pre>';
 	    }
 	    return mail($mail['to'],$mail['subject'],$mail['msg'].$_att,$mail['header']);
-	    */
+
 	}
 
 	

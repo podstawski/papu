@@ -4,7 +4,6 @@ if (strstr($_SERVER['HTTP_HOST'],'epapu')) $pass=['notsofast'];
 if (strstr($_SERVER['HTTP_HOST'],'beta')) $pass=['papu2015'];
 
 
-
 if (isset($_SERVER['SERVER_SOFTWARE']) && strstr(strtolower($_SERVER['SERVER_SOFTWARE']),'engine'))
 	if (!strstr($_SERVER['HTTP_HOST'],'beta') && !strstr($_SERVER['HTTP_HOST'],'epapu')) {
 		if (!isset($_SERVER['HTTPS']) || $_SERVER['HTTPS']!='on') {
@@ -49,21 +48,21 @@ foreach (['facebook','google','twitterbot','pinterest','msnbot'] AS $agent)
 		include __DIR__.'/html.php';
 		die();
 	}
+	
+include __DIR__.'/rest/library/backend/include/all.php';
+if ($pass) simple_pass($pass);
 
-if ($pass) {	
-	if (isset($_POST['_pass'])) {
-		$_COOKIE['PASS']=$_POST['_pass'];
-		SetCookie('PASS',$_POST['_pass']);
-	}
-	if (!isset($_COOKIE['PASS']) || !in_array($_COOKIE['PASS'],$pass)) {
-	    
-	    die('<html><head><title>Please login</title></head><body><form method="post" style="text-align:center; margin-top:200px;"><input type="password" name="_pass"><input type="submit" value="Password"></form></body></html>');
-	}
-}
+autoload([__DIR__.'/rest/class',__DIR__.'/rest/models',__DIR__.'/rest/controllers']);
+$config=json_config(__DIR__.'/rest/config/application.json');
+$bootstrap = new Bootstrap($config);
+$geo=Tools::geoip();
+$locale='i18n/angular-locale_'.$bootstrap->lang.'-'.strtolower($geo['location']['country']).'.js';
 
 if (isset($_SERVER['SERVER_SOFTWARE']) && strstr(strtolower($_SERVER['SERVER_SOFTWARE']),'engine')) 
 {
-	readfile(__DIR__.'/index.html');
+	$html=file_get_contents(__DIR__.'/index.html');
+	if (file_exists($locale)) $html=str_replace('bower_components/angular-i18n/angular-locale_en-us.js',$locale,$html);
+	die($html);
 }
 else
 {

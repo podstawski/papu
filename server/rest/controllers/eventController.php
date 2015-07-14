@@ -111,7 +111,7 @@ class eventController extends Controller {
     
     protected function verify_data(&$data,$model=null,$name_required=false)
     {
-	$data['currency']=$this->country2currency($data['country']?:$model->country);
+	$data['currency']=$this->country2currency((isset($data['country']) && $data['country'])?:(is_object($model)?$model->country:''));
 
 	if (!$model) $model=$this->event();
 	

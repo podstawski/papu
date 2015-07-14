@@ -1,7 +1,7 @@
 <?php
 	ini_set('display_errors',0);
 	$names=array();
-	include_once __DIR__.'/rest/Bootstrap.php';
+
 	
 	foreach (scandir(__DIR__.'/rest/controllers') AS $c)
 	{
