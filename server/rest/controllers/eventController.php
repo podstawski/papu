@@ -111,7 +111,10 @@ class eventController extends Controller {
     
     protected function verify_data(&$data,$model=null,$name_required=false)
     {
-	$data['currency']=$this->country2currency((isset($data['country']) && $data['country'])?:(is_object($model)?$model->country:''));
+	
+	$country=@(isset($data['country']) && $data['country'])?$data['country']:(is_object($model)?$model->country:'');
+
+	if ($country) $data['currency']=$this->country2currency($country);
 
 	if (!$model) $model=$this->event();
 	
@@ -401,8 +404,8 @@ class eventController extends Controller {
 	}
 	$data=$this->data;
 	
-	
 	$this->verify_data($data);
+	
 	
 	$data['active']=0;
 	$data['_guest_count']=0;
@@ -420,6 +423,7 @@ class eventController extends Controller {
 	
 	
 	$model=new eventModel($data,true);
+	$model->currency=$this->country2currency($model->country);
 	
 	if ($model->lat && $model->lng) {
 	    $hints=$model->lastHints();

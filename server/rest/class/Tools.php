@@ -21,7 +21,7 @@ class Tools {
             }
 	    
 	    if ($k==='price') $row[$k]+=0;
-	    if ($k==='price' && !isset($row['host_price']))
+	    if ($k==='price' && !isset($row['host_price']) && isset($row['currency']))
 	    {
 		$price=self::change_price($row[$k],$row['currency']);
 		$row['host_price']=$row[$k];
