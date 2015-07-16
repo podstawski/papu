@@ -337,121 +337,108 @@ class guestController extends Controller {
 	
     }
     
-    public function get_mercadopagoresult()
-    {
-	require_once __DIR__.'/../class/mercadopago.php';
-	$config=Bootstrap::$main->getConfig();
-	
-	$payment=new paymentModel();
-	$payment->find_one_by_order_id($this->data('preference_id'));
     
-	if( $payment->id && $payment->notify) {
-	    $notify=json_decode($payment->notify,true);
-	
-	    if (isset($notify['resource']) && isset($notify['topic'])) {
-		$id=basename($notify['resource']);
-		$topic=$notify['topic'];
-	
-		try {
-
-		    $mp = new MP($config['mercadopago.client_id'], $config['mercadopago.client_secret']);
-	
-		    $topic = $notify['topic'];
-		    $merchant_order_info = null;
-		    
-		    switch ($topic) {
-			case 'payment':
-			    $payment_info = $mp->get("/collections/notifications/".$id);
-			    $merchant_order_info = $mp->get("/merchant_orders/".$payment_info["response"]["collection"]["merchant_order_id"]);
-			    break;
-			case 'merchant_order':
-			    $merchant_order_info = $mp->get("/merchant_orders/".$id);
-			    break;
-			default:
-			    $merchant_order_info = null;
-		    }
-		    
-		    
-		    mydie($merchant_order_info);
-		} catch (Exception $e) {
-		    mydie($e);
-		}
-		
-	    }
-	}
-	
-	try {
-	    $mp = new MP($config['mercadopago.client_id'], $config['mercadopago.client_secret']);
-
-	    //$payment_info = $mp->get("/collections/notifications/".$this->data('collection_id'));
-	    
-	    $payment_info = $mp->get("/merchant_orders/",0);
-	    $merchant_order_info = null;
-	    
-	    mydie($payment_info);
-	    
-	} catch (Exception $e) {
-	    mydie($e);
-	}
-	
-    }
-    
-    public function post_mercadopago()
+    protected function mercadopage_check($topic,$id)
     {
 	require_once __DIR__.'/../class/mercadopago.php';
 	$config=Bootstrap::$main->getConfig();
 	
 	try {
+
 	    $mp = new MP($config['mercadopago.client_id'], $config['mercadopago.client_secret']);
 
-	    $topic = $this->data("topic");
 	    $merchant_order_info = null;
 	    
 	    switch ($topic) {
 		case 'payment':
-		    $payment_info = $mp->get("/collections/notifications/".$this->data("id"));
+		    $payment_info = $mp->get("/collections/notifications/".$id);
 		    $merchant_order_info = $mp->get("/merchant_orders/".$payment_info["response"]["collection"]["merchant_order_id"]);
 		    break;
 		case 'merchant_order':
-		    $merchant_order_info = $mp->get("/merchant_orders/".$this->data("id"));
+		    $merchant_order_info = $mp->get("/merchant_orders/".$id);
 		    break;
 		default:
 		    $merchant_order_info = null;
 	    }
-	    
-	    if ($merchant_order_info == null) {
-		echo "Error obtaining the merchant_order";
-		die();
-	    }
-	    
-	    if ($merchant_order_info["status"] == 200) {
-		$payment=new paymentModel();
-		$payment->find_one_by_order_id($merchant_order_info['response']['preference_id']);
-    
-		if ($payment->id) {
-		    $payment->d_response=Bootstrap::$main->now;
-		    $payment->notify=json_encode($this->data);
-		    if (!$payment->response) $payment->response='';
-		    $payment->response=$payment->response . date('d-m-Y H:i:s')." GMT\n".print_r($merchant_order_info['response'],1)."\n";	
-		    $payment->save();
-		    $this->paid($payment,$merchant_order_info['response']['total_amount']);
-		}
-
-	    }
-
-	    
-	    
-	    
-	    
+	    return $merchant_order_info;
+	
 	} catch (Exception $e) {
 	    mydie($e);
 	}
 	
 	
+    }
+    
+    public function get_mercadopagoresult()
+    {
+
+	
+	$payment=new paymentModel();
+	$check=null;
+	
+	if ($this->data('merchant_order_id'))
+	{
+	    $check=$this->mercadopage_check('merchant_order',$this->data('merchant_order_id'));
+	}
+	elseif ($this->data('preference_id'))
+	{
+	    $payment->find_one_by_order_id($this->data('preference_id'));
+    
+	    if ($payment->id && $payment->notify) {
+		$notify=json_decode($payment->notify,true);
+	    
+		if (isset($notify['resource']) && isset($notify['topic'])) {
+		    $id=basename($notify['resource']);
+		    $topic=$notify['topic'];
+		    $check=$this->mercadopage_check($topic,$id);
+		}
+	    }
+	}
+	
+	if ($check) $this->mercadopago_confirm($check);
 	
 	
+    }
+    
+    protected function mercadopago_confirm($check)
+    {
+
+	//http://pudel.webkameleon.com/epapu/server/rest/guest/mercadopagoresult?collection_id=1250847589&collection_status=in_process&preference_id=187341905-5befafe9-5ccf-419c-8c6a-b1b332c16cf1&external_reference=null&payment_type=credit_card&merchant_order_id=168752676
 	
+    
+	if ($check["status"] == 200) {
+	    $payment=new paymentModel();
+	    $payment->find_one_by_order_id($check['response']['preference_id']);
+
+	    if ($payment->id) {
+		$payment->d_response=Bootstrap::$main->now;
+		$payment->notify=json_encode($this->data);
+		if (!$payment->response) $payment->response='';
+		$payment->response=$payment->response . date('d-m-Y H:i:s')." GMT\n".print_r($check['response'],1)."\n";	
+		$payment->save();
+		
+		
+		//$this->paid($payment,$check['response']['total_amount']);
+	    }
+
+	}
+
+	//mydie($check,'confirm');
+    }
+    
+    public function post_mercadopago()
+    {
+	Tools::log('mercadopago',['post',$this->data]);
 	
+	$topic = $this->data("topic");
+	$id=$this->data("id");
+	
+	$check=null;
+	if ($topic && $id) {
+	    $check=$this->mercadopage_check($topic,$id);
+	}
+	
+	die('OK');
     }
     
     public function get_payu()

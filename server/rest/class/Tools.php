@@ -491,8 +491,8 @@ class Tools {
 
 	$d=date('Y-m-d H:i:s');
 	$f=0;
-	while (file_exists("$file/$d:$f")) $f++;
-	$file="$file/$d:$f";	
+	while (file_exists("$file/$d:$f.txt")) $f++;
+	$file="$file/$d:$f.txt";	
 	
 
 	
