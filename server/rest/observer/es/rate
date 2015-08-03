@@ -15,10 +15,10 @@ Content-type: text/html; charset=utf8
 
 <p>Si estás satisfecho/a,&nbsp;<a href="{app_root}profile#guest">hacé click acá</a>&nbsp;para darle el merecido&nbsp;reconocimiento a tu anfitrión y recomendarlo a otros usuarios de epapu.com.</p>
 
-<p style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;">Si sos vos quien quiere ocupar el rol de&nbsp;chef,<strong> <a href="{app_root}profile">entrá acá para organizar tu propio evento</a></strong>.<strong> </strong>&iquest;Y si ahora<strong> </strong><strong style="line-height:20.7999992370605px">{host.firstname} {host.lastname}</strong>&nbsp;se convierte en tu invitado?</p>
+<p style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;">Si sos vos quien quiere ocupar el rol de&nbsp;chef,<strong> <a href="{app_root}profile">entrá acá para organizar tu propio evento</a></strong>.<strong> </strong>¿Y si ahora<strong> </strong><strong style="line-height:20.7999992370605px">{host.firstname} {host.lastname}</strong>&nbsp;se convierte en tu invitado?</p>
 
 <hr />
-<p>&iexcl;Gracias por disfrutar con nosotros!<br />
+<p>¡Gracias por disfrutar con nosotros!<br />
 Te mandamos un saludo afectuoso,<br />
 <strong>El equipo de epapu.com</strong></p>
 {include:footer.html}

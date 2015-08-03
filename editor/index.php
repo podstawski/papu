@@ -37,8 +37,8 @@ if (isset($_POST['edit']) && isset($_POST['data']) ) {
     $data=str_replace("&quot;",'"',$data);
     
     $data=str_replace("\r",'',$data);
-    $data=str_replace(['&oacute;','&iacute;','&aacute;','&eacute;','&uacute;'],
-                      ['ó','í','á','é','ú'],$data);
+    $data=str_replace(['&oacute;','&iacute;','&aacute;','&eacute;','&uacute;','&iexcl;','&iquest;'],
+                      ['ó','í','á','é','ú','¡','¿'],$data);
     $data=str_replace('http://beta.jemyrazem.pl/','{app_root}',$data);
     $data=str_replace('https://www.jemyrazem.pl/','{app_root}',$data);
     

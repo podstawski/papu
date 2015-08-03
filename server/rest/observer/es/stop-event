@@ -14,6 +14,6 @@ Content-type: text/html; charset=utf8
 <p>Ahora podés tranquilamente corregir y completar toda la información. No te olvides de que los invitados están esperando tu oferta. Así que no pierdas tiempo y&nbsp;<a href="{app_root}profile#host">activá tu evento nuevamente.</a></p>
 
 <hr />
-<p>&iexcl;Que la pases genial!<br />
+<p>¡Que la pases genial!<br />
 <strong>El equipo de epapu.com</strong></p>
 {include:footer.html}

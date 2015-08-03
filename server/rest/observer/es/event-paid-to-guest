@@ -11,7 +11,7 @@ Content-type: text/html; charset=utf8
 
 <p>Acabás de reservar&nbsp;<strong>{data.persons} {if:data.persons=1}lugar{endif:data.persons=1}{if:!data.persons=1}lugares{endif:!data.persons=1}</strong> en el evento<strong>&nbsp;</strong>"<strong>{event.name}</strong>".</p>
 
-<p>&iexcl;Felicitaciones por la decisión!&nbsp;&iexcl;Que te diviertas y puedas compartir una experiencia maravillosa!</p>
+<p>¡Felicitaciones por la decisión!&nbsp;¡Que te diviertas y puedas compartir una experiencia maravillosa!</p>
 
 <h3 style="color: rgb(19, 19, 19); margin-top: 0px;">Tu anfitrión es:</h3>
 
@@ -42,7 +42,7 @@ Duración aproximada del evento: {event.duration|/3600} hora(s)<br />
 
 <h3>Importante:</h3>
 
-<p>&iexcl;Andá de buen humor y pasala bien!</p>
+<p>¡Andá de buen humor y pasala bien!</p>
 
 <hr />
 <p>Te mandamos un saludo grande,<br />

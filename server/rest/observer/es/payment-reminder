@@ -15,7 +15,7 @@ Content-type: text/html; charset=utf8
 
 <p>Es muy importante que lo hagas, ya que hasta que no recibamos tu pago tu reserva no quedará confirmada y otras personas podrán ocupar tu lugar.</p>
 
-<h3>&iexcl;Sumate a nosotros!</h3>
+<h3>¡Sumate a nosotros!</h3>
 
 <p>El evento "<strong>{event.name}</strong>"&nbsp;no va a ser lo mismo sin tu presencia. ;-)</p>
 

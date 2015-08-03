@@ -9,9 +9,9 @@ Content-type: text/html; charset=utf8
 
 <h2 style="color:#131313; margin-top:0px;">Estimado/a {host.firstname},</h2>
 
-<p>&iexcl;Felicitaciones! Acabamos de activar tu evento<strong>&nbsp;</strong>"<strong>{event.name}</strong>"<em>.</em></p>
+<p>¡Felicitaciones! Acabamos de activar tu evento<strong>&nbsp;</strong>"<strong>{event.name}</strong>"<em>.</em></p>
 
-<p>Ahora, &iexcl;a arrancar con los preparativos!&nbsp;A partir de este momento tus futuros invitados pueden empezar a hacer sus reservas.&nbsp;Es el mejor momento para difundir tu evento en Facebook o, por ejemplo, en tu blog.&nbsp;Podés hacerlo directamente <a href="{app_root}event/{event.id}">desde la página de tu evento.</a></p>
+<p>Ahora, ¡a arrancar con los preparativos!&nbsp;A partir de este momento tus futuros invitados pueden empezar a hacer sus reservas.&nbsp;Es el mejor momento para difundir tu evento en Facebook o, por ejemplo, en tu blog.&nbsp;Podés hacerlo directamente <a href="{app_root}event/{event.id}">desde la página de tu evento.</a></p>
 
 <h3>Revisá la información siguiente, que será enviada a los invitados que paguen la reserva por la reserva de un lugar en tu evento:</h3>
 

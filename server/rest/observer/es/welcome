@@ -1,6 +1,6 @@
 From: ePapu@epapu.com
 To: {if:me.email}{me.email}{endif:me.email}
-Subject: &iexcl;Bienvenido/a a una comunidad de apasionados por la cocina y la buena comida!
+Subject: ¡Bienvenido/a a una comunidad de apasionados por la cocina y la buena comida!
 Content-type: text/html; charset=utf8
 
 {include:header.html}
@@ -11,7 +11,7 @@ Content-type: text/html; charset=utf8
 
 <p><strong>Nos encanta que te hayas unido a nosotros.</strong></p>
 
-<p style="color:#555; font-size:1em;">&iexcl;Estás a tan sólo un paso de hacer nuevos amigos y divertirte muchísimo!</p>
+<p style="color:#555; font-size:1em;">¡Estás a tan sólo un paso de hacer nuevos amigos y divertirte muchísimo!</p>
 
 <p style="color:#555; font-size:1em;"><a href="{app_root}">Hacé click acá</a>&nbsp;para reservar un lugar en alguno de los eventos organizados por nuestros maravillosos usuarios, apasionados por la cocina y la buena mesa.</p>
 
