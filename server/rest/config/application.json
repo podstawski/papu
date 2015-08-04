@@ -44,7 +44,7 @@
     
     "forbidden_url":["tac","event","events","how-it-works","profile","login","book","password","admin","test","contact","about","privacy","register","contact","konkurs","konkurs-regulamin"],
     
-    "admin.ids": [1,2,3],
+    "admin.ids": [1,4,5],
     
     "ranking.limit": 10,
     "ranking.points4guest.free": 1,

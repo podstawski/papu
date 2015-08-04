@@ -14,6 +14,8 @@
     
     function przecinek2strumien($data)
     {
+	static $len;
+	
         $last_data=$data;
         while(true)
         {
@@ -26,7 +28,17 @@
         $data=str_replace('"','',$data);
         $data=str_replace(',','|',$data);
         $data=str_replace('ZJEBANY_PRZECINEK',',',$data);
-        
+	
+	while ($data[strlen($data)-1]=='|') $data=substr($data,0,strlen($data)-1);
+	
+	if (!$len) $len=substr_count($data,'|');
+	
+	if (substr_count($data,'|')!=$len)
+	{
+	    $data=str_replace('||','|',$data);
+
+	}
+	
         return $data;
     }
     
@@ -44,7 +56,7 @@
         for ($j=1;$j<count($line);$j++)
         {
             if (!$line[$j]) continue;
-            //if (!isset($header[$j])) {print_r($line); die("J:$j");}
+            if (!isset($header[$j])) {print_r($line); die("J:$j\n".$data[$i]."\n".przecinek2strumien($data[$i]));}
             $langs[$header[$j]][$label]=$line[$j];
         }
     }
@@ -54,7 +66,7 @@
     
     foreach ($langs AS $lang=>$data)
     {
-        if (!$lang) continue;
+        if (!trim($lang)) continue;
         echo "Lang: $lang, ".count($data)." phrases.\n";
         file_put_contents(__DIR__.'/../server/rest/langs/'.$lang.'.ser',serialize($data));
         $js.="gettextCatalog.setStrings(\"$lang\",".json_encode($data).");\n";

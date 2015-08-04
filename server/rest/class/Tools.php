@@ -74,7 +74,7 @@ class Tools {
 	return self::memcache($key,$set);
     }
 
-    public static function memcache($key,$val=null,$expire_in=1800)
+    public static function memcache($key,$val=null,$expire_in=300)
     {
         if (isset($_SERVER['SERVER_SOFTWARE']) && strstr(strtolower($_SERVER['SERVER_SOFTWARE']),'engine'))
 	{

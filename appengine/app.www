@@ -12,7 +12,7 @@ handlers:
   login: admin
 
 - url: /test/.*
-  script: test.php
+  script: index.php
   login: admin
 
 - url: /sitemap.xml

@@ -58,10 +58,12 @@ $bootstrap = new Bootstrap($config);
 $geo=Tools::geoip();
 $locale='i18n/angular-locale_'.$bootstrap->lang.'-'.strtolower($geo['location']['country']).'.js';
 
-if (isset($_SERVER['SERVER_SOFTWARE']) && strstr(strtolower($_SERVER['SERVER_SOFTWARE']),'engine')) 
+if (isset($_SERVER['SERVER_SOFTWARE']) && strstr(strtolower($_SERVER['SERVER_SOFTWARE']),'engine') && substr($_SERVER['REQUEST_URI'],0,6)!='/test/') 
 {
 	$html=file_get_contents(__DIR__.'/index.html');
 	if (file_exists($locale)) $html=str_replace('bower_components/angular-i18n/angular-locale_en-us.js',$locale,$html);
+	$html=str_replace('<title>epapu</title>',Tools::translate('page-title'),$html);
+	
 	die($html);
 }
 else

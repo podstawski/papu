@@ -37,25 +37,31 @@ class cityController extends Controller {
 	
 	if ($data=Tools::memcache($token)) return $this->status($data,true,'cities');
 	
-	$cities=$this->city()->country($country)?:[];
-
-	$data=array();
-	$event=new eventModel();
 	
-	foreach($cities AS $city)
-	{
-	    $events=$event->search(0,0,null,$city['lat'],$city['lng'],$city['distance']?:50)?:[];
-	    $c=sprintf('%05d',count($events));
-	    $city['count']=$c+0;
-	    if (count($events)) $data[$c.'-'.$city['name']]=$city;
-	}
-
-	krsort($data);
-	$data2=[];
-	foreach($data AS $c)
-	{
-	    $data2[]=$c;
-	    if (count($data2)==3) break;
+	foreach([$country,null] AS $cntr) {
+	    
+	    $cities=$this->city()->country($cntr)?:[];
+	    
+	    $data=array();
+	    $event=new eventModel();
+	    
+	    foreach($cities AS $city)
+	    {
+		$events=$event->search(0,0,null,$city['lat'],$city['lng'],$city['distance']?:50)?:[];
+		$c=sprintf('%05d',count($events));
+		$city['count']=$c+0;
+		if (count($events)) $data[$c.'-'.$city['name']]=$city;
+	    }
+    
+	    krsort($data);
+	    $data2=[];
+	    foreach($data AS $c)
+	    {
+		$data2[]=$c;
+		if (count($data2)==3) break;
+	    }
+	    
+	    if (count($data2)) break;
 	}
 	return $this->status(Tools::memcache($token,$data2),true,'cities');
     }

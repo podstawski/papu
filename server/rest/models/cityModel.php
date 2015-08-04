@@ -5,12 +5,19 @@ class cityModel extends Model {
     protected $_table='cities';
 
     
-    public function country($country)
+    public function country($country='')
     {
+        $where=null;
         $sql="SELECT * FROM ".$this->_table." LEFT JOIN images ON images.id=".$this->_table.".img";
-        $sql.=" WHERE country=? AND img IS NOT NULL ORDER BY name";
+        $sql.=" WHERE img IS NOT NULL ";
+        if ($country) {
+            $sql.=" AND country=?";
+            $where=[$country];
+        }
+        $sql.=" ORDER BY name";
         
-        return $this->conn->fetchAll($sql,[$country]);
+        
+        return $this->conn->fetchAll($sql,$where);
     }
     
     public function getByLocation($lat,$lng)

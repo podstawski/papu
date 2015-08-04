@@ -361,20 +361,26 @@ class eventModel extends Model {
         return $this->conn->fetchAll($sql,[$now,$event_id]);
     }
     
-    public function get_passed_public_events($country,$offset=0,$limit=0)
+    public function get_passed_public_events($country=null,$offset=0,$limit=0)
     {
-        // AND (unlisted IS NULL OR unlisted=0)
+        $where=null;
         
-        $sql="SELECT * FROM ".$this->_table." WHERE country=?";
-        $sql.=" AND active=1 AND (_vip IS NULL OR _vip>=0)";
+        $sql="SELECT * FROM ".$this->_table." WHERE active=1";
+        $sql.=" AND (_vip IS NULL OR _vip>=0)";
         $sql.=" AND d_event_end<".Bootstrap::$main->now;
         $sql.=" AND id IN (SELECT event FROM guests WHERE event=".$this->_table.".id AND d_payment>0 AND d_cancel IS NULL)";
+        
+        if ($country) {
+            $sql.=" AND country=?";
+            $where=[$country];
+        }
+        
         $sql.=" ORDER BY d_event_end DESC";
 
         if ($limit) $sql.=" LIMIT $limit";
         if ($offset) $sql.=" OFFSET $offset";
         
-        return $this->conn->fetchAll($sql,[$country]);        
+        return $this->conn->fetchAll($sql,$where);        
     }
     
     

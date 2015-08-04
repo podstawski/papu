@@ -1292,6 +1292,7 @@ class eventController extends Controller {
 	
 	if (!$events) {
             $events=$this->event()->get_passed_public_events($country,$opt['offset'],$opt['limit'])?:[];
+	    if (!count($events)) $events=$this->event()->get_passed_public_events(null,$opt['offset'],$opt['limit'])?:[];
 	    $this->extend_search($events);
 	    Tools::memcache($token,$events,900);
 	}
