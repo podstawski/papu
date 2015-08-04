@@ -63,7 +63,7 @@ app.controller('GalleryCtrl', function($scope, $routeParams, ENV, $http, Gallery
         withCredentials: true,
         permanentErrors: [404, 500, 501],
         testChunks: false, //robi POST wtedy
-        chunkSize: 1024 * 1024
+        chunkSize: 512 * 1024
 
     };
 

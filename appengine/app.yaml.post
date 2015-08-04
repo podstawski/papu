@@ -1,3 +1,6 @@
 
+- url: /i18n
+  static_dir: i18n
+
 - url: /.*
   script: index.php
