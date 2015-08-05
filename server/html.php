@@ -29,7 +29,8 @@
   $parts = explode('/', $part);
   
   include __DIR__.'/locale.php';
-  
+  $original_lang=$lang;
+  $user_country=$country;
   
   if (isset($_GET['referer']))
   {
@@ -38,6 +39,7 @@
     {
       $user=new userModel($referer['u']);
       if ($user->lang) $lang=$user->lang;
+      if ($user->country) $user_country=$user->country;
     }
   }
   

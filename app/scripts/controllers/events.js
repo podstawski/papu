@@ -9,82 +9,86 @@
  */
 app.controller('SearchCtrl', function ($scope, SEARCH, $routeParams, BOOK, $location) {
 
-
-	$scope.search = {};
-	$scope.events = [];
-	$scope.persons = 1;
-    $scope.options = {};
-    $scope.offset = 0;
-    $scope.stopLoad = false;
-    $scope.param = {
-		lat: $routeParams.lat,
-		lng: $routeParams.lng,
-		title: $routeParams.search,
-		offset:0,
-		limit: 9
-	}
-	var getEvents = true;
-
-
-	$scope.param.distance = $routeParams.distance;
+            $scope.search = {};
+            $scope.events = [];
+            $scope.persons = 1;
+            $scope.options = {};
+            $scope.offset = 0;
+            $scope.stopLoad = false;
+            $scope.param = {
+                        lat: $routeParams.lat,
+                        lng: $routeParams.lng,
+                        title: $routeParams.search,
+                        offset:0,
+                        limit: 9
+            }      
+            
+            var getEvents = true;
 
 
+            $scope.param.distance = $routeParams.distance;
 
-    $scope.createSlots = function (slots) {
-        var arr = [];
-        for (var i=1; i<=slots; i++) {
-            arr.push(i);
-        }
-        return arr;
-    }
 
-    $scope.bookEvent = function(event, guests) {
-        BOOK.save({"event": event.id, "persons": guests}, function(data) {
-            if (data.status) {
-               //console.log(data) ;
-               $location.path("/book");
-            }
-        });
-        
-    };
 
-    $scope.searchEvents = function () {
-	    SEARCH.get($scope.param, function (data) {
-	    	if (data.status) {
-	    		$scope.events=data.events;
-	    		$scope.options = data.options;
-	    		$scope.offset = $scope.options.limit;
-	    		$scope.stopLoad = false;
-	    		getEvents = true;
-                if (!data.events.length && !$scope.options.offset) {
-                	$scope.noEvents = true;
-                	$scope.param = {
-						lat: 0,
-						lng: 0,
-						title: '',
-						offset: 0,
-						limit: 6
-					};
-					SEARCH.get($scope.param, function (data) {
-				    	if (data.status) {
-				    		$scope.events=data.events;
-				    		$scope.options = data.options;
-				    		$scope.offset = $scope.options.limit;
-				    	}
-				    });	
+            $scope.createSlots = function (slots) {
+                var arr = [];
+                for (var i=1; i<=slots; i++) {
+                    arr.push(i);
                 }
+                return arr;
+            }
+            
+            $scope.bookEvent = function(event, guests) {
+                BOOK.save({"event": event.id, "persons": guests}, function(data) {
+                    if (data.status) {
+                       //console.log(data) ;
+                       $location.path("/book");
+                    }
+                });
+                
+            };
 
-	    	}
+            $scope.searchEvents = function () {
+                        //console.log('search '+new Date());
+                        SEARCH.get($scope.param, function (data) {
+                        if (data.status) {
+                                    $scope.events=data.events;
+                                    $scope.options = data.options;
+                                    $scope.offset = $scope.options.limit;
+                                    $scope.stopLoad = false;
+                                    getEvents = true;
+                                    
+                                    if (!data.events.length && !$scope.options.offset) {
+                                                $scope.noEvents = true;
+                                                $scope.param = {
+                                                            lat: 0,
+                                                            lng: 0,
+                                                            title: '',
+                                                            offset: 0,
+                                                            limit: 6
+                                                };
+                                                //console.log('search '+new Date());
+                                                SEARCH.get($scope.param, function (data) {
+                                                    if (data.status) {
+                                                            $scope.events=data.events;
+                                                            $scope.options = data.options;
+                                                            $scope.offset = $scope.options.limit;
+                                                    }
+                                                });	
+                                    }
+
+                        }
 	    });	
     };
 
     //first load search
-    $scope.searchEvents();
+    //$scope.searchEvents();
 
     $scope.loadMoreEvents = function() {
         $scope.stopLoad = true;
         $scope.param.offset = $scope.offset;
         if (getEvents) {
+            console.log('search '+new Date());
             SEARCH.get($scope.param, function(data){
             	$scope.stopLoad = false;
                 if (data.status) {
@@ -107,6 +111,7 @@ app.controller('SearchCtrl', function ($scope, SEARCH, $routeParams, BOOK, $loca
 							offset: 0,
 							limit: 6
 						};
+                                                //console.log('search '+new Date());
 						SEARCH.get($scope.param, function (data) {
 					    	if (data.status) {
 					    		$scope.events=data.events;
@@ -124,6 +129,9 @@ app.controller('SearchCtrl', function ($scope, SEARCH, $routeParams, BOOK, $loca
         };
     };
 
+    //first load search
+    $scope.loadMoreEvents();    
+    
     
 });
 

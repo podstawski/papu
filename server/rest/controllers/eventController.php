@@ -959,7 +959,16 @@ class eventController extends Controller {
 	
 	$events=$this->event()->search($opt['offset'],$opt['limit'],$opt['tags'],$opt['lat'],$opt['lng'],$opt['distance'],$start,$end,$this->data('vip'),$country)?:[];
 
+	if ($country && !count($events))
+	{
+	    $events=$this->event()->search($opt['offset'],$opt['limit'],$opt['tags'],$opt['lat'],$opt['lng'],$opt['distance'],$start,$end,$this->data('vip'))?:[];    
+	}
 	
+	if ($this->data('vip') && !count($events))
+	{
+	    $events=$this->event()->search($opt['offset'],$opt['limit'],$opt['tags'],null,null,null,$start,$end,$this->data('vip'))?:[];    
+
+	}
 	
 	$zabezpieczenie=$opt['limit'];
 	$offset=$opt['offset']+$opt['limit'];

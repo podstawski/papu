@@ -1,5 +1,4 @@
 <html>
-    
 <head>
   <meta charset="utf-8">
     <title><?php echo $pagetitle;?></title>
@@ -10,6 +9,8 @@
     <meta property="og:description" content="<?php echo $description;?>" />
     <meta property="og:image" content="<?php echo $photo;?>" />
     <meta property="og:url" content="<?php echo url($url);?>" />
+    <meta property="og:locale" content="<?php echo $lang;?>_<?php echo strtoupper($user_country);?>" />
+    <meta property="og:locale:alternate" content="<?php echo $original_lang;?>_<?php echo strtoupper($country);?>" />
     
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">

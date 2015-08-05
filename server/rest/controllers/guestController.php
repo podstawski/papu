@@ -423,7 +423,7 @@ class guestController extends Controller {
 
 	}
 
-	mydie($check,'confirm');
+	//mydie($check,'confirm');
     }
     
     public function post_mercadopago()

@@ -1,7 +1,7 @@
 <?php
 
   $country='US';
-  $url='https://www.jemyrazem.pl/';
+  $url='http://www.epapu.com/';
   $lang='en';
   
   if (strstr(strtolower($_SERVER['HTTP_HOST']),'beta'))
@@ -13,8 +13,14 @@
   
   if (strstr(strtolower($_SERVER['HTTP_HOST']),'webkameleon.com'))
   {
-    $lang='pl';
-  } 
+    $lang='es';
+  }
+
+  if (strstr(strtolower($_SERVER['HTTP_HOST']),'pudel.webkameleon.com'))
+  {
+    $url='http://pudel.webkameleon.com:9006/';
+    
+  }   
   
   if (strstr(strtolower($_SERVER['HTTP_HOST']),'www.epapu.com'))
   {
