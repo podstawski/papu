@@ -395,6 +395,7 @@ class guestController extends Controller {
 	    }
 	}
 	
+	mydie($check);
 	if ($check) $this->mercadopago_confirm($check);
 	
 	
@@ -431,11 +432,13 @@ class guestController extends Controller {
 	Tools::log('mercadopago',['post',$this->data]);
 	
 	$topic = $this->data("topic");
-	$id=$this->data("id");
+	$resource=$this->data("resource");
+	
 	
 	$check=null;
 	if ($topic && $id) {
-	    $check=$this->mercadopage_check($topic,$id);
+	    $id=explode('/',$resource);
+	    $check=$this->mercadopage_check($topic,end($id));
 	}
 	
 	die('OK');
