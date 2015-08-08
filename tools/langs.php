@@ -14,32 +14,32 @@
     
     function przecinek2strumien($data)
     {
-	static $len;
+      static $len;
 	
-        $last_data=$data;
-        while(true)
-        {
-            $data=preg_replace('/,"([^"]+),([^"]+)",*/',',"\\1ZJEBANY_PRZECINEK\\2",',$data);
-            if ($last_data==$data) break;
-            $last_data=$data;
-        }
+      $last_data=$data;
+      while(true)
+      {
+          $data=preg_replace('/,"([^"]+),([^"]+)",*/',',"\\1ZJEBANY_PRZECINEK\\2",',$data);
+          if ($last_data==$data) break;
+          $last_data=$data;
+      }
     
     
-        $data=str_replace('"','',$data);
-        $data=str_replace(',','|',$data);
-        $data=str_replace('ZJEBANY_PRZECINEK',',',$data);
+      $data=str_replace('"','',$data);
+      $data=str_replace(',','|',$data);
+      $data=str_replace('ZJEBANY_PRZECINEK',',',$data);
 	
-	while ($data[strlen($data)-1]=='|') $data=substr($data,0,strlen($data)-1);
+      while ($data[strlen($data)-1]=='|') $data=substr($data,0,strlen($data)-1);
+      
+      if (!$len) $len=substr_count($data,'|');
+      
+      if (substr_count($data,'|')!=$len)
+      {
+          $data=str_replace('||','|',$data);
+    
+      }
 	
-	if (!$len) $len=substr_count($data,'|');
-	
-	if (substr_count($data,'|')!=$len)
-	{
-	    $data=str_replace('||','|',$data);
-
-	}
-	
-        return $data;
+      return $data;
     }
     
 
@@ -60,7 +60,7 @@
             $langs[$header[$j]][$label]=$line[$j];
         }
     }
-    //system("git pull ".realpath(__DIR__.'/..'));
+    system("git pull origin master");
 
     $js="'use strict';\nangular.module('gettext').run(['gettextCatalog', function (gettextCatalog) {\n";
     
@@ -75,8 +75,8 @@
     
     file_put_contents(__DIR__.'/../app/scripts/translations.js',$js);
     
-    //system("git commit -m lang ".__DIR__.'/../server/rest/langs '.__DIR__.'/../app/scripts/translations.js');
-    //system("git push origin master");
+    system("git commit -m lang ".__DIR__.'/../server/rest/langs/* '.__DIR__.'/../app/scripts/translations.js');
+    system("git push origin master");
     $cmd="cd ..; grunt nggettext_extract";
     system ($cmd);
     $po=file_get_contents(__DIR__.'/../po/template.pot');
