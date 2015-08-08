@@ -21,7 +21,7 @@ fi
 
 if [ /home/robson/www/eat/Gruntfile.js -nt Gruntfile.js ]
 then
-    if [ "`pwd|grep pudel`" ]
+    if [ "`pwd|grep piotr`" ]
     then
         cat /home/robson/www/eat/Gruntfile.js |\
             sed "s/robson.webkameleon.com\/eat/pudel.webkameleon.com\/epapu/"|\

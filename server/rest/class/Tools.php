@@ -7,18 +7,26 @@ class Tools {
     
     public static function change_datetime(&$row,$hidden_fields=false)
     {
-        $delta=0+Bootstrap::$main->session('time_delta');
-	if (substr(Bootstrap::$main->datetime_format,-1)=='Z') $delta=0;
-	$admin=Bootstrap::$main->admin;
-	if (isset($row['d_event_start']) && isset($row['d_event_end'])) $row['duration']=$row['d_event_end']-$row['d_event_start'];
+      $delta=0+Bootstrap::$main->session('time_delta');
+      if (substr(Bootstrap::$main->datetime_format,-1)=='Z') $delta=0;
+      $admin=Bootstrap::$main->admin;
+      if (isset($row['d_event_start']) && isset($row['d_event_end'])) $row['duration']=$row['d_event_end']-$row['d_event_start'];
         foreach(array_keys($row) AS $k)
         {
-            if (substr($k,0,2)=='d_')
-            {
-		$row['time_changed_due_to_timezone']=$delta;
-                if ($row[$k]) $row[substr($k,2)]=date(Bootstrap::$main->datetime_format,$row[$k]+$delta);
-		else $row[substr($k,2)]=null;
+          if (substr($k,0,2)=='d_')
+          {
+            $row['time_changed_due_to_timezone']=$delta;
+            if (!isset($row[substr($k,2)])) {
+              if ($row[$k])
+              {
+                $row[substr($k,2)]=date(Bootstrap::$main->datetime_format,$row[$k]+$delta);
+              }
+              else
+              {
+                $row[substr($k,2)]=null;
+              }
             }
+          }
 	    
 	    if ($k==='price') $row[$k]+=0;
 	    if ($k==='price' && !isset($row['host_price']) && isset($row['currency']))
@@ -60,7 +68,8 @@ class Tools {
 	if ($currency=='ARS')
 	{
 	    $add=0;
-	    if ($price>=20) $add=0.15*$price;
+	    if ($price>=20) $add=0.18*$price;
+      else $add=5;
 	    return ceil($price+$add);
 	}
 	
