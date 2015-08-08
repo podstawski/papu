@@ -11,29 +11,6 @@ php ./server/admin/migrate/index.php
 
 
 kto=`basename $HOME`
-crontabfile=/tmp/crontab.$kto
-crontab -l 2>/dev/null |grep -v "server/admin/" > $crontabfile 
-pwd=`pwd`
-app=`basename $pwd`
-
-url="http://$kto.webkameleon.com/$app/server/admin/calendar/"
-cmd="/usr/bin/wget -O /dev/null -q $url"
-echo "*/20 * * * * $cmd" >> $crontabfile
-
-url="http://$kto.webkameleon.com/$app/server/admin/purge/"
-cmd="/usr/bin/wget -O /dev/null -q $url"
-echo "5 * * * * $cmd" >> $crontabfile
-
-url="http://$kto.webkameleon.com/$app/server/admin/payu/"
-cmd="/usr/bin/wget -O /dev/null -q $url"
-echo "15 * * * * $cmd" >> $crontabfile
-
-url="http://$kto.webkameleon.com/$app/server/admin/afterdeadline/"
-cmd="/usr/bin/wget -O /dev/null -q $url"
-echo "*/30 * * * * $cmd" >> $crontabfile
-
-crontab $crontabfile
-
 
 
 if [ "`pwd|grep robson`" ]
@@ -42,16 +19,24 @@ then
     exit
 fi
 
-if [ ../../../robson/www/eat/Gruntfile.js -nt Gruntfile.js ]
+if [ /home/robson/www/eat/Gruntfile.js -nt Gruntfile.js ]
 then
     if [ "`pwd|grep pudel`" ]
     then
-        cat ../../../robson/www/eat/Gruntfile.js |\
+        cat /home/robson/www/eat/Gruntfile.js |\
             sed "s/robson.webkameleon.com\/eat/pudel.webkameleon.com\/epapu/"|\
             sed "s/35729/35756/"|\
             sed "s/9000/9006/" > Gruntfile.js
     fi
 
+
+    if [ "`pwd|grep max`" ]
+    then
+        cat /home/robson/www/eat/Gruntfile.js |\
+            sed "s/robson.webkameleon.com\/eat/pudel.webkameleon.com\/epapu/"|\
+            sed "s/35729/35757/"|\
+            sed "s/9000/9007/" > Gruntfile.js
+    fi
 
     
 fi
