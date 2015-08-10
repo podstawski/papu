@@ -51,14 +51,14 @@
     system("rm $dest/i18n/[b-z]* $dest/i18n/a[a-m]* $dest/i18n/a[o-z]*");
 
 
-    //system('git pull '.__DIR__.'/.. >/dev/null');
+    system('git pull  >/dev/null');
 
     $dst=isset($argv[1]) && $argv[1]=='www'?'www':'beta';
     $dir=explode('/',__DIR__);
     file_put_contents(__DIR__.'/log.txt',date('Y-m-d H:i:s').' '.$dir[2].' -> '.$dst."\n",FILE_APPEND);
     $cmd="/opt/google/appengine/appcfg.py --no_cookies -e $mail update $dest";
-    //system('git commit -m deploy '.__DIR__.' 2>/dev/null');
-    //system('git push origin master');
+    system('git commit -m deploy '.__DIR__.' 2>/dev/null');
+    system('git push origin master');
     system($cmd);
     //system('rm -rf '.$dest);
     
