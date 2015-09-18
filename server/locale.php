@@ -15,17 +15,23 @@
   {
     $lang='es';
   }
+  
+  if (strstr(strtolower($_SERVER['HTTP_HOST']),'jemyrazem'))
+  {
+    $lang='pl';
+    $url='https://www.jemyrazem.pl/';
+  }  
 
   if (strstr(strtolower($_SERVER['HTTP_HOST']),'pudel.webkameleon.com'))
   {
     $url='http://pudel.webkameleon.com:9006/';
-    
+    $lang='pl';
   }   
   
   if (strstr(strtolower($_SERVER['HTTP_HOST']),'www.epapu.com'))
   {
     $url='http://www.epapu.com/';
-    $lang='en';
+    $lang='es';
   }
   
  

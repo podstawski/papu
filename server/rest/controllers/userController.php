@@ -19,27 +19,27 @@ class userController extends Controller {
      */    
     protected function user($user=null)
     {
-	if (is_null($this->_user)) $this->_user=new userModel();
-	if (!is_null($user)) $this->_user->get($user);
-	return $this->_user;
+      if (is_null($this->_user)) $this->_user=new userModel();
+      if (!is_null($user)) $this->_user->get($user);
+      return $this->_user;
     }
     
     
     public function init()
     {
-	parent::init();
-	
-	if ($this->data('referer') && !is_array($this->data('referer')))
-	{
-	    $referer=@json_decode(base64_decode($this->data('referer')),true);
-	    if (!is_array($referer)) $referer=array('s'=>$this->data('referer'));
-	    Bootstrap::$main->session('referer',$referer);
-	}	
-
-	if (isset($_COOKIE['referer']) && !Bootstrap::$main->session('referer') ) {
-	    $referer=json_decode(base64_decode($_COOKIE['referer']),true);
-	    Bootstrap::$main->session('referer',$referer);
-	}
+      parent::init();
+      
+      if ($this->data('referer') && !is_array($this->data('referer')))
+      {
+          $referer=@json_decode(base64_decode($this->data('referer')),true);
+          if (!is_array($referer)) $referer=array('s'=>$this->data('referer'));
+          Bootstrap::$main->session('referer',$referer);
+      }	
+    
+      if (isset($_COOKIE['referer']) && !Bootstrap::$main->session('referer') ) {
+          $referer=json_decode(base64_decode($_COOKIE['referer']),true);
+          Bootstrap::$main->session('referer',$referer);
+      }
 	
 
     }
@@ -431,100 +431,103 @@ class userController extends Controller {
     
     protected function url($firstname,$lastname,$new=true)
     {
-        $urlcounter=0;
-        while (true)
-        {
-            $url=str_replace(' ','',Tools::str_to_url($firstname)).str_replace(' ','',Tools::str_to_url($lastname)).($urlcounter?:'');
-            if (!$this->user()->find_one_by_url($url)) break;
-            $urlcounter++;
-        }
-	return $url;
+      $urlcounter=0;
+      while (true)
+      {
+        $url=str_replace(' ','',Tools::str_to_url($firstname)).str_replace(' ','',Tools::str_to_url($lastname)).($urlcounter?:'');
+        if (!$this->user()->find_one_by_url($url)) break;
+        $urlcounter++;
+      }
+      return $url;
     }
     
     protected function beautify(&$model,$add_random_images=true)
     {
-	$random=rand(1,5);
-	
-	if (!$model->about) $model->about=Tools::translate('random-about-'.$random);
-	if (!$model->title) $model->title=Tools::translate('random-title-'.$random);
-	
-	$url=Bootstrap::$main->getConfig('protocol').'://'.$_SERVER['HTTP_HOST'].Bootstrap::$main->getRoot().'../media/init/';
-	$url=str_replace('/rest/../','/',$url);
-	if ($add_random_images && !$model->cover) $model->cover=$url.'cover-'.$random.'.jpg';
-	if ($add_random_images && !$model->photo) $model->photo=$url.'avatar-'.$random.'.jpg';
-	
-	
-	if (Bootstrap::$main->session('time_delta')) $model->delta=0+Bootstrap::$main->session('time_delta');
-	$model->save();
+      $random=rand(1,5);
+      
+      if (!$model->about) $model->about=Tools::translate('random-about-'.$random);
+      if (!$model->title) $model->title=Tools::translate('random-title-'.$random);
+      
+      $url=Bootstrap::$main->getConfig('protocol').'://'.$_SERVER['HTTP_HOST'].Bootstrap::$main->getRoot().'../media/init/';
+      $url=str_replace('/rest/../','/',$url);
+      if ($add_random_images && !$model->cover) $model->cover=$url.'cover-'.$random.'.jpg';
+      if ($add_random_images && !$model->photo) $model->photo=$url.'avatar-'.$random.'.jpg';
+      
+      
+      if (Bootstrap::$main->session('time_delta')) $model->delta=0+Bootstrap::$main->session('time_delta');
+      $model->save();
     }
     
     protected function add($data,$add_random_images=true)
     {
-	$plain=isset($data['plain'])?$data['plain']:'';
+      $plain=isset($data['plain'])?$data['plain']:'';
 	
-	if (!isset($data['url']))
-	{
-	    $data['url']=$this->url($data['firstname'],$data['lastname']);
-	}
+      if (!isset($data['url']))
+      {
+        $data['url']=$this->url($data['firstname'],$data['lastname']);
+      }
 	
-	if (!isset($data['lang']))
-	{
-	    $data['lang']=Bootstrap::$main->lang;
-	}
+      if (!isset($data['lang']))
+      {
+        $data['lang']=Bootstrap::$main->lang;
+      }
 	
+      $host=explode('.',$_SERVER['HTTP_HOST']);
+      if (count($host)>1) $data['site']=strtolower($host[count($host)-2]);
+      
 	
-	$geo=Tools::geoip();
-	if (isset($geo['location']['country'])) $data['country']=$geo['location']['country'];
-	//if (isset($geo['location']['city'])) $data['city']=$geo['location']['city'];
+      $geo=Tools::geoip();
+      if (isset($geo['location']['country'])) $data['country']=$geo['location']['country'];
+      //if (isset($geo['location']['city'])) $data['city']=$geo['location']['city'];
 	
-        $this->user()->load($data,true);
+      $this->user()->load($data,true);
 	
-	$referer=Bootstrap::$main->session('referer');
-	if (is_array($referer))
-	{
-	    if (isset($referer['u']))
-	    {
-		$this->user()->ref_user=$referer['u'];
-	    }
-	    
-	    if (isset($referer['s']))
-	    {
-		$site=$referer['s'];
-		while(strlen($site)>32) $site=mb_substr($site,0,mb_strlen($site,'uft8')-1,'utf8');
-		$this->user()->ref_site=$site;
-	    }
-	}
+      $referer=Bootstrap::$main->session('referer');
+      if (is_array($referer))
+      {
+        if (isset($referer['u']))
+        {
+          $this->user()->ref_user=$referer['u'];
+        }
+        
+        if (isset($referer['s']))
+        {
+          $site=$referer['s'];
+          while(strlen($site)>32) $site=mb_substr($site,0,mb_strlen($site,'utf-8')-1,'utf-8');
+          $this->user()->ref_site=$site;
+        }
+      }
 
-	$data=$this->user()->save();
-	if ($data) {
-	    Tools::log('new-user',array_merge($data,['plain'=>$plain]));
-	    $model=$this->user();
-	    $this->beautify($model,$add_random_images);
-	    Bootstrap::$main->user=$model->data();
-	    Tools::observe('welcome');
-	    Tools::log('useradd');
-	}
-        return $data;	
+      $data=$this->user()->save();
+      if ($data) {
+          Tools::log('new-user',array_merge($data,['plain'=>$plain]));
+          $model=$this->user();
+          $this->beautify($model,$add_random_images);
+          Bootstrap::$main->user=$model->data();
+          Tools::observe('welcome');
+          Tools::log('useradd');
+      }
+      return $data;	
     }
     
     protected function md5hash($email)
     {
-	return md5(str_replace('.','',$email));
+      return md5(str_replace('.','',$email));
     }
     
     protected function hashPass($password)
     {
-	return md5(trim($password));
+      return md5(trim($password));
     }
     
     public function post()
     {
-	$this->check_input(['captcha'=>1]);
+      $this->check_input(['captcha'=>1]);
 
-	if (isset($this->data['captcha']['recaptcha_challenge_field'])) $this->data['captcha']['challenge']=$this->data['captcha']['recaptcha_challenge_field'];
-	if (isset($this->data['captcha']['recaptcha_response_field'])) $this->data['captcha']['response']=$this->data['captcha']['recaptcha_response_field'];
+    if (isset($this->data['captcha']['recaptcha_challenge_field'])) $this->data['captcha']['challenge']=$this->data['captcha']['recaptcha_challenge_field'];
+    if (isset($this->data['captcha']['recaptcha_response_field'])) $this->data['captcha']['response']=$this->data['captcha']['recaptcha_response_field'];
 
-	if ($this->_appengine || $this->data['captcha']['response']) {
+    if ($this->_appengine || $this->data['captcha']['response']) {
     
 	    if (!isset($this->data['captcha']['response'])
 		|| !$this->data['captcha']['response']

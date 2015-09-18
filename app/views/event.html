@@ -195,6 +195,45 @@
     </div>
 
     <div class="row event-main">
+      
+
+        <div class="col-md-12">
+            <div class="input-group">
+                <h6 translate>EventUnlisted</h6>
+                <h7 translate>EventUnlistedInfo</h7>
+
+                <div class="input-group event-listed">
+                    <input tabindex="23" type="checkbox" ng-model="event.unlisted" ng-true-value="1" ng-false-value="0">
+                    <p translate>Unlisted</p>
+                </div>
+
+            </div>        
+        </div>
+        
+        <div class="col-md-12" ng-if="true || _fb_id">
+            <div class="input-group">
+                <h6 translate>EventFBFriends</h6>
+                <h7>
+                    <span translate>EventFBFriendsInfo</span>
+                    <span translate ng-if="!_fb_friend">EventFBFriendsLoginInfo</span>
+                </h7>
+
+                <div class="input-group event-listed" ng-if="_fb_friend">
+                    <input tabindex="23" type="checkbox" ng-model="event.fb_friends" ng-true-value="1" ng-false-value="0">
+                    <p translate>FBFriends</p>
+                </div>
+                
+                <div class="input-group event-listed" ng-if="!_fb_friend">
+                    <a class="facebook-login" href="" ng-click="fbFriendsAuth()" target="_self"><img src="images/facebook-icon.png" alt="Facebook"><span translate>FacebookLoginFriendsHost</span></a>
+                </div>                
+
+            </div>        
+        </div>
+              
+      
+      
+      
+      
         <div class="col-md-12 col-sm-12">
 
             <!-- Event Adress -->
@@ -331,39 +370,6 @@
         
         
 
-        <div class="col-md-12">
-            <div class="input-group">
-                <h6 translate>EventUnlisted</h6>
-                <h7 translate>EventUnlistedInfo</h7>
-
-                <div class="input-group event-listed">
-                    <input tabindex="23" type="checkbox" ng-model="event.unlisted" ng-true-value="1" ng-false-value="0">
-                    <p translate>Unlisted</p>
-                </div>
-
-            </div>        
-        </div>
-        
-        <div class="col-md-12" ng-if="true || _fb_id">
-            <div class="input-group">
-                <h6 translate>EventFBFriends</h6>
-                <h7>
-                    <span translate>EventFBFriendsInfo</span>
-                    <span translate ng-if="!_fb_friend">EventFBFriendsLoginInfo</span>
-                </h7>
-
-                <div class="input-group event-listed" ng-if="_fb_friend">
-                    <input tabindex="23" type="checkbox" ng-model="event.fb_friends" ng-true-value="1" ng-false-value="0">
-                    <p translate>FBFriends</p>
-                </div>
-                
-                <div class="input-group event-listed" ng-if="!_fb_friend">
-                    <a class="facebook-login" href="" ng-click="fbFriendsAuth()" target="_self"><img src="images/facebook-icon.png" alt="Facebook"><span translate>FacebookLoginFriendsHost</span></a>
-                </div>                
-
-            </div>        
-        </div>
-        
     </div>
     <!-- /More Settings -->
 

@@ -6641,12 +6641,32 @@ button:hover
 
 .alert {
     position: fixed;
-    bottom: 15px;
+    top: 45%;
     left:15px;
     right: 15px;
     z-index: 9999;
     width: auto;
 }
+
+.alert-danger {
+  color: #fff;
+  font-weight: 500;
+  background-color:rgba(80,0,0,0.7);
+  border-color: #fff;
+}
+
+.alert-info {
+  color: #fff;
+  font-weight: 500;
+  background-color:rgba(0,0,90,0.6);
+  top: auto;
+  bottom: 20px;
+}
+
+.alert .close span {
+  color: #fff;
+}
+
 
 /* Styling for the ngProgress itself */
 #ngProgress {
