@@ -1,6 +1,6 @@
 <?php
 $pass='';
-if (strstr($_SERVER['HTTP_HOST'],'www.epapu')) $pass=['notsofast'];
+//if (strstr($_SERVER['HTTP_HOST'],'www.epapu')) $pass=['notsofast'];
 //if (strstr($_SERVER['HTTP_HOST'],'beta')) $pass=['papu2015'];
 
 

@@ -1,5 +1,4 @@
 # robotstxt.org
 
 User-agent: *
-Disallow: *
-#Disallow: /*?
+Disallow: /*?
