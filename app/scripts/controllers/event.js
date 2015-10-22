@@ -70,7 +70,7 @@ app.controller('EventCtrl', function ($scope, ngDialog, gettextCatalog, uiGmapGo
 
     $scope._fb_id = Auth.user.fb_id;
     $scope._fb_friend = Auth.user.fb_friend;
-    $scope.facebookFriendsAuth = ENV.apiServer + 'user/facebook?friends=1&redirect=' + encodeURIComponent($location.absUrl().replace('/login','/event/'+$scope.event.id));
+    $scope.facebookFriendsAuth = ENV.apiServer + 'user/facebook?friends=1&redirect=' + encodeURIComponent($location.absUrl().replace('/login','/event/'+$scope.event.id)) + '&r=' + Math.random();
 
     
   //load guest events data
@@ -474,9 +474,9 @@ app.controller('EventCtrl', function ($scope, ngDialog, gettextCatalog, uiGmapGo
     };
 
     $scope.fbFriendsAuth = function () {
-	$scope.saveEvent(false);
-	location.href=$scope.facebookFriendsAuth;
-	//console.log($scope.facebookFriendsAuth);
+      $scope.saveEvent(false);
+      location.href=$scope.facebookFriendsAuth;
+      //console.log($scope.facebookFriendsAuth);
     };
     
     $scope.saveEvent = function (exit) {

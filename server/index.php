@@ -62,9 +62,11 @@ $locale='i18n/angular-locale_'.$bootstrap->lang.'-'.strtolower($geo['location'][
 if (isset($_SERVER['SERVER_SOFTWARE']) && strstr(strtolower($_SERVER['SERVER_SOFTWARE']),'engine') && substr($_SERVER['REQUEST_URI'],0,6)!='/test/') 
 {
 	$html=file_get_contents(__DIR__.'/index.html');
+  $html=str_replace('facebook.net/en_US/sdk.js','facebook.net/'.$bootstrap->lang.'_'.strtoupper($geo['location']['country']).'/sdk.js',$html);
 	$html=str_replace('bower_components/angular-i18n/angular-locale_en-us.js',$locale,$html);
 	$html=str_replace('<title>epapu</title>','<title>'.Tools::translate('page-title').'</title>',$html);
-	
+	$html=str_replace('AIzaSyB7iQMqTOfotqClUkAgVp6_w46-f0F7VEc',$bootstrap->getConfig('maps.api_key'),$html);
+
 	die($html);
 }
 else
